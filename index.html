@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batu K. Masak — AI & NLP Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0f;
+    --bg-card: #14141a;
+    --bg-card-hover: #1a1a24;
+    --text: #e8e6e1;
+    --text-dim: #8a8880;
+    --text-muted: #5a5850;
+    --accent: #c9a55a;
+    --accent-dim: rgba(201, 165, 90, 0.12);
+    --accent-glow: rgba(201, 165, 90, 0.06);
+    --border: rgba(255,255,255,0.06);
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    --max-w: 920px;
+    --transition: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-muted) transparent;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* === NOISE OVERLAY === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  /* === NAV === */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(12, 12, 15, 0.8);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+
+  .nav-name span {
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.4s var(--transition);
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* === MAIN CONTENT === */
+  main {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--transition) 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--transition) 0.4s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 560px;
+    line-height: 1.85;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--transition) 0.6s forwards;
+  }
+
+  .hero-bio a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-dim);
+    transition: border-color 0.3s ease;
+  }
+
+  .hero-bio a:hover {
+    border-color: var(--accent);
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--transition) 0.8s forwards;
+  }
+
+  .hero-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-dim);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+
+  .hero-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .hero-links a.primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .hero-links a.primary:hover {
+    background: #d4b06a;
+  }
+
+  /* === DECORATIVE LINE === */
+  .hero-line {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+    opacity: 0.3;
+  }
+
+  /* === SECTIONS === */
+  section {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-number {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-left: 1rem;
+  }
+
+  /* === RESEARCH INTERESTS === */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .research-card {
+    padding: 1.8rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-card);
+    transition: all 0.4s var(--transition);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .research-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .research-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(201, 165, 90, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .research-card:hover::before { opacity: 1; }
+
+  .research-card h3 {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+
+  .research-card p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* === PUBLICATIONS === */
+  .pub-item {
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .pub-item:first-child { border-top: 1px solid var(--border); }
+
+  .pub-item:hover {
+    padding-left: 1rem;
+  }
+
+  .pub-status {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: var(--accent-dim);
+    border-radius: 3px;
+  }
+
+  .pub-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+
+  .pub-authors {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 0.3rem;
+  }
+
+  .pub-authors strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .pub-venue {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* === PROJECTS === */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .project-card {
+    padding: 1.8rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-card);
+    transition: all 0.4s var(--transition);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .project-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(201,165,90,0.15);
+    transform: translateY(-2px);
+  }
+
+  .project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-card h3 {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .project-card-arrow {
+    color: var(--text-muted);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .project-card:hover .project-card-arrow {
+    color: var(--accent);
+    transform: translate(3px, -3px);
+  }
+
+  .project-card p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  /* === EDUCATION === */
+  .edu-item {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-item:first-child { border-top: 1px solid var(--border); }
+
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    min-width: 100px;
+    padding-top: 0.15rem;
+  }
+
+  .edu-details h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .edu-details .edu-school {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .edu-details p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-top: 0.4rem;
+  }
+
+  /* === FOOTER === */
+  footer {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .footer-email {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 500;
+  }
+
+  .footer-email a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 2px solid var(--accent-dim);
+    transition: border-color 0.3s ease;
+  }
+
+  .footer-email a:hover {
+    border-color: var(--accent);
+  }
+
+  .footer-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+  }
+
+  .footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .footer-socials a {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .footer-socials a:hover { color: var(--accent); }
+
+  /* === ANIMATIONS === */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 700px) {
+    main { padding: 0 1.2rem; }
+    nav { padding: 0 1.2rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.72rem; }
+    .research-grid, .project-grid { grid-template-columns: 1fr; }
+    .edu-item { flex-direction: column; gap: 0.5rem; }
+    .hero-links { flex-wrap: wrap; }
+    section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">B<span>.</span>K<span>.</span> Masak</div>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="border: none;">
+    <div class="hero-content">
+      <div class="hero-eyebrow">AI &amp; NLP Researcher</div>
+      <h1>Batu K. Masak</h1>
+      <p class="hero-bio">
+        Undergraduate researcher at <a href="https://www.ozyegin.edu.tr" target="_blank">Özyeğin University</a>,
+        double-majoring in AI&nbsp;&amp;&nbsp;Data Engineering and Computer Science.
+        My work focuses on <em>adversarial robustness of large language models</em>,
+        NLP, and the security implications of multi-turn interactions with AI systems.
+      </p>
+      <div class="hero-links">
+        <a href="#contact" class="primary">Get in Touch</a>
+        <a href="https://github.com/batukoray" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="hero-line"></div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="fade-in">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Research Interests</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="research-grid">
+      <div class="research-card">
+        <h3>Adversarial Attacks on LLMs</h3>
+        <p>Multi-turn jailbreaking strategies that exploit rhetorical persuasion rather than gradient-based optimization. Bridging social engineering and machine learning safety.</p>
+      </div>
+      <div class="research-card">
+        <h3>NLP &amp; Transformer Architectures</h3>
+        <p>Language modeling, attention mechanisms, and the computational foundations of modern NLP systems. Particular interest in Turkish morphological complexity.</p>
+      </div>
+      <div class="research-card">
+        <h3>AI Safety &amp; Alignment</h3>
+        <p>Red-teaming methodologies, robustness evaluation, and understanding how safety fine-tuning can be systematically circumvented.</p>
+      </div>
+      <div class="research-card">
+        <h3>Mechanistic Interpretability</h3>
+        <p>Understanding the internal representations and decision pathways of neural networks, with a focus on how models encode and process adversarial inputs.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROJECTS -->
+  <section id="projects" class="fade-in">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="project-grid">
+      <a class="project-card" href="https://github.com/batukoray" target="_blank">
+        <div class="project-card-header">
+          <h3>Korado</h3>
+          <span class="project-card-arrow">↗</span>
+        </div>
+        <p>CLI linear programming and mixed-integer programming solver built on PuLP/CBC backend.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">PuLP</span>
+          <span class="project-tag">Optimization</span>
+        </div>
+      </a>
+      <a class="project-card" href="#" target="_blank">
+        <div class="project-card-header">
+          <h3>HaDi — Hacker Dispatch</h3>
+          <span class="project-card-arrow">↗</span>
+        </div>
+        <p>Curated cybersecurity and hacking intelligence dispatch — aggregating vulnerability disclosures, exploit research, and security news.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Security</span>
+          <span class="project-tag">Automation</span>
+        </div>
+      </a>
+      <a class="project-card" href="#" target="_blank">
+        <div class="project-card-header">
+          <h3>LLaMA From Scratch</h3>
+          <span class="project-card-arrow">↗</span>
+        </div>
+        <p>Ground-up implementation of the LLaMA architecture for CS449 NLP course project at Özyeğin University.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Transformers</span>
+          <span class="project-tag">PyTorch</span>
+        </div>
+      </a>
+      <a class="project-card" href="#" target="_blank">
+        <div class="project-card-header">
+          <h3>El Pulpo</h3>
+          <span class="project-card-arrow">↗</span>
+        </div>
+        <p>Personal terminal productivity system with MCP integration for task management, notes, and intelligent workflows.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">MCP</span>
+          <span class="project-tag">CLI</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="fade-in">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2024 — present</div>
+      <div class="edu-details">
+        <h3>B.Sc. AI &amp; Data Engineering · B.Sc. Computer Science</h3>
+        <div class="edu-school">Özyeğin University, Istanbul</div>
+        <p>Double major · GPA: 3.72/4.00 · Ranked 1st in department (out of 54)</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2019 — 2024</div>
+      <div class="edu-details">
+        <h3>High School Diploma</h3>
+        <div class="edu-school">Eyüboğlu Science and Technology High School, Istanbul</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <main style="max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;">
+    <div class="footer-email">
+      <a href="mailto:batu.masak@ozu.edu.tr">batu.masak@ozu.edu.tr</a>
+    </div>
+    <p class="footer-sub">Personal: batukoraymasak@gmail.com</p>
+    <p class="footer-sub" style="margin-top: 0.4rem;">Open to research collaborations, internships, and conversations about LLM security.</p>
+    <div class="footer-socials">
+      <a href="https://github.com/batukoray" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank">LinkedIn</a>
+    </div>
+  </main>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
