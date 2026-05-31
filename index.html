@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Batu K. Masak — AI & NLP Researcher</title>
+
+<meta name="description" content="Batu Koray Masak is an AI & Data Engineering and Computer Science student at Özyeğin University. Portfolio, projects, research notes, and GitHub profile: github.com/batukoray.">
+<meta name="author" content="Batu Koray Masak">
+<meta name="keywords" content="Batu Koray Masak, batukoray, GitHub, AI, NLP, LLM security, machine learning, Özyeğin University, Computer Science">
+<link rel="canonical" href="https://batukoray.github.io/">
+
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --bg: #0c0c0f;
@@ -42,7 +50,6 @@
     overflow-x: hidden;
   }
 
-  /* === NOISE OVERLAY === */
   body::before {
     content: '';
     position: fixed;
@@ -54,7 +61,6 @@
     background-repeat: repeat;
   }
 
-  /* === NAV === */
   nav {
     position: fixed;
     top: 0;
@@ -115,14 +121,12 @@
   .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover::after { width: 100%; }
 
-  /* === MAIN CONTENT === */
   main {
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 0 2rem;
   }
 
-  /* === HERO === */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -223,7 +227,6 @@
     background: #d4b06a;
   }
 
-  /* === DECORATIVE LINE === */
   .hero-line {
     position: absolute;
     right: -60px;
@@ -235,7 +238,6 @@
     opacity: 0.3;
   }
 
-  /* === SECTIONS === */
   section {
     padding: 100px 0;
     border-top: 1px solid var(--border);
@@ -268,7 +270,6 @@
     margin-left: 1rem;
   }
 
-  /* === RESEARCH INTERESTS === */
   .research-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -320,58 +321,6 @@
     line-height: 1.7;
   }
 
-  /* === PUBLICATIONS === */
-  .pub-item {
-    padding: 1.8rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: all 0.3s ease;
-  }
-
-  .pub-item:first-child { border-top: 1px solid var(--border); }
-
-  .pub-item:hover {
-    padding-left: 1rem;
-  }
-
-  .pub-status {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    display: inline-block;
-    padding: 0.2rem 0.6rem;
-    background: var(--accent-dim);
-    border-radius: 3px;
-  }
-
-  .pub-title {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-    line-height: 1.4;
-  }
-
-  .pub-authors {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin-bottom: 0.3rem;
-  }
-
-  .pub-authors strong {
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  .pub-venue {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  /* === PROJECTS === */
   .project-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -442,7 +391,6 @@
     letter-spacing: 0.02em;
   }
 
-  /* === EDUCATION === */
   .edu-item {
     display: flex;
     gap: 2rem;
@@ -479,7 +427,6 @@
     margin-top: 0.4rem;
   }
 
-  /* === FOOTER === */
   footer {
     padding: 60px 0;
     border-top: 1px solid var(--border);
@@ -528,7 +475,6 @@
 
   .footer-socials a:hover { color: var(--accent); }
 
-  /* === ANIMATIONS === */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -545,7 +491,6 @@
     transform: translateY(0);
   }
 
-  /* === RESPONSIVE === */
   @media (max-width: 700px) {
     main { padding: 0 1.2rem; }
     nav { padding: 0 1.2rem; }
@@ -571,45 +516,56 @@
 </nav>
 
 <main>
-  <!-- HERO -->
   <section class="hero" style="border: none;">
     <div class="hero-content">
       <div class="hero-eyebrow">AI &amp; NLP Researcher</div>
       <h1>Batu K. Masak</h1>
+
       <p class="hero-bio">
-        Undergraduate researcher at <a href="https://www.ozyegin.edu.tr" target="_blank">Özyeğin University</a>,
+        Undergraduate researcher at <a href="https://www.ozyegin.edu.tr" target="_blank" rel="noopener noreferrer">Özyeğin University</a>,
         double-majoring in AI&nbsp;&amp;&nbsp;Data Engineering and Computer Science.
         My work focuses on <em>adversarial robustness of large language models</em>,
         NLP, and the security implications of multi-turn interactions with AI systems.
       </p>
+
       <div class="hero-links">
         <a href="#contact" class="primary">Get in Touch</a>
-        <a href="https://github.com/batukoray" target="_blank">GitHub ↗</a>
+        <a href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       </div>
+
+      <p class="hero-bio" style="margin-top: 1.2rem;">
+        GitHub profile:
+        <a href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
+          github.com/batukoray
+        </a>
+      </p>
     </div>
     <div class="hero-line"></div>
   </section>
 
-  <!-- RESEARCH -->
   <section id="research" class="fade-in">
     <div class="section-header">
       <span class="section-number">01</span>
       <h2 class="section-title">Research Interests</h2>
       <div class="section-line"></div>
     </div>
+
     <div class="research-grid">
       <div class="research-card">
         <h3>Adversarial Attacks on LLMs</h3>
         <p>Multi-turn jailbreaking strategies that exploit rhetorical persuasion rather than gradient-based optimization. Bridging social engineering and machine learning safety.</p>
       </div>
+
       <div class="research-card">
         <h3>NLP &amp; Transformer Architectures</h3>
         <p>Language modeling, attention mechanisms, and the computational foundations of modern NLP systems. Particular interest in Turkish morphological complexity.</p>
       </div>
+
       <div class="research-card">
         <h3>AI Safety &amp; Alignment</h3>
         <p>Red-teaming methodologies, robustness evaluation, and understanding how safety fine-tuning can be systematically circumvented.</p>
       </div>
+
       <div class="research-card">
         <h3>Mechanistic Interpretability</h3>
         <p>Understanding the internal representations and decision pathways of neural networks, with a focus on how models encode and process adversarial inputs.</p>
@@ -617,16 +573,15 @@
     </div>
   </section>
 
-
-  <!-- PROJECTS -->
   <section id="projects" class="fade-in">
     <div class="section-header">
       <span class="section-number">02</span>
       <h2 class="section-title">Projects</h2>
       <div class="section-line"></div>
     </div>
+
     <div class="project-grid">
-      <a class="project-card" href="https://github.com/batukoray" target="_blank">
+      <a class="project-card" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
         <div class="project-card-header">
           <h3>Korado</h3>
           <span class="project-card-arrow">↗</span>
@@ -638,7 +593,8 @@
           <span class="project-tag">Optimization</span>
         </div>
       </a>
-      <a class="project-card" href="#" target="_blank">
+
+      <a class="project-card" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
         <div class="project-card-header">
           <h3>HaDi — Hacker Dispatch</h3>
           <span class="project-card-arrow">↗</span>
@@ -650,7 +606,8 @@
           <span class="project-tag">Automation</span>
         </div>
       </a>
-      <a class="project-card" href="#" target="_blank">
+
+      <a class="project-card" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
         <div class="project-card-header">
           <h3>LLaMA From Scratch</h3>
           <span class="project-card-arrow">↗</span>
@@ -662,7 +619,8 @@
           <span class="project-tag">PyTorch</span>
         </div>
       </a>
-      <a class="project-card" href="#" target="_blank">
+
+      <a class="project-card" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
         <div class="project-card-header">
           <h3>El Pulpo</h3>
           <span class="project-card-arrow">↗</span>
@@ -677,13 +635,13 @@
     </div>
   </section>
 
-  <!-- EDUCATION -->
   <section id="education" class="fade-in">
     <div class="section-header">
       <span class="section-number">03</span>
       <h2 class="section-title">Education</h2>
       <div class="section-line"></div>
     </div>
+
     <div class="edu-item">
       <div class="edu-year">2024 — present</div>
       <div class="edu-details">
@@ -692,6 +650,7 @@
         <p>Double major · GPA: 3.72/4.00 · Ranked 1st in department (out of 54)</p>
       </div>
     </div>
+
     <div class="edu-item">
       <div class="edu-year">2019 — 2024</div>
       <div class="edu-details">
@@ -702,23 +661,23 @@
   </section>
 </main>
 
-<!-- FOOTER / CONTACT -->
 <footer id="contact">
   <main style="max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;">
     <div class="footer-email">
       <a href="mailto:batu.masak@ozu.edu.tr">batu.masak@ozu.edu.tr</a>
     </div>
+
     <p class="footer-sub">Personal: batukoraymasak@gmail.com</p>
     <p class="footer-sub" style="margin-top: 0.4rem;">Open to research collaborations, internships, and conversations about LLM security.</p>
+
     <div class="footer-socials">
-      <a href="https://github.com/batukoray" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </main>
 </footer>
 
 <script>
-  // Intersection Observer for fade-in animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -729,7 +688,6 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Smooth scroll for nav links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
