@@ -8,7 +8,7 @@
 
 <meta name="description" content="Batu Koray Masak is an AI & Data Engineering and Computer Science student at Özyeğin University. Portfolio, projects, research notes, and GitHub profile: github.com/batukoray.">
 <meta name="author" content="Batu Koray Masak">
-<meta name="keywords" content="Batu Koray Masak, batukoray, GitHub, AI, NLP, LLM security, machine learning, Özyeğin University, Computer Science">
+<meta name="keywords" content="Batu Koray Masak, batukoray, GitHub, Korado, El Pulpo, HaDi, LLaMA From Scratch, AI, NLP, LLM security, machine learning, Özyeğin University, Computer Science">
 <link rel="canonical" href="https://batukoray.github.io/">
 
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -86,9 +86,7 @@
     color: var(--text);
   }
 
-  .nav-name span {
-    color: var(--accent);
-  }
+  .nav-name span { color: var(--accent); }
 
   .nav-links {
     display: flex;
@@ -135,9 +133,7 @@
     position: relative;
   }
 
-  .hero-content {
-    width: 100%;
-  }
+  .hero-content { width: 100%; }
 
   .hero-eyebrow {
     font-family: var(--mono);
@@ -160,11 +156,6 @@
     animation: fadeUp 0.8s var(--transition) 0.4s forwards;
   }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
   .hero-bio {
     font-size: 1.05rem;
     color: var(--text-dim);
@@ -181,9 +172,7 @@
     transition: border-color 0.3s ease;
   }
 
-  .hero-bio a:hover {
-    border-color: var(--accent);
-  }
+  .hero-bio a:hover { border-color: var(--accent); }
 
   .hero-links {
     display: flex;
@@ -223,9 +212,7 @@
     font-weight: 600;
   }
 
-  .hero-links a.primary:hover {
-    background: #d4b06a;
-  }
+  .hero-links a.primary:hover { background: #d4b06a; }
 
   .hero-line {
     position: absolute;
@@ -270,18 +257,24 @@
     margin-left: 1rem;
   }
 
-  .research-grid {
+  .research-grid,
+  .project-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .research-card {
+  .research-card,
+  .project-card {
     padding: 1.8rem;
     border: 1px solid var(--border);
     border-radius: 10px;
     background: var(--bg-card);
     transition: all 0.4s var(--transition);
+    color: inherit;
+  }
+
+  .research-card {
     cursor: default;
     position: relative;
     overflow: hidden;
@@ -299,7 +292,8 @@
     transition: opacity 0.4s ease;
   }
 
-  .research-card:hover {
+  .research-card:hover,
+  .project-card:hover {
     background: var(--bg-card-hover);
     border-color: rgba(201, 165, 90, 0.15);
     transform: translateY(-2px);
@@ -307,7 +301,8 @@
 
   .research-card:hover::before { opacity: 1; }
 
-  .research-card h3 {
+  .research-card h3,
+  .project-card h3 {
     font-family: var(--sans);
     font-size: 0.95rem;
     font-weight: 600;
@@ -315,33 +310,16 @@
     color: var(--text);
   }
 
-  .research-card p {
+  .research-card p,
+  .project-card p {
     font-size: 0.85rem;
     color: var(--text-dim);
     line-height: 1.7;
   }
 
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
   .project-card {
-    padding: 1.8rem;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--bg-card);
-    transition: all 0.4s var(--transition);
     text-decoration: none;
-    color: inherit;
     display: block;
-  }
-
-  .project-card:hover {
-    background: var(--bg-card-hover);
-    border-color: rgba(201,165,90,0.15);
-    transform: translateY(-2px);
   }
 
   .project-card-header {
@@ -349,12 +327,6 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 0.8rem;
-  }
-
-  .project-card h3 {
-    font-family: var(--sans);
-    font-size: 0.95rem;
-    font-weight: 600;
   }
 
   .project-card-arrow {
@@ -368,12 +340,7 @@
     transform: translate(3px, -3px);
   }
 
-  .project-card p {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    line-height: 1.7;
-    margin-bottom: 1rem;
-  }
+  .project-card p { margin-bottom: 1rem; }
 
   .project-tags {
     display: flex;
@@ -446,9 +413,7 @@
     transition: border-color 0.3s ease;
   }
 
-  .footer-email a:hover {
-    border-color: var(--accent);
-  }
+  .footer-email a:hover { border-color: var(--accent); }
 
   .footer-sub {
     font-size: 0.82rem;
@@ -539,6 +504,14 @@
           github.com/batukoray
         </a>
       </p>
+
+      <p class="hero-bio" style="margin-top: 0.6rem;">
+        Selected GitHub repositories:
+        <a href="https://github.com/batukoray/Korado" target="_blank" rel="noopener noreferrer">Korado</a>,
+        <a href="https://github.com/batukoray/HaDi" target="_blank" rel="noopener noreferrer">HaDi</a>,
+        <a href="https://github.com/batukoray/llama2-from-scratch" target="_blank" rel="noopener noreferrer">LLaMA From Scratch</a>,
+        <a href="https://github.com/batukoray/EL_Pulpo" target="_blank" rel="noopener noreferrer">El Pulpo</a>.
+      </p>
     </div>
     <div class="hero-line"></div>
   </section>
@@ -581,7 +554,7 @@
     </div>
 
     <div class="project-grid">
-      <a class="project-card" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
+      <a class="project-card" href="https://github.com/batukoray/Korado" target="_blank" rel="noopener noreferrer">
         <div class="project-card-header">
           <h3>Korado</h3>
           <span class="project-card-arrow">↗</span>
@@ -594,7 +567,7 @@
         </div>
       </a>
 
-      <a class="project-card" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
+      <a class="project-card" href="https://github.com/batukoray/HaDi" target="_blank" rel="noopener noreferrer">
         <div class="project-card-header">
           <h3>HaDi — Hacker Dispatch</h3>
           <span class="project-card-arrow">↗</span>
@@ -607,7 +580,7 @@
         </div>
       </a>
 
-      <a class="project-card" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
+      <a class="project-card" href="https://github.com/batukoray/llama2-from-scratch" target="_blank" rel="noopener noreferrer">
         <div class="project-card-header">
           <h3>LLaMA From Scratch</h3>
           <span class="project-card-arrow">↗</span>
@@ -620,7 +593,7 @@
         </div>
       </a>
 
-      <a class="project-card" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
+      <a class="project-card" href="https://github.com/batukoray/EL_Pulpo" target="_blank" rel="noopener noreferrer">
         <div class="project-card-header">
           <h3>El Pulpo</h3>
           <span class="project-card-arrow">↗</span>
