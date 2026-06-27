@@ -413,8 +413,9 @@
     min-height: 48px;
     padding: 0.8rem 1.2rem;
     border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--surface-soft);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(240, 230, 210, 0.38);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.22) inset, 0 4px 16px rgba(23, 20, 18, 0.05);
     color: var(--text);
     text-decoration: none;
     font-size: 0.78rem;
@@ -431,20 +432,10 @@
 
   .button:hover,
   .button:focus-visible {
-    border-color: rgba(142, 109, 49, 0.28);
-    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(255, 255, 255, 0.36);
+    background: rgba(240, 230, 210, 0.58);
   }
 
-  .button.primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent-bright));
-    color: #120f08;
-    border-color: transparent;
-  }
-
-  .button.primary:hover,
-  .button.primary:focus-visible {
-    background: linear-gradient(135deg, #a5803b, #d1b06a);
-  }
 
   .hero-strips {
     display: flex;
@@ -1098,6 +1089,11 @@
   .award-card {
     padding: 1.3rem;
     overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(23, 20, 18, 0.03), rgba(23, 20, 18, 0) 64%),
+      #f0e6d2;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .award-kicker,
@@ -1118,9 +1114,7 @@
     padding: 1rem;
     border-radius: 8px;
     border: 1px solid rgba(23, 20, 18, 0.08);
-    background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 60%),
-      rgba(255, 255, 255, 0.72);
+    background: #f0e6d2 !important;
   }
 
   .gpa-chart-title {
@@ -1626,11 +1620,6 @@
           <a class="button magnetic" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a>
         </div>
 
-        <div class="hero-strips" aria-label="Current focus areas">
-          <span class="hero-strip">SPADE · Summer 2026</span>
-          <span class="hero-strip">Membership Inference</span>
-          <span class="hero-strip">Backdoor Attacks</span>
-        </div>
       </div>
 
       <aside class="hero-panel" aria-labelledby="current-role-title">
@@ -1762,12 +1751,11 @@
               <span class="metric-suffix">/4</span>
             </div>
             <h3>High Honor Semesters</h3>
-            <p>Performance sustained across every completed semester while holding a merit scholarship and serving as a peer advisor.</p>
+            <p>Performance sustained across every completed semester.</p>
           </article>
         </div>
 
         <article class="distribution-card" aria-labelledby="distribution-title">
-          <span class="metric-meta">Illustrative Percentile View</span>
           <h3 id="distribution-title">Where a faculty standing sits on a bell curve</h3>
           <div class="distribution-figure" role="img" aria-label="Illustrative normal distribution showing a top percentile right tail of a standard bell curve. A marker at the cutoff labels a 3.77 CGPA and an Engineering Faculty standing.">
             <svg class="distribution-svg" viewBox="0 0 720 260" tabindex="0" aria-label="Interactive normal distribution showing a top percentile right tail of a standard bell curve.">
@@ -1851,9 +1839,6 @@
           <span class="section-number">04</span>
           <h2 class="section-title" id="projects-title">Selected Projects</h2>
         </div>
-        <p class="projects-summary">
-          Four public repositories worth opening. Hover treatment is reserved for the things that actually go somewhere.
-        </p>
       </div>
 
       <div class="project-grid">
@@ -1950,11 +1935,6 @@
                 Achieved High Honor academic standing in all four semesters to date, clearing the required
                 &ge;3.50 GPA bar with zero failing grades every single term.
               </p>
-              <p>
-                Per-semester GPA: Fall 2024/25, 3.63. Spring 2024/25, 3.82. Fall 2025/26, 3.73.
-                Spring 2025/26, 3.91. Current cumulative GPA: 3.77/4.00.
-              </p>
-
               <div class="gpa-chart" role="img" aria-label="Semester GPA progression: 3.63 in Fall 2024 slash 25, 3.82 in Spring 2024 slash 25, 3.73 in Fall 2025 slash 26, and 3.91 in Spring 2025 slash 26. All four terms are above the 3.50 High Honor threshold.">
                 <span class="gpa-chart-kicker">Semester GPA Progression</span>
                 <p class="gpa-chart-title">Four consecutive High Honor terms</p>
@@ -2011,14 +1991,8 @@
               <span class="award-kicker">Issued by Özyeğin University · Aug 2025</span>
               <h4 id="merit-scholarship-title">2024-2025 Undergraduate Academic Merit Scholarship</h4>
               <p>
-                One of only three freshmen selected across the entire Faculty of Engineering, awarded through
-                a dedicated first-year quota and ranked purely by cumulative GPA against other unscholarshipped
-                and partially-scholarshipped first-year students in the faculty.
-              </p>
-              <p>
-                Students already holding a full tuition waiver are excluded from that pool. The award provides
-                a 25% tuition fee waiver for the 2025-2026 academic year, combining with a separate 50%
-                national-exam-based scholarship already noted on this site for 75% total tuition coverage.
+                One of only three freshmen selected across the entire Faculty of Engineering, ranked purely by cumulative GPA.
+                Provides a 25% tuition waiver for 2025-2026, stacking with an existing 50% scholarship for 75% total coverage.
               </p>
             </section>
           </div>
@@ -2043,11 +2017,11 @@
         <p class="contact-copy">
           Open to research collaborations, internships, and conversations around LLM security, trustworthy language models, and adversarial NLP.
         </p>
-        <a class="contact-mail magnetic" href="mailto:batu.masak@ozu.edu.tr">batu.masak@ozu.edu.tr</a>
+        <span class="contact-mail">batu.masak [at] ozu.edu.tr</span>
       </div>
 
       <div class="contact-side">
-        <p class="contact-note">Personal Email<span>batukoraymasak@gmail.com</span></p>
+        <p class="contact-note">Personal Email<span>batukoraymasak [at] gmail.com</span></p>
         <div class="footer-socials">
           <a class="magnetic" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="magnetic" href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -2750,8 +2724,8 @@
             x,
             y,
             radius: layerIndex === layerCounts.length - 1 ? 3.9 : 3.3,
-            ampX: animate ? 3 + random() * 4 : 0,
-            ampY: animate ? 4 + random() * 5 : 0,
+            ampX: animate ? 5 + random() * 5 : 0,
+            ampY: animate ? 6 + random() * 6 : 0,
             phaseX: random() * Math.PI * 2,
             phaseY: random() * Math.PI * 2,
             freqX: 0.22 + random() * 0.24,
@@ -2873,7 +2847,7 @@
         return totalLength > 0 ? { segments, totalLength } : null;
       }).filter(Boolean);
 
-      const pulseCount = animate ? Math.min(routes.length * 2, width > 1200 ? 26 : 18) : 0;
+      const pulseCount = animate ? Math.min(routes.length * 2, width > 1200 ? 36 : 24) : 0;
       const pulses = Array.from({ length: pulseCount }, (_, pulseIndex) => {
         const route = routes[pulseIndex % routes.length];
         const loopLength = route.totalLength + 120 + random() * 180;
