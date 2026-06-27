@@ -150,24 +150,26 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
     pointer-events: none;
     opacity: 0;
     z-index: 150;
     transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+    mix-blend-mode: difference;
   }
 
   .cursor-dot::before,
   .cursor-dot::after {
     content: "";
     position: absolute;
-    background: var(--text);
+    background: #fff;
     border-radius: 1px;
   }
 
   .cursor-dot::before {
-    width: 1.5px;
+    width: 2.5px;
     height: 100%;
     left: 50%;
     top: 0;
@@ -176,7 +178,7 @@
 
   .cursor-dot::after {
     width: 100%;
-    height: 1.5px;
+    height: 2.5px;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
@@ -1378,7 +1380,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 2rem;
-    align-items: end;
+    align-items: start;
   }
 
   .contact-title {
@@ -1406,6 +1408,7 @@
     line-height: 1.1;
     text-decoration: none;
     border-bottom: 2px solid rgba(142, 109, 49, 0.18);
+    white-space: nowrap;
     transition: border-color 0.3s ease, color 0.3s ease;
   }
 
@@ -1421,18 +1424,40 @@
     gap: 1rem;
   }
 
-  .contact-note {
-    color: var(--text-muted);
+  .contact-portrait-frame {
+    width: clamp(240px, 24vw, 340px);
+    aspect-ratio: 1 / 1;
+    padding: 0.08rem;
+    border-radius: 32px;
+    overflow: hidden;
+    border: 4px solid #111111;
+    box-shadow:
+      0 24px 60px rgba(0, 0, 0, 0.18),
+      0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+    background: linear-gradient(180deg, rgba(34, 34, 34, 0.98), rgba(8, 8, 8, 0.98));
   }
 
-  .contact-note span {
+  .contact-portrait {
+    width: 100%;
+    height: 100%;
     display: block;
-    margin-top: 0.5rem;
-    color: var(--text-dim);
-    font-family: var(--sans);
-    font-size: 0.95rem;
-    letter-spacing: 0;
-    text-transform: none;
+    object-fit: cover;
+    object-position: 48% 22%;
+    transform: scale(1.06);
+    transform-origin: 48% 22%;
+    border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .contact-meta {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.8rem;
+    max-width: 32rem;
+  }
+
+  .contact-note {
+    color: var(--text-muted);
   }
 
   .footer-socials {
@@ -1489,6 +1514,10 @@
 
     .contact-side {
       justify-items: start;
+    }
+
+    .contact-portrait-frame {
+      width: min(320px, 100%);
     }
   }
 
@@ -1670,6 +1699,7 @@
     }
 
     .contact-mail {
+      white-space: normal;
       word-break: break-word;
     }
   }
@@ -2182,13 +2212,24 @@
           Open to research collaborations, internships, and conversations around LLM security, trustworthy language models, and adversarial NLP.
         </p>
         <span class="contact-mail">batu.masak [at] ozu.edu.tr</span>
+        <div class="contact-meta">
+          <span class="contact-mail">batukoraymasak [at] gmail.com</span>
+          <div class="footer-socials">
+            <a class="magnetic" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="magnetic" href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
       </div>
 
       <div class="contact-side">
-        <p class="contact-note">Personal Email<span>batukoraymasak [at] gmail.com</span></p>
-        <div class="footer-socials">
-          <a class="magnetic" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="magnetic" href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <div class="contact-portrait-frame">
+          <img
+            class="contact-portrait"
+            src="https://avatars.githubusercontent.com/u/178801013?v=4"
+            alt="Portrait of Batu Koray Masak"
+            loading="lazy"
+            decoding="async"
+          >
         </div>
       </div>
     </div>
@@ -2745,9 +2786,27 @@
       }
 
       let rafId = null;
+      let pointerX = window.innerWidth * 0.5;
+      let pointerY = window.innerHeight * 0.5;
+      let currentX = pointerX;
+      let currentY = pointerY;
+      let tilt = 0;
+      let lastFrameTime = performance.now();
+      let primed = false;
 
       const handleMouseMove = (event) => {
-        cursorDot.style.transform = "translate(" + event.clientX + "px, " + event.clientY + "px) translate(-50%, -50%)";
+        const deltaX = event.clientX - pointerX;
+
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+
+        if (!primed) {
+          primed = true;
+          currentX = pointerX;
+          currentY = pointerY;
+        }
+
+        tilt += clamp(deltaX * 0.16, -7, 7);
         cursorDot.style.opacity = "1";
       };
 
@@ -2755,8 +2814,23 @@
         cursorDot.style.opacity = "0";
       };
 
+      const renderCursor = (now) => {
+        const deltaTime = Math.min((now - lastFrameTime) / 16.6667, 2.2);
+        lastFrameTime = now;
+
+        currentX = pointerX;
+        currentY = pointerY;
+
+        tilt += (0 - tilt) * (0.16 * deltaTime);
+
+        cursorDot.style.transform =
+          "translate(" + currentX + "px, " + currentY + "px) translate(-50%, -50%) rotate(" + tilt.toFixed(2) + "deg)";
+        rafId = window.requestAnimationFrame(renderCursor);
+      };
+
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseleave", handleMouseLeave);
+      rafId = window.requestAnimationFrame(renderCursor);
 
       cleanupInteractive.push(() => {
         document.removeEventListener("mousemove", handleMouseMove);
