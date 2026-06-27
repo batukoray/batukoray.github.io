@@ -16,7 +16,7 @@
 
 <style>
   :root {
-    --bg: #faf9f6;
+    --bg: #f0e6d2;
     --surface: rgba(255, 255, 255, 0.12);
     --surface-strong: rgba(255, 255, 255, 0.22);
     --surface-soft: rgba(255, 255, 255, 0.08);
@@ -173,13 +173,11 @@
     height: 100%;
     z-index: -1;
     pointer-events: none;
-    transform: translateZ(0);
-    will-change: opacity;
     transition: opacity 0.7s ease;
   }
 
   .network-canvas.is-blurred {
-    opacity: 0.68;
+    opacity: 0.72;
   }
 
   .network-frost {
@@ -223,8 +221,8 @@
     z-index: 120;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.46));
     border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(7px) saturate(130%);
+    -webkit-backdrop-filter: blur(7px) saturate(130%);
     box-shadow: 0 12px 30px rgba(23, 20, 18, 0.04);
   }
 
@@ -456,8 +454,8 @@
   .support-strip span,
   .project-tag,
   .footer-socials a {
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(7px) saturate(130%);
+    -webkit-backdrop-filter: blur(7px) saturate(130%);
   }
 
   .hero-strip {
@@ -487,8 +485,8 @@
     background:
       linear-gradient(180deg, rgba(0, 0, 0, 0.035), rgba(0, 0, 0, 0) 64%),
       var(--surface);
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(7px) saturate(130%);
+    -webkit-backdrop-filter: blur(7px) saturate(130%);
     box-shadow: var(--shadow);
   }
 
@@ -917,8 +915,8 @@
     background:
       linear-gradient(180deg, rgba(0, 0, 0, 0.035), rgba(0, 0, 0, 0) 64%),
       var(--surface);
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(7px) saturate(130%);
+    -webkit-backdrop-filter: blur(7px) saturate(130%);
     box-shadow: var(--shadow);
     transition: border-color 0.35s ease, transform 0.35s var(--transition);
   }
@@ -969,8 +967,8 @@
     border-radius: 8px;
     border: 1px solid var(--border);
     background: var(--surface);
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(7px) saturate(130%);
+    -webkit-backdrop-filter: blur(7px) saturate(130%);
     text-decoration: none;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -1625,7 +1623,7 @@
         <p class="hero-kicker">AI, NLP, and Trustworthy Language Models</p>
         <h1 class="hero-title">Batu Koray <span class="accent">Masak</span></h1>
         <p class="hero-lead">
-          Undergraduate research intern at Koç University&rsquo;s Security, Privacy and Data Engineering Lab (SPADE) and double-major student in
+          Undergraduate research intern at Koç University&rsquo;s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in
           AI &amp; Data Engineering and Computer Science at
           <a href="https://www.ozyegin.edu.tr" target="_blank" rel="noopener noreferrer">Özyeğin University</a>.
           Current work centers on trustworthy language models, adversarial LLM behavior, and NLP systems that break in ways worth studying.
@@ -1646,7 +1644,7 @@
 
       <aside class="hero-panel" aria-labelledby="current-role-title">
         <p class="panel-kicker">Current Position</p>
-        <h2 class="panel-title" id="current-role-title">Security, Privacy and Data Engineering Lab (SPADE)</h2>
+        <h2 class="panel-title" id="current-role-title">Security, Privacy and Data Engineering (SPADE) Lab</h2>
         <p class="panel-role">Undergraduate Research Intern · Koç University</p>
 
         <ul class="panel-list">
@@ -1674,7 +1672,6 @@
       </aside>
     </div>
 
-    <div class="scroll-cue">Scroll to trace current work</div>
   </section>
 
   <section id="experience" class="story-section">
@@ -2604,28 +2601,10 @@
         return;
       }
 
-      let dotX = window.innerWidth * 0.5;
-      let dotY = window.innerHeight * 0.5;
-      let currentX = dotX;
-      let currentY = dotY;
-      let primed = false;
       let rafId = null;
 
-      const renderCursor = () => {
-        currentX += (dotX - currentX) * 0.2;
-        currentY += (dotY - currentY) * 0.2;
-        cursorDot.style.transform = "translate(" + currentX + "px, " + currentY + "px) translate(-50%, -50%)";
-        rafId = window.requestAnimationFrame(renderCursor);
-      };
-
       const handleMouseMove = (event) => {
-        dotX = event.clientX;
-        dotY = event.clientY;
-        if (!primed) {
-          primed = true;
-          currentX = dotX;
-          currentY = dotY;
-        }
+        cursorDot.style.transform = "translate(" + event.clientX + "px, " + event.clientY + "px) translate(-50%, -50%)";
         cursorDot.style.opacity = "1";
       };
 
@@ -2635,14 +2614,11 @@
 
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseleave", handleMouseLeave);
-      renderCursor();
 
       cleanupInteractive.push(() => {
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseleave", handleMouseLeave);
-        if (rafId) {
-          window.cancelAnimationFrame(rafId);
-        }
+        if (rafId) window.cancelAnimationFrame(rafId);
       });
 
       magneticTargets.forEach((item) => {
@@ -2736,7 +2712,7 @@
         [4, 5, 6, 5, 3];
       const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.15 : lowPower ? 1.3 : 1.6);
       const paddingX = -clamp(width * (mobile ? 0.08 : 0.11), 32, 130);
-      const paddingY = clamp(height * (mobile ? 0.17 : 0.16), 84, 170);
+      const paddingY = -clamp(height * (mobile ? 0.10 : 0.14), 50, 160);
       const yShift = mobile ? 0 : Math.round(height * 0.07);
       const usableWidth = Math.max(width - paddingX * 2, 240);
       const usableHeight = Math.max(height - paddingY * 2 - yShift, 220);
@@ -2761,7 +2737,7 @@
         return Array.from({ length: count }, (_, nodeIndex) => {
           const base = count === 1 ? yTop + usableHeight * 0.5 : yTop + verticalGap * nodeIndex;
           const noise = count === 1 ? 0 : (random() * 2 - 1) * jitterMax;
-          const y = Math.max(yTop, Math.min(yBottom, base + noise));
+          const y = base + noise;
           return {
             id: "node-" + layerIndex + "-" + nodeIndex,
             layer: layerIndex,
@@ -2809,8 +2785,8 @@
             const edge = {
               from: node,
               to: target,
-              opacity: 0.055 + random() * 0.165,
-              width: 0.7 + random() * 0.45,
+              opacity: 0.14 + random() * 0.20,
+              width: 1.1 + random() * 0.6,
               bend: (random() - 0.5) * clamp(usableHeight * 0.035, 8, 24),
               length: 0
             };
@@ -2901,7 +2877,7 @@
           speed: 58 + random() * 28,
           loopLength,
           offset: -random() * loopLength,
-          radius: 1.8 + random() * 0.9,
+          radius: 3.5 + random() * 1.5,
           prevSegIdx: -1
         };
       });
@@ -2955,7 +2931,10 @@
 
       const { width, height, animate, edges, layers, pulses, rings, updateNodePositions, getEdgeControlPoint } = networkState;
       updateNodePositions(time);
+      const scrollOffset = window.scrollY || 0;
       networkContext.clearRect(0, 0, width, height);
+      networkContext.save();
+      networkContext.translate(0, -scrollOffset);
 
       const elapsed = time * 0.001;
       const TAIL_LEN = 100;
@@ -2993,7 +2972,7 @@
         networkContext.moveTo(edge.from.currentX, edge.from.currentY);
         networkContext.quadraticCurveTo(control.x, control.y, edge.to.currentX, edge.to.currentY);
         if (b > 0) {
-          networkContext.strokeStyle = "rgba(" + Math.round(23 + b * 157) + "," + Math.round(20 + b * 112) + "," + Math.round(18 + b * 30) + "," + (edge.opacity + b * (0.55 - edge.opacity)).toFixed(3) + ")";
+          networkContext.strokeStyle = "rgba(" + Math.round(23 + b * 137) + "," + Math.round(20 + b * 8) + "," + Math.round(18 + b * 10) + "," + (edge.opacity + b * (0.55 - edge.opacity)).toFixed(3) + ")";
           networkContext.lineWidth = edge.width * (1 + b * 0.4);
         } else {
           networkContext.strokeStyle = "rgba(23,20,18," + edge.opacity.toFixed(3) + ")";
@@ -3036,14 +3015,14 @@
           const headPt = pts[TAIL_SAMPLES];
 
           const grad = networkContext.createLinearGradient(pts[0].x, pts[0].y, headPt.x, headPt.y);
-          grad.addColorStop(0, "rgba(180,132,48,0)");
-          grad.addColorStop(0.5, "rgba(180,132,48," + (routeFade * 0.26).toFixed(3) + ")");
-          grad.addColorStop(1, "rgba(180,132,48," + (routeFade * 0.7).toFixed(3) + ")");
+          grad.addColorStop(0, "rgba(160,28,28,0)");
+          grad.addColorStop(0.5, "rgba(160,28,28," + (routeFade * 0.42).toFixed(3) + ")");
+          grad.addColorStop(1, "rgba(160,28,28," + (routeFade * 0.88).toFixed(3) + ")");
 
           networkContext.save();
           networkContext.lineCap = "round";
           networkContext.lineJoin = "round";
-          networkContext.lineWidth = pulse.radius * 0.9;
+          networkContext.lineWidth = pulse.radius * 1.4;
           networkContext.strokeStyle = grad;
           networkContext.shadowBlur = 0;
           networkContext.beginPath();
@@ -3051,12 +3030,12 @@
           for (let i = 1; i <= TAIL_SAMPLES; i++) networkContext.lineTo(pts[i].x, pts[i].y);
           networkContext.stroke();
 
-          // Head dot — only point that gets a glow
-          networkContext.shadowColor = "rgba(220,170,60," + (routeFade * 0.7).toFixed(3) + ")";
-          networkContext.shadowBlur = 12;
-          networkContext.fillStyle = "rgba(220,168,55," + (routeFade * 0.92).toFixed(3) + ")";
+          // Head dot — glow
+          networkContext.shadowColor = "rgba(200,40,40," + (routeFade * 0.9).toFixed(3) + ")";
+          networkContext.shadowBlur = 18;
+          networkContext.fillStyle = "rgba(210,45,45," + (routeFade * 0.96).toFixed(3) + ")";
           networkContext.beginPath();
-          networkContext.arc(headPt.x, headPt.y, pulse.radius, 0, Math.PI * 2);
+          networkContext.arc(headPt.x, headPt.y, pulse.radius * 1.1, 0, Math.PI * 2);
           networkContext.fill();
           networkContext.restore();
         });
@@ -3089,7 +3068,7 @@
           const eased = 1 - Math.pow(1 - p, 2);
           networkContext.save();
           networkContext.shadowBlur = 0;
-          networkContext.strokeStyle = "rgba(180,132,48," + ((1 - p) * 0.42).toFixed(3) + ")";
+          networkContext.strokeStyle = "rgba(160,28,28," + ((1 - p) * 0.42).toFixed(3) + ")";
           networkContext.lineWidth = 1.2 * (1 - p * 0.4);
           networkContext.beginPath();
           networkContext.arc(ring.x, ring.y, ring.maxRadius * eased, 0, Math.PI * 2);
@@ -3097,6 +3076,8 @@
           networkContext.restore();
         });
       }
+
+      networkContext.restore();
 
       if (animate) {
         networkRaf = window.requestAnimationFrame(drawNetworkFrame);
