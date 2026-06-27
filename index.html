@@ -150,14 +150,36 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
+    width: 20px;
+    height: 20px;
     pointer-events: none;
     opacity: 0;
     z-index: 150;
     transform: translate(-50%, -50%);
+  }
+
+  .cursor-dot::before,
+  .cursor-dot::after {
+    content: "";
+    position: absolute;
     background: var(--text);
+    border-radius: 1px;
+  }
+
+  .cursor-dot::before {
+    width: 1.5px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .cursor-dot::after {
+    width: 100%;
+    height: 1.5px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
   }
 
   body.interactive-desktop {
@@ -238,6 +260,9 @@
   }
 
   .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.8rem;
     font-family: var(--serif);
     font-size: 1.18rem;
     font-weight: 600;
@@ -245,6 +270,17 @@
     text-decoration: none;
     white-space: nowrap;
     color: var(--text);
+  }
+
+  .nav-brand-logo {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex: 0 0 auto;
+    transform: scale(3.25);
+    transform-origin: left center;
+    margin-right: 1.85rem;
   }
 
   .nav-brand span,
@@ -498,8 +534,16 @@
     color: var(--text-muted);
   }
 
-  .panel-title {
+  .panel-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    align-items: start;
     margin-top: 0.7rem;
+  }
+
+  .panel-title {
+    margin-top: 0;
     font-family: var(--serif);
     font-size: clamp(2rem, 4.2vw, 2.8rem);
     font-weight: 500;
@@ -513,11 +557,53 @@
     font-size: 1rem;
   }
 
+  .panel-logo {
+    display: block;
+    width: clamp(96px, 11vw, 136px);
+    height: auto;
+    object-fit: contain;
+    justify-self: start;
+    align-self: start;
+  }
+
   .panel-list {
     display: grid;
     gap: 0.8rem;
     margin-top: 1.4rem;
     list-style: none;
+  }
+
+  .institution-name {
+    margin-top: 1.15rem;
+  }
+
+  .institution-logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.35rem;
+    margin-top: 0.65rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .institution-logo {
+    display: block;
+    width: auto;
+    height: 30px;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+
+  .institution-logo.ozu {
+    height: 46px;
+  }
+
+  .timeline-item .institution-logo-row:has(.institution-logo.ozu) {
+    margin-top: 1.6rem;
+  }
+
+  .institution-logo.eyuboglu {
+    height: 46px;
   }
 
   .panel-list li {
@@ -1471,6 +1557,26 @@
       gap: 1.5rem;
     }
 
+    .nav-brand {
+      gap: 1.35rem;
+    }
+
+    .nav-brand-logo {
+      width: 32px;
+      height: 32px;
+      transform: scale(3.2);
+      margin-right: 1.45rem;
+    }
+
+    .panel-head {
+      grid-template-columns: 1fr;
+    }
+
+    .panel-logo {
+      justify-self: start;
+      width: 118px;
+    }
+
     .hero-title {
       max-width: none;
       font-size: clamp(3.35rem, 18vw, 5.3rem);
@@ -1503,6 +1609,30 @@
     .story-card::before,
     .timeline-item::before {
       left: -1.65rem;
+    }
+
+    .institution-logo-row {
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .institution-name {
+      margin-top: 0.95rem;
+    }
+
+    .institution-logo.ozu {
+      height: 38px;
+    }
+
+    .timeline-item .institution-logo-row:has(.institution-logo.ozu) {
+      margin-top: 1.2rem;
+    }
+
+    .institution-logo.eyuboglu {
+      height: 42px;
     }
 
     .research-row {
@@ -1591,7 +1721,15 @@
 
 <header class="site-header">
   <nav class="site-nav shell" aria-label="Primary">
-    <a class="nav-brand magnetic" href="#top">Batu K. <span>Masak</span></a>
+    <a class="nav-brand magnetic" href="#top">
+      <span>Batu K. <span>Masak</span></span>
+      <img
+        class="nav-brand-logo"
+        src="https://github.com/batukoray/assets_of_mine/blob/main/ozyegin_logo.png?raw=true"
+        alt="Özyeğin University logo"
+        decoding="async"
+      >
+    </a>
     <ul class="nav-links">
       <li><a class="magnetic" href="#experience">Experience</a></li>
       <li><a class="magnetic" href="#research">Research</a></li>
@@ -1624,8 +1762,18 @@
 
       <aside class="hero-panel" aria-labelledby="current-role-title">
         <p class="panel-kicker">Current Position</p>
-        <h2 class="panel-title" id="current-role-title">Security, Privacy and Data Engineering (SPADE) Lab</h2>
-        <p class="panel-role">Undergraduate Research Intern · Koç University</p>
+        <div class="panel-head">
+          <img
+            class="panel-logo"
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Ko%C3%A7_University_logo.svg/3840px-Ko%C3%A7_University_logo.svg.png"
+            alt="Koç University logo"
+            decoding="async"
+          >
+          <div>
+            <h2 class="panel-title" id="current-role-title">Security, Privacy and Data Engineering (SPADE) Lab</h2>
+            <p class="panel-role">Undergraduate Research Intern · Koç University</p>
+          </div>
+        </div>
 
         <ul class="panel-list">
           <li>
@@ -1919,7 +2067,15 @@
         <article class="timeline-item">
           <span class="timeline-year">2024 — Present</span>
           <h3>B.Sc. AI &amp; Data Engineering · B.Sc. Computer Science</h3>
-          <p>Özyeğin University, Istanbul</p>
+          <div class="institution-logo-row" aria-label="School logos">
+            <img
+              class="institution-logo ozu"
+              src="https://github.com/batukoray/assets_of_mine/blob/main/ozyegin_logo.png?raw=true"
+              alt="Özyeğin University logo"
+              decoding="async"
+            >
+          </div>
+          <p class="institution-name">Özyeğin University, Istanbul</p>
           <ul class="timeline-meta">
             <li><strong>CGPA</strong>3.77/4.00</li>
             <li><strong>Honors</strong>High Honor status across all four completed semesters</li>
@@ -2001,7 +2157,15 @@
         <article class="timeline-item">
           <span class="timeline-year">2019 — 2024</span>
           <h3>High School Diploma</h3>
-          <p>Eyüboğlu Science and Technology High School, Istanbul</p>
+          <div class="institution-logo-row" aria-label="School logos">
+            <img
+              class="institution-logo eyuboglu"
+              src="https://play-lh.googleusercontent.com/qPWIrF_mVkb6PoYE0Oj2UFOdXIRgFc6Tru8mrxsF5_r2NwvGeZXHu2qVBCLIy562xngTAdkxWBBT016Wr_eX"
+              alt="Eyüboğlu logo"
+              decoding="async"
+            >
+          </div>
+          <p class="institution-name">Eyüboğlu Science and Technology High School, Istanbul</p>
         </article>
       </div>
     </div>
@@ -2847,15 +3011,15 @@
         return totalLength > 0 ? { segments, totalLength } : null;
       }).filter(Boolean);
 
-      const pulseCount = animate ? Math.min(routes.length * 2, width > 1200 ? 36 : 24) : 0;
+      const pulseCount = animate ? Math.min(routes.length * 3, width > 1200 ? 54 : 34) : 0;
       const pulses = Array.from({ length: pulseCount }, (_, pulseIndex) => {
         const route = routes[pulseIndex % routes.length];
-        const loopLength = route.totalLength + 120 + random() * 180;
+        const loopLength = route.totalLength + 260 + random() * 260;
         return {
           route,
           speed: 58 + random() * 28,
           loopLength,
-          offset: -((pulseIndex / pulseCount) * loopLength + Math.random() * loopLength * 0.06),
+          offset: -((pulseIndex / pulseCount) * loopLength + random() * loopLength * 0.025),
           radius: 3.5 + random() * 1.5,
           prevSegIdx: -1
         };
