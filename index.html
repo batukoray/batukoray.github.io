@@ -48,8 +48,11 @@
   html {
     background: var(--bg);
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--text-muted) transparent;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
   }
 
   body {
@@ -219,11 +222,11 @@
     position: fixed;
     inset: 0 0 auto;
     z-index: 120;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.46));
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(7px) saturate(130%);
-    -webkit-backdrop-filter: blur(7px) saturate(130%);
-    box-shadow: 0 12px 30px rgba(23, 20, 18, 0.04);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(4px) saturate(115%);
+    -webkit-backdrop-filter: blur(4px) saturate(115%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.36) inset, 0 12px 30px rgba(23, 20, 18, 0.06);
   }
 
   .site-nav {
@@ -495,24 +498,13 @@
     overflow: hidden;
   }
 
-  .hero-panel::before,
-  .metric-card::before,
-  .award-card::before,
-  .distribution-card::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto auto 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(142, 109, 49, 0.62), transparent 80%);
-  }
 
   .panel-kicker {
     font-family: var(--mono);
     font-size: 0.72rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--text-muted);
   }
 
   .panel-title {
@@ -1628,7 +1620,6 @@
           <a href="https://www.ozyegin.edu.tr" target="_blank" rel="noopener noreferrer">Özyeğin University</a>.
           Current work centers on trustworthy language models, adversarial LLM behavior, and NLP systems that break in ways worth studying.
         </p>
-        <p class="hero-meta">Istanbul · LLM Security · Research Portfolio</p>
 
         <div class="hero-actions">
           <a class="button primary magnetic" href="#contact">Get in Touch</a>
@@ -2276,6 +2267,19 @@
         if (networkCanvas) networkCanvas.classList.toggle("is-blurred", pastHero);
         if (networkFrost) networkFrost.classList.toggle("is-frosted", pastHero);
       }
+
+      const experienceSection = document.getElementById("experience");
+      if (experienceSection) {
+        const atExperience = scrollTop >= experienceSection.offsetTop + experienceSection.offsetHeight * 0.75;
+        if (atExperience) {
+          stopNetwork();
+        } else {
+          if (!networkRaf) {
+            stopNetwork();
+            networkRaf = window.requestAnimationFrame(drawNetworkFrame);
+          }
+        }
+      }
     };
 
     const formatCount = (value, decimals) => {
@@ -2426,8 +2430,9 @@
       }
 
       const point = distributionPoint(value);
-      const labelX = clamp(point.x + (point.x < 520 ? 72 : -72), 96, 624);
-      const labelY = clamp(point.y - 44, 42, 152);
+      const xShift = clamp(point.z * 68, -88, 88);
+      const labelX = clamp(point.x + xShift, 80, 640);
+      const labelY = clamp(point.y - 62, 6, 152);
       const tailPath = buildDistributionTailPath(point.z);
       const tailPercent = upperTailPercent(point.z);
 
@@ -2868,7 +2873,7 @@
         return totalLength > 0 ? { segments, totalLength } : null;
       }).filter(Boolean);
 
-      const pulseCount = animate ? Math.min(routes.length * 2, width > 1200 ? 11 : 8) : 0;
+      const pulseCount = animate ? Math.min(routes.length * 2, width > 1200 ? 26 : 18) : 0;
       const pulses = Array.from({ length: pulseCount }, (_, pulseIndex) => {
         const route = routes[pulseIndex % routes.length];
         const loopLength = route.totalLength + 120 + random() * 180;
@@ -2876,7 +2881,7 @@
           route,
           speed: 58 + random() * 28,
           loopLength,
-          offset: -random() * loopLength,
+          offset: -((pulseIndex / pulseCount) * loopLength + Math.random() * loopLength * 0.06),
           radius: 3.5 + random() * 1.5,
           prevSegIdx: -1
         };
