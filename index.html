@@ -4,673 +4,3386 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Batu K. Masak — AI & NLP Researcher</title>
+<title>Batu K. Masak — LLM Security Researcher</title>
 
-<meta name="description" content="Batu Koray Masak is an AI & Data Engineering and Computer Science student at Özyeğin University. Portfolio, projects, research notes, and GitHub profile: github.com/batukoray.">
+<meta name="description" content="Batu Koray Masak is an AI &amp; Data Engineering and Computer Science student at Özyeğin University and an undergraduate research intern at Koç University's SPADE Lab, focused on trustworthy language models and LLM security.">
 <meta name="author" content="Batu Koray Masak">
-<meta name="keywords" content="Batu Koray Masak, batukoray, GitHub, Korado, El Pulpo, HaDi, LLaMA From Scratch, AI, NLP, LLM security, machine learning, Özyeğin University, Computer Science">
+<meta name="keywords" content="Batu Koray Masak, batukoray, GitHub, Korado, El Pulpo, HaDi, LLaMA From Scratch, AI, NLP, LLM security, trustworthy language models, Özyeğin University, Koç University, SPADE Lab">
 <link rel="canonical" href="https://batukoray.github.io/">
-
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=DM+Sans:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --bg: #0c0c0f;
-    --bg-card: #14141a;
-    --bg-card-hover: #1a1a24;
-    --text: #e8e6e1;
-    --text-dim: #8a8880;
-    --text-muted: #5a5850;
-    --accent: #c9a55a;
-    --accent-dim: rgba(201, 165, 90, 0.12);
-    --accent-glow: rgba(201, 165, 90, 0.06);
-    --border: rgba(255,255,255,0.06);
-    --serif: 'EB Garamond', Georgia, serif;
-    --sans: 'DM Sans', -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', monospace;
-    --max-w: 920px;
+    --bg: #faf9f6;
+    --surface: rgba(255, 255, 255, 0.12);
+    --surface-strong: rgba(255, 255, 255, 0.22);
+    --surface-soft: rgba(255, 255, 255, 0.08);
+    --text: #171412;
+    --text-dim: #4a4339;
+    --text-muted: #6c6459;
+    --accent: #8e6d31;
+    --accent-bright: #c9a55a;
+    --accent-soft: rgba(142, 109, 49, 0.12);
+    --accent-line: rgba(142, 109, 49, 0.28);
+    --border: rgba(23, 20, 18, 0.1);
+    --border-strong: rgba(23, 20, 18, 0.16);
+    --shadow: 0 20px 60px rgba(26, 19, 12, 0.08);
+    --shadow-strong: 0 30px 90px rgba(26, 19, 12, 0.12);
+    --serif: "EB Garamond", Georgia, serif;
+    --sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", "SFMono-Regular", monospace;
+    --nav-h: 72px;
+    --shell: min(1180px, calc(100% - 3rem));
     --transition: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
   html {
+    background: var(--bg);
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--text-muted) transparent;
   }
 
   body {
+    position: relative;
     font-family: var(--sans);
-    background: var(--bg);
+    background: transparent;
     color: var(--text);
+    font-size: 16px;
     line-height: 1.7;
-    font-size: 15px;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-  }
-
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 0 2rem;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    background: rgba(12, 12, 15, 0.8);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-name {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+  ::selection {
+    background: rgba(142, 109, 49, 0.18);
     color: var(--text);
   }
 
-  .nav-name span { color: var(--accent); }
+  a {
+    color: inherit;
+  }
+
+  .hero-lead a,
+  .section-copy a,
+  .story-card a,
+  .timeline-item a,
+  .award-card a,
+  .contact-copy a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(142, 109, 49, 0.28);
+    transition: border-color 0.28s ease, color 0.28s ease;
+  }
+
+  .hero-lead a:hover,
+  .hero-lead a:focus-visible,
+  .section-copy a:hover,
+  .section-copy a:focus-visible,
+  .story-card a:hover,
+  .story-card a:focus-visible,
+  .timeline-item a:hover,
+  .timeline-item a:focus-visible,
+  .award-card a:hover,
+  .award-card a:focus-visible,
+  .contact-copy a:hover,
+  .contact-copy a:focus-visible {
+    color: var(--accent-bright);
+    border-color: rgba(201, 165, 90, 0.54);
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 200;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-strong);
+    color: var(--text);
+    transform: translateY(-150%);
+    transition: transform 0.28s var(--transition);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .scroll-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    height: 4px;
+    z-index: 130;
+    pointer-events: none;
+    background: rgba(23, 20, 18, 0.05);
+  }
+
+  .scroll-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-origin: left center;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, rgba(142, 109, 49, 0.4), var(--accent), rgba(201, 165, 90, 0.82));
+  }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 150;
+    transform: translate(-50%, -50%);
+    background: var(--text);
+  }
+
+  body.interactive-desktop {
+    cursor: none;
+  }
+
+  body.interactive-desktop a,
+  body.interactive-desktop button {
+    cursor: none;
+  }
+
+  .network-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    transform: translateZ(0);
+    will-change: opacity;
+    transition: opacity 0.7s ease;
+  }
+
+  .network-canvas.is-blurred {
+    opacity: 0.68;
+  }
+
+  .network-frost {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: transparent;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0.2) 58%,
+      rgba(0, 0, 0, 0.6) 76%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0.2) 58%,
+      rgba(0, 0, 0, 0.6) 76%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    transition: opacity 0.7s ease;
+  }
+
+  .network-frost.is-frosted {
+    opacity: 1;
+  }
+
+  .shell {
+    width: var(--shell);
+    margin: 0 auto;
+  }
+
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 120;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.46));
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    box-shadow: 0 12px 30px rgba(23, 20, 18, 0.04);
+  }
+
+  .site-nav {
+    min-height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--text);
+  }
+
+  .nav-brand span,
+  .section-number,
+  .section-kicker,
+  .label,
+  .metric-meta,
+  .story-label,
+  .project-eyebrow,
+  .contact-note,
+  .timeline-year,
+  .award-kicker,
+  .gpa-chart-kicker {
+    color: var(--accent);
+  }
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 1.4rem;
     list-style: none;
   }
 
   .nav-links a {
+    position: relative;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     text-decoration: none;
     color: var(--text-dim);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-    position: relative;
+    padding: 0.35rem 0;
+    transition: color 0.28s ease;
   }
 
   .nav-links a::after {
-    content: '';
+    content: "";
     position: absolute;
-    bottom: -4px;
     left: 0;
-    width: 0;
+    bottom: -0.1rem;
+    width: 100%;
     height: 1px;
+    transform: scaleX(0);
+    transform-origin: left center;
     background: var(--accent);
-    transition: width 0.4s var(--transition);
+    transition: transform 0.35s var(--transition);
   }
 
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a:hover::after { width: 100%; }
-
-  main {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 120px 0 80px;
-    position: relative;
-  }
-
-  .hero-content { width: 100%; }
-
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s var(--transition) 0.2s forwards;
-  }
-
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: 1.8rem;
-    opacity: 0;
-    animation: fadeUp 0.8s var(--transition) 0.4s forwards;
-  }
-
-  .hero-bio {
-    font-size: 1.05rem;
-    color: var(--text-dim);
-    max-width: 560px;
-    line-height: 1.85;
-    opacity: 0;
-    animation: fadeUp 0.8s var(--transition) 0.6s forwards;
-  }
-
-  .hero-bio a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent-dim);
-    transition: border-color 0.3s ease;
-  }
-
-  .hero-bio a:hover { border-color: var(--accent); }
-
-  .hero-links {
-    display: flex;
-    gap: 1.2rem;
-    margin-top: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s var(--transition) 0.8s forwards;
-  }
-
-  .hero-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--text-dim);
-    padding: 0.6rem 1.2rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    background: transparent;
-  }
-
-  .hero-links a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: var(--accent-dim);
-  }
-
-  .hero-links a.primary {
-    background: var(--accent);
-    color: var(--bg);
-    border-color: var(--accent);
-    font-weight: 600;
-  }
-
-  .hero-links a.primary:hover { background: #d4b06a; }
-
-  .hero-line {
-    position: absolute;
-    right: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 200px;
-    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
-    opacity: 0.3;
-  }
-
-  section {
-    padding: 100px 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-
-  .section-number {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-size: 1.8rem;
-    font-weight: 500;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    margin-left: 1rem;
-  }
-
-  .research-grid,
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .research-card,
-  .project-card {
-    padding: 1.8rem;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--bg-card);
-    transition: all 0.4s var(--transition);
-    color: inherit;
-  }
-
-  .research-card {
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .research-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  .research-card:hover,
-  .project-card:hover {
-    background: var(--bg-card-hover);
-    border-color: rgba(201, 165, 90, 0.15);
-    transform: translateY(-2px);
-  }
-
-  .research-card:hover::before { opacity: 1; }
-
-  .research-card h3,
-  .project-card h3 {
-    font-family: var(--sans);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0.6rem;
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
     color: var(--text);
   }
 
-  .research-card p,
-  .project-card p {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    line-height: 1.7;
+  .nav-links a:hover::after,
+  .nav-links a:focus-visible::after {
+    transform: scaleX(1);
   }
 
-  .project-card {
-    text-decoration: none;
-    display: block;
+  main {
+    position: relative;
   }
 
-  .project-card-header {
+  section,
+  footer {
+    position: relative;
+  }
+
+  .hero {
+    min-height: 100svh;
+    padding: calc(var(--nav-h) + 2.5rem) 0 3rem;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 0.8rem;
+    align-items: center;
   }
 
-  .project-card-arrow {
-    color: var(--text-muted);
-    font-size: 1rem;
-    transition: all 0.3s ease;
+  .hero-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.82fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+    width: min(1260px, calc(100% - 3rem));
+    margin: 0 auto;
   }
 
-  .project-card:hover .project-card-arrow {
-    color: var(--accent);
-    transform: translate(3px, -3px);
+  .hero-copy {
+    max-width: 720px;
+    padding-bottom: 1rem;
   }
 
-  .project-card p { margin-bottom: 1rem; }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .project-tag {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    padding: 0.2rem 0.55rem;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    letter-spacing: 0.02em;
-  }
-
-  .edu-item {
-    display: flex;
-    gap: 2rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .edu-item:first-child { border-top: 1px solid var(--border); }
-
-  .edu-year {
+  .hero-kicker {
     font-family: var(--mono);
     font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
     color: var(--text-muted);
-    min-width: 100px;
-    padding-top: 0.15rem;
   }
 
-  .edu-details h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
-
-  .edu-details .edu-school {
+  .hero-title {
     font-family: var(--serif);
-    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 0.94;
+    letter-spacing: 0;
+    font-size: clamp(4rem, 11vw, 7.85rem);
+    max-width: 8ch;
+    color: var(--text);
+  }
+
+  .hero-title,
+  .section-title,
+  .contact-title {
+    text-shadow:
+      0 0 4px var(--bg),
+      0 0 10px var(--bg),
+      0 0 18px var(--bg),
+      0 0 28px var(--bg),
+      0 0 40px var(--bg);
+  }
+
+  .hero-title .accent {
     color: var(--accent);
     font-style: italic;
   }
 
-  .edu-details p {
-    font-size: 0.85rem;
+  .hero-lead {
+    margin-top: 1.5rem;
+    max-width: 38rem;
+    font-size: clamp(1rem, 2vw, 1.14rem);
+    line-height: 1.82;
     color: var(--text-dim);
-    margin-top: 0.4rem;
   }
 
-  footer {
-    padding: 60px 0;
-    border-top: 1px solid var(--border);
+  .hero-meta {
+    margin-top: 1.4rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .hero-kicker,
+  .hero-lead,
+  .hero-meta,
+  .section-copy,
+  .contact-copy {
+    text-shadow:
+      0 0 3px var(--bg),
+      0 0 8px var(--bg),
+      0 0 16px var(--bg);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .button {
+    --mx: 0px;
+    --my: 0px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s var(--transition);
+    transform: translate3d(var(--mx), var(--my), 0);
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    border-color: rgba(142, 109, 49, 0.28);
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .button.primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+    color: #120f08;
+    border-color: transparent;
+  }
+
+  .button.primary:hover,
+  .button.primary:focus-visible {
+    background: linear-gradient(135deg, #a5803b, #d1b06a);
+  }
+
+  .hero-strips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+  }
+
+  .hero-strip,
+  .support-strip span,
+  .project-tag,
+  .footer-socials a {
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+  }
+
+  .hero-strip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero-panel,
+  .story-card,
+  .timeline-item,
+  .metric-card,
+  .award-card,
+  .distribution-card {
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.035), rgba(0, 0, 0, 0) 64%),
+      var(--surface);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-panel {
+    padding: 1.6rem;
+    overflow: hidden;
+  }
+
+  .hero-panel::before,
+  .metric-card::before,
+  .award-card::before,
+  .distribution-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(142, 109, 49, 0.62), transparent 80%);
+  }
+
+  .panel-kicker {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .panel-title {
+    margin-top: 0.7rem;
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.2vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.02;
+    color: var(--text);
+  }
+
+  .panel-role {
+    margin-top: 0.55rem;
+    color: var(--text-dim);
+    font-size: 1rem;
+  }
+
+  .panel-list {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.4rem;
+    list-style: none;
+  }
+
+  .panel-list li {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 0.85rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(23, 20, 18, 0.08);
+    color: var(--text-dim);
+    font-size: 0.92rem;
+  }
+
+  .panel-list strong {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .panel-summary {
+    margin-top: 1.35rem;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.78;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    left: clamp(1.5rem, 4vw, 3rem);
+    bottom: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .scroll-cue::before {
+    content: "";
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+
+  .story-section,
+  .numbers-section,
+  .research-section,
+  .education-section,
+  .projects-section,
+  .contact-section {
+    padding: 7rem 0;
+  }
+
+  .split-shell {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .sticky-column {
+    position: sticky;
+    top: calc(var(--nav-h) + 1.8rem);
+    align-self: start;
+  }
+
+  .section-number,
+  .section-kicker,
+  .label {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    margin-top: 0.9rem;
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.35rem);
+    font-weight: 500;
+    line-height: 0.96;
+    max-width: 10ch;
+  }
+
+  .section-copy {
+    margin-top: 1.2rem;
+    max-width: 28rem;
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1.82;
+  }
+
+  .support-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.8rem;
+  }
+
+  .support-strip span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .story-rail,
+  .education-rail {
+    position: relative;
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .story-rail::before,
+  .education-rail::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0.95rem;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(142, 109, 49, 0.32), rgba(23, 20, 18, 0.06));
+  }
+
+  .story-card,
+  .timeline-item {
+    margin-left: 2.6rem;
+    padding: 1.45rem 1.5rem 1.5rem;
+    transition:
+      border-color 0.4s ease,
+      background-color 0.4s ease,
+      transform 0.4s var(--transition),
+      box-shadow 0.4s ease;
+  }
+
+  .story-card::before,
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 1.7rem;
+    left: -2.1rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--bg);
+    border: 1px solid rgba(142, 109, 49, 0.72);
+    box-shadow: 0 0 0 4px rgba(142, 109, 49, 0.1);
+  }
+
+  .story-card.is-active,
+  .timeline-item.is-active {
+    border-color: rgba(142, 109, 49, 0.24);
+    background:
+      linear-gradient(180deg, rgba(142, 109, 49, 0.06), rgba(0, 0, 0, 0) 62%),
+      var(--surface-strong);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .story-label,
+  .timeline-year,
+  .metric-meta,
+  .project-eyebrow,
+  .contact-note {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .story-card h3,
+  .timeline-item h3,
+  .research-row h3,
+  .project-card h3,
+  .award-card h4 {
+    margin-top: 0.4rem;
+    font-size: 1.12rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text);
+  }
+
+  .story-card p,
+  .timeline-item p,
+  .timeline-item li,
+  .research-row p,
+  .project-card p,
+  .award-card p {
+    margin-top: 0.75rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  .story-card ul,
+  .timeline-item ul {
+    margin-top: 0.9rem;
+    padding-left: 1.1rem;
+    color: var(--text-dim);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .numbers-stack {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .metric-card {
+    min-height: 250px;
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+
+  .metric-value {
+    margin-top: 1.6rem;
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 7vw, 5rem);
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: 0;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+    color: var(--accent);
+  }
+
+  .metric-prefix,
+  .metric-suffix {
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    color: var(--text-dim);
+    padding-bottom: 0.5rem;
+  }
+
+  .metric-card h3 {
+    margin-top: 1rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .distribution-card h3 {
+    margin-top: 0.55rem;
+    max-width: 28ch;
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.38;
+    color: var(--text);
+  }
+
+  .metric-card p {
+    margin-top: 0.6rem;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.78;
+  }
+
+  .distribution-card {
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+
+  .distribution-copy {
+    margin-top: 0.65rem;
+    max-width: 56ch;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.78;
+  }
+
+  .distribution-figure {
+    margin-top: 1.2rem;
+  }
+
+  .distribution-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    touch-action: none;
+  }
+
+  .distribution-axis-line {
+    stroke: rgba(23, 20, 18, 0.1);
+    stroke-width: 1.2;
+  }
+
+  .distribution-curve-path {
+    fill: none;
+    stroke: var(--text);
+    stroke-width: 2.25;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .distribution-tail-fill {
+    fill: rgba(142, 109, 49, 0.16);
+  }
+
+  .distribution-tail-label {
+    fill: var(--accent);
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-anchor: middle;
+  }
+
+  .distribution-marker-line {
+    stroke: rgba(23, 20, 18, 0.36);
+    stroke-width: 1.3;
+    stroke-dasharray: 4 5;
+  }
+
+  .distribution-callout-line {
+    fill: none;
+    stroke: rgba(23, 20, 18, 0.24);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .distribution-marker-dot {
+    fill: var(--accent);
+    stroke: rgba(255, 255, 255, 0.92);
+    stroke-width: 1.8;
+  }
+
+  .distribution-label-primary {
+    fill: var(--accent);
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-anchor: middle;
+  }
+
+  .distribution-label-secondary {
+    fill: var(--text-muted);
+    font-size: 11.5px;
+    text-anchor: middle;
+  }
+
+  .distribution-caption {
+    margin-top: 0.95rem;
+    max-width: 62ch;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  .research-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .research-row {
+    display: grid;
+    grid-template-columns: 68px minmax(0, 1fr);
+    gap: 1.1rem;
+    padding: 1.4rem 1.4rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.035), rgba(0, 0, 0, 0) 64%),
+      var(--surface);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    box-shadow: var(--shadow);
+    transition: border-color 0.35s ease, transform 0.35s var(--transition);
+  }
+
+  .research-row.is-active {
+    transform: translateX(6px);
+    border-color: rgba(142, 109, 49, 0.26);
+  }
+
+  .research-index {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: 0.3rem;
+  }
+
+  .projects-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .projects-head .section-title {
+    max-width: none;
+  }
+
+  .projects-summary {
+    max-width: 31rem;
+    color: var(--text-dim);
+    line-height: 1.82;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card {
+    position: relative;
+    isolation: isolate;
+    min-height: 280px;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, rgba(142, 109, 49, 0.26), rgba(0, 0, 0, 0) 42%) border-box;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) padding-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 1;
+  }
+
+  .project-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0));
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .project-card:hover,
+  .project-card:focus-visible {
+    border-color: rgba(142, 109, 49, 0.2);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .project-card:hover::before,
+  .project-card:focus-visible::before {
+    opacity: 1;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .project-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: transform 0.3s var(--transition), color 0.3s ease;
+  }
+
+  .project-card:hover .project-arrow,
+  .project-card:focus-visible .project-arrow {
+    color: var(--accent);
+  }
+
+  .project-card > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .project-card p {
+    max-width: 34ch;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1.2rem;
+  }
+
+  .project-tag {
+    min-height: 30px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.04em;
+  }
+
+  .project-linkline {
+    margin-top: 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .timeline-meta {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  .timeline-meta li {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .timeline-meta strong {
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .education-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.4rem;
+  }
+
+  .award-card {
+    padding: 1.3rem;
+    overflow: hidden;
+  }
+
+  .award-kicker,
+  .gpa-chart-kicker {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .award-card h4 {
+    margin-top: 0.55rem;
+  }
+
+  .gpa-chart {
+    margin-top: 1.15rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(23, 20, 18, 0.08);
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0) 60%),
+      rgba(255, 255, 255, 0.72);
+  }
+
+  .gpa-chart-title {
+    margin-top: 0.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .gpa-chart-caption {
+    margin-top: 0.45rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .gpa-chart-grid {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .gpa-plot-shell {
+    position: relative;
+    padding: 0.35rem 0.2rem 0;
+  }
+
+  .gpa-plot-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0.55rem 0.2rem 1rem;
+    background:
+      linear-gradient(to top, rgba(23, 20, 18, 0.08) 1px, transparent 1px),
+      linear-gradient(to top, rgba(23, 20, 18, 0.04) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 33.333%;
+    background-repeat: no-repeat, repeat;
+    pointer-events: none;
+  }
+
+  .gpa-chart-svg {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .gpa-line-path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .gpa-threshold-line {
+    stroke: rgba(23, 20, 18, 0.22);
+    stroke-width: 1.2;
+    stroke-dasharray: 6 6;
+  }
+
+  .gpa-threshold-label {
+    fill: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .gpa-point {
+    fill: var(--accent);
+    stroke: rgba(255, 255, 255, 0.92);
+    stroke-width: 1.5;
+  }
+
+  .gpa-point-value {
+    fill: var(--accent);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-anchor: middle;
+  }
+
+  .gpa-point-group,
+  .distribution-tail-group,
+  .distribution-marker-group {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .distribution-hover-group {
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .distribution-hover-group.is-visible {
+    opacity: 1;
+  }
+
+  .distribution-hover-tail {
+    fill: rgba(142, 109, 49, 0.18);
+  }
+
+  .distribution-hover-line {
+    fill: none;
+    stroke: rgba(23, 20, 18, 0.44);
+    stroke-width: 1.3;
+    stroke-dasharray: 4 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .distribution-hover-dot {
+    fill: var(--accent);
+    stroke: rgba(255, 255, 255, 0.92);
+    stroke-width: 1.8;
+  }
+
+  .distribution-hover-label {
+    fill: var(--accent);
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-anchor: middle;
+  }
+
+  .distribution-hover-meta {
+    fill: var(--text-muted);
+    font-size: 11px;
+    text-anchor: middle;
+  }
+
+  .gpa-term-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.4rem;
+    padding: 0 0.3rem;
+  }
+
+  .gpa-term-label {
+    display: grid;
+    justify-items: center;
+    gap: 0.15rem;
     text-align: center;
   }
 
-  .footer-email {
+  .gpa-term-top,
+  .gpa-term-bottom {
+    display: block;
+  }
+
+  .gpa-term-top {
+    color: var(--text-dim);
+    font-size: 0.76rem;
+    line-height: 1.2;
+  }
+
+  .gpa-term-bottom {
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    line-height: 1.12;
+  }
+
+  .contact-shell {
+    width: min(1120px, calc(100% - 3rem));
+    margin: 0 auto;
+    padding: 0 0 1rem;
+    text-align: left;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: end;
+  }
+
+  .contact-title {
+    margin-top: 0.85rem;
     font-family: var(--serif);
-    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
     font-weight: 500;
+    line-height: 0.95;
+    max-width: 9ch;
   }
 
-  .footer-email a {
-    color: var(--text);
-    text-decoration: none;
-    border-bottom: 2px solid var(--accent-dim);
-    transition: border-color 0.3s ease;
-  }
-
-  .footer-email a:hover { border-color: var(--accent); }
-
-  .footer-sub {
-    font-size: 0.82rem;
-    color: var(--text-muted);
+  .contact-copy {
     margin-top: 1rem;
+    max-width: 32rem;
+    color: var(--text-dim);
+    line-height: 1.82;
+  }
+
+  .contact-mail {
+    display: inline-block;
+    margin-top: 1.8rem;
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.1;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(142, 109, 49, 0.18);
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .contact-mail:hover,
+  .contact-mail:focus-visible {
+    color: var(--accent);
+    border-color: rgba(142, 109, 49, 0.48);
+  }
+
+  .contact-side {
+    display: grid;
+    justify-items: end;
+    gap: 1rem;
+  }
+
+  .contact-note {
+    color: var(--text-muted);
+  }
+
+  .contact-note span {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--text-dim);
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   .footer-socials {
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
   }
 
   .footer-socials a {
-    font-size: 0.78rem;
-    color: var(--text-dim);
+    --mx: 0px;
+    --my: 0px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
     text-decoration: none;
-    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s var(--transition);
+    transform: translate3d(var(--mx), var(--my), 0);
   }
 
-  .footer-socials a:hover { color: var(--accent); }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  .footer-socials a:hover,
+  .footer-socials a:focus-visible {
+    color: var(--text);
+    border-color: rgba(142, 109, 49, 0.28);
+    background: rgba(255, 255, 255, 0.94);
   }
 
-  .fade-in {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
+  @media (max-width: 1120px) {
+    .hero-shell,
+    .split-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .sticky-column {
+      position: static;
+    }
+
+    .education-detail-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-side {
+      justify-items: start;
+    }
   }
 
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+  @media (max-width: 860px) {
+    :root {
+      --nav-h: 118px;
+      --shell: min(100%, calc(100% - 2.2rem));
+    }
+
+    .site-nav {
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.8rem 0;
+    }
+
+    .nav-links {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .metrics-grid,
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-head {
+      display: grid;
+    }
   }
 
-  @media (max-width: 700px) {
-    main { padding: 0 1.2rem; }
-    nav { padding: 0 1.2rem; }
-    .nav-links { gap: 1rem; }
-    .nav-links a { font-size: 0.72rem; }
-    .research-grid, .project-grid { grid-template-columns: 1fr; }
-    .edu-item { flex-direction: column; gap: 0.5rem; }
-    .hero-links { flex-wrap: wrap; }
-    section { padding: 60px 0; }
+  @media (max-width: 767px) {
+    :root {
+      --nav-h: 126px;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body.interactive-desktop,
+    body.interactive-desktop a,
+    body.interactive-desktop button {
+      cursor: auto;
+    }
+
+    .cursor-dot,
+    .scroll-cue {
+      display: none;
+    }
+
+    .hero {
+      min-height: auto;
+      padding-top: calc(var(--nav-h) + 4.2rem);
+      padding-bottom: 4rem;
+    }
+
+    .hero-shell {
+      width: min(100%, calc(100% - 2.2rem));
+      gap: 1.5rem;
+    }
+
+    .hero-title {
+      max-width: none;
+      font-size: clamp(3.35rem, 18vw, 5.3rem);
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .story-section,
+    .numbers-section,
+    .research-section,
+    .education-section,
+    .projects-section,
+    .contact-section {
+      padding: 4.5rem 0;
+    }
+
+    .story-rail::before,
+    .education-rail::before {
+      left: 0.7rem;
+    }
+
+    .story-card,
+    .timeline-item {
+      margin-left: 2rem;
+      padding: 1.2rem;
+    }
+
+    .story-card::before,
+    .timeline-item::before {
+      left: -1.65rem;
+    }
+
+    .research-row {
+      grid-template-columns: 1fr;
+      gap: 0.45rem;
+    }
+
+    .gpa-term-row {
+      gap: 0.25rem;
+      padding: 0;
+    }
+
+    .gpa-term-top {
+      font-size: 0.68rem;
+    }
+
+    .gpa-term-bottom {
+      font-size: 0.64rem;
+    }
+
+    .distribution-card {
+      padding: 1.2rem;
+    }
+
+    .distribution-tail-label {
+      font-size: 11.5px;
+    }
+
+    .distribution-label-primary {
+      font-size: 12.5px;
+    }
+
+    .distribution-label-secondary {
+      font-size: 10px;
+    }
+
+    .contact-mail {
+      word-break: break-word;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .cursor-dot,
+    .scroll-progress,
+    .scroll-cue {
+      display: none !important;
+    }
+
+    .network-frost {
+      transition: none;
+    }
+
+    .sticky-column {
+      position: static;
+    }
+
+    .project-card:hover,
+    .project-card:focus-visible,
+    .research-row.is-active,
+    .story-card.is-active,
+    .timeline-item.is-active {
+      transform: none;
+    }
   }
 </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <canvas class="network-canvas" aria-hidden="true"></canvas>
+  <div class="network-frost" aria-hidden="true"></div>
 
-<nav>
-  <div class="nav-name">B<span>.</span>K<span>.</span> Masak</div>
-  <ul class="nav-links">
-    <li><a href="#research">Research</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<header class="site-header">
+  <nav class="site-nav shell" aria-label="Primary">
+    <a class="nav-brand magnetic" href="#top">Batu K. <span>Masak</span></a>
+    <ul class="nav-links">
+      <li><a class="magnetic" href="#experience">Experience</a></li>
+      <li><a class="magnetic" href="#research">Research</a></li>
+      <li><a class="magnetic" href="#projects">Projects</a></li>
+      <li><a class="magnetic" href="#education">Education</a></li>
+      <li><a class="magnetic" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-<main>
-  <section class="hero" style="border: none;">
-    <div class="hero-content">
-      <div class="hero-eyebrow">AI &amp; NLP Researcher</div>
-      <h1>Batu K. Masak</h1>
+<main id="main">
+  <section id="top" class="hero">
+    <div class="hero-shell">
+      <div class="hero-copy">
+        <p class="hero-kicker">AI, NLP, and Trustworthy Language Models</p>
+        <h1 class="hero-title">Batu Koray <span class="accent">Masak</span></h1>
+        <p class="hero-lead">
+          Undergraduate research intern at Koç University&rsquo;s Security, Privacy and Data Engineering Lab (SPADE) and double-major student in
+          AI &amp; Data Engineering and Computer Science at
+          <a href="https://www.ozyegin.edu.tr" target="_blank" rel="noopener noreferrer">Özyeğin University</a>.
+          Current work centers on trustworthy language models, adversarial LLM behavior, and NLP systems that break in ways worth studying.
+        </p>
+        <p class="hero-meta">Istanbul · LLM Security · Research Portfolio</p>
 
-      <p class="hero-bio">
-        Undergraduate researcher at <a href="https://www.ozyegin.edu.tr" target="_blank" rel="noopener noreferrer">Özyeğin University</a>,
-        double-majoring in AI&nbsp;&amp;&nbsp;Data Engineering and Computer Science.
-        My work focuses on <em>adversarial robustness of large language models</em>,
-        NLP, and the security implications of multi-turn interactions with AI systems.
-      </p>
+        <div class="hero-actions">
+          <a class="button primary magnetic" href="#contact">Get in Touch</a>
+          <a class="button magnetic" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a>
+        </div>
 
-      <div class="hero-links">
-        <a href="#contact" class="primary">Get in Touch</a>
-        <a href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <div class="hero-strips" aria-label="Current focus areas">
+          <span class="hero-strip">SPADE · Summer 2026</span>
+          <span class="hero-strip">Membership Inference</span>
+          <span class="hero-strip">Backdoor Attacks</span>
+        </div>
       </div>
 
-      <p class="hero-bio" style="margin-top: 1.2rem;">
-        GitHub profile:
-        <a href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">
-          github.com/batukoray
+      <aside class="hero-panel" aria-labelledby="current-role-title">
+        <p class="panel-kicker">Current Position</p>
+        <h2 class="panel-title" id="current-role-title">Security, Privacy and Data Engineering Lab (SPADE)</h2>
+        <p class="panel-role">Undergraduate Research Intern · Koç University</p>
+
+        <ul class="panel-list">
+          <li>
+            <strong>Project</strong>
+            <span>Trustworthy Language Models</span>
+          </li>
+          <li>
+            <strong>Focus</strong>
+            <span>Membership inference attacks and backdoor attacks on language models.</span>
+          </li>
+          <li>
+            <strong>Mentor</strong>
+            <span>Asst. Prof. Emre Gürsoy</span>
+          </li>
+          <li>
+            <strong>Dates</strong>
+            <span>June 30 through September 1, 2026</span>
+          </li>
+        </ul>
+
+        <p class="panel-summary">
+          The current research thread is security-first: how training data membership can be inferred from model outputs through purely statistical analysis of outputs, how backdoor triggers get embedded during training and persist through fine-tuning to be exploited by specific inputs at inference time, and what robust evaluation looks like for each.
+        </p>
+      </aside>
+    </div>
+
+    <div class="scroll-cue">Scroll to trace current work</div>
+  </section>
+
+  <section id="experience" class="story-section">
+    <div class="shell split-shell">
+      <div class="sticky-column">
+        <span class="section-number">01</span>
+        <h2 class="section-title">Current Track</h2>
+        <p class="section-copy">
+          The first thing a skim reader should see is the active research line. This summer is anchored around Koç University&rsquo;s Security, Privacy and Data Engineering Lab (SPADE),
+          with work that maps directly onto LLM security and trustworthy model behavior.
+        </p>
+      </div>
+
+      <div class="story-rail">
+        <article class="story-card">
+          <span class="story-label">June 30 — September 1, 2026</span>
+          <h3>Undergraduate Research Intern at Koç University</h3>
+          <p>
+            Based at the Security, Privacy and Data Engineering Lab (SPADE), working under Asst. Prof. Emre Gürsoy on the <em>Trustworthy Language Models</em> project.
+            The role sits at the intersection of machine learning security, evaluation, and adversarial model behavior.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <span class="story-label">Trustworthy Language Models</span>
+          <h3>Security problems that matter at inference time</h3>
+          <p>
+            The emphasis is not generic model benchmarking. It is on attack surfaces that change how a model should be trusted:
+            membership inference, backdoor attacks, and the broader reliability questions around deployed language systems.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <span class="story-label">Why this lane</span>
+          <h3>LLM behavior under pressure</h3>
+          <p>
+            This portfolio is organized around that same theme: models that pass standard evaluation but reveal hidden vulnerabilities under
+            closer statistical or adversarial scrutiny — the kind membership inference and backdoor analysis are designed to surface.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="numbers-section" aria-labelledby="numbers-title">
+    <div class="shell split-shell">
+      <div class="sticky-column">
+        <span class="section-number">02</span>
+        <h2 class="section-title" id="numbers-title">By the Numbers</h2>
+        <p class="section-copy">
+          The academic signal is straightforward: strong rank, consistent honors, and responsibilities beyond coursework.
+          The motion here carries information rather than decoration.
+        </p>
+        <div class="support-strip" aria-label="Additional academic roles">
+          <span>Merit Scholarship</span>
+          <span>Peer Advisor</span>
+        </div>
+      </div>
+
+      <div class="numbers-stack">
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <span class="metric-meta">Academic Standing</span>
+            <div class="metric-value">
+              <span class="count" data-count="3.77" data-decimals="2">3.77</span>
+              <span class="metric-suffix">/4.00</span>
+            </div>
+            <h3>CGPA</h3>
+            <p>High Honor status across all four completed semesters.</p>
+          </article>
+
+          <article class="metric-card">
+            <span class="metric-meta">Department Rank</span>
+            <div class="metric-value">
+              <span class="count" data-start="1" data-count="3">3</span>
+              <span class="metric-suffix department-rank-suffix"></span>
+            </div>
+            <h3>AI &amp; Data Engineering</h3>
+            <p>Currently ranked <span class="department-rank-copy"></span> in department.</p>
+          </article>
+
+          <article class="metric-card">
+            <span class="metric-meta">Faculty Standing</span>
+            <div class="metric-value">
+              <span class="metric-prefix">Top</span>
+              <span class="count" data-standing="faculty" data-start="0" data-decimals="1">0.0</span>
+              <span class="metric-suffix">%</span>
+            </div>
+            <h3>Engineering Faculty</h3>
+            <p>Top <span class="faculty-standing-percent-copy"></span>% across roughly <span class="faculty-standing-pool-copy"></span> engineering students.</p>
+          </article>
+
+          <article class="metric-card">
+            <span class="metric-meta">Consistency</span>
+            <div class="metric-value">
+              <span class="count" data-count="4">4</span>
+              <span class="metric-suffix">/4</span>
+            </div>
+            <h3>High Honor Semesters</h3>
+            <p>Performance sustained across every completed semester while holding a merit scholarship and serving as a peer advisor.</p>
+          </article>
+        </div>
+
+        <article class="distribution-card" aria-labelledby="distribution-title">
+          <span class="metric-meta">Illustrative Percentile View</span>
+          <h3 id="distribution-title">Where a faculty standing sits on a bell curve</h3>
+          <div class="distribution-figure" role="img" aria-label="Illustrative normal distribution showing a top percentile right tail of a standard bell curve. A marker at the cutoff labels a 3.77 CGPA and an Engineering Faculty standing.">
+            <svg class="distribution-svg" viewBox="0 0 720 260" tabindex="0" aria-label="Interactive normal distribution showing a top percentile right tail of a standard bell curve.">
+              <line class="distribution-axis-line" x1="40" y1="192" x2="680" y2="192"></line>
+              <g class="distribution-tail-group">
+                <path class="distribution-tail-fill" d="M 531.56 192.00 L 531.56 168.09 535.27 169.96 L 538.98 171.72 L 542.69 173.37 L 546.40 174.91 L 550.11 176.36 L 553.82 177.71 L 557.53 178.96 L 561.24 180.13 L 564.96 181.21 L 568.67 182.21 L 572.38 183.13 L 576.09 183.98 L 579.80 184.76 L 583.51 185.48 L 587.22 186.13 L 590.93 186.73 L 594.64 187.28 L 598.36 187.77 L 602.07 188.22 L 605.78 188.63 L 609.49 189.00 L 613.20 189.34 L 616.91 189.64 L 620.62 189.91 L 624.33 190.15 L 628.04 190.37 L 631.76 190.56 L 635.47 190.74 L 639.18 190.89 L 642.89 191.03 L 646.60 191.15 L 650.31 191.26 L 654.02 191.35 L 657.73 191.44 L 661.44 191.51 L 665.16 191.58 L 668.87 191.63 L 672.58 191.68 L 676.29 191.73 L 680.00 191.76 L 680.00 192.00 Z"></path>
+                <text class="distribution-tail-label" x="605" y="156"></text>
+              </g>
+              <path class="distribution-curve-path" d="M 40.00 191.76 L 48.00 191.67 L 56.00 191.56 L 64.00 191.40 L 72.00 191.19 L 80.00 190.92 L 88.00 190.57 L 96.00 190.13 L 104.00 189.57 L 112.00 188.86 L 120.00 187.98 L 128.00 186.89 L 136.00 185.56 L 144.00 183.96 L 152.00 182.03 L 160.00 179.75 L 168.00 177.06 L 176.00 173.93 L 184.00 170.31 L 192.00 166.19 L 200.00 161.52 L 208.00 156.31 L 216.00 150.54 L 224.00 144.22 L 232.00 137.39 L 240.00 130.09 L 248.00 122.37 L 256.00 114.33 L 264.00 106.05 L 272.00 97.66 L 280.00 89.29 L 288.00 81.07 L 296.00 73.16 L 304.00 65.72 L 312.00 58.89 L 320.00 52.83 L 328.00 47.66 L 336.00 43.51 L 344.00 40.47 L 352.00 38.62 L 360.00 38.00 L 368.00 38.62 L 376.00 40.47 L 384.00 43.51 L 392.00 47.66 L 400.00 52.83 L 408.00 58.89 L 416.00 65.72 L 424.00 73.16 L 432.00 81.07 L 440.00 89.29 L 448.00 97.66 L 456.00 106.05 L 464.00 114.33 L 472.00 122.37 L 480.00 130.09 L 488.00 137.39 L 496.00 144.22 L 504.00 150.54 L 512.00 156.31 L 520.00 161.52 L 528.00 166.19 L 536.00 170.31 L 544.00 173.93 L 552.00 177.06 L 560.00 179.75 L 568.00 182.03 L 576.00 183.96 L 584.00 185.56 L 592.00 186.89 L 600.00 187.98 L 608.00 188.86 L 616.00 189.57 L 624.00 190.13 L 632.00 190.57 L 640.00 190.92 L 648.00 191.19 L 656.00 191.40 L 664.00 191.56 L 672.00 191.67 L 680.00 191.76"></path>
+              <g class="distribution-marker-group">
+                <line class="distribution-marker-line" x1="531.56" y1="168.09" x2="531.56" y2="192"></line>
+                <path class="distribution-callout-line" d="M 531.56 168.09 L 558.00 120.00 L 604.00 120.00"></path>
+                <circle class="distribution-marker-dot" cx="531.56" cy="168.09" r="4.4"></circle>
+                <text class="distribution-label-primary" x="604" y="95">3.77 CGPA</text>
+                <text class="distribution-label-secondary" x="604" y="111"></text>
+              </g>
+              <g class="distribution-hover-group" aria-hidden="true">
+                <path class="distribution-hover-tail" d=""></path>
+                <line class="distribution-hover-line" x1="0" y1="0" x2="0" y2="0"></line>
+                <circle class="distribution-hover-dot" cx="0" cy="0" r="4.4"></circle>
+                <text class="distribution-hover-label" x="0" y="0">z = 0.00</text>
+                <text class="distribution-hover-meta" x="0" y="0">Top 50.0%</text>
+              </g>
+            </svg>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="research-section" aria-labelledby="research-title">
+    <div class="shell split-shell">
+      <div class="sticky-column">
+        <span class="section-number">03</span>
+        <h2 class="section-title" id="research-title">Research Focus</h2>
+        <p class="section-copy">
+          The central interest is trustworthy behavior in language systems: what breaks, why it breaks, and how those failures can be measured well enough to matter. These interests span both the current SPADE work on membership inference and backdoor attacks, and independent lines of exploration beyond it.
+        </p>
+      </div>
+
+      <div class="research-list">
+        <article class="research-row">
+          <span class="research-index">01</span>
+          <div>
+            <h3>Adversarial attacks on LLMs</h3>
+            <p>Multi-turn jailbreaking strategies that exploit persuasion, context accumulation, and conversational framing rather than purely automated optimization.</p>
+          </div>
+        </article>
+
+        <article class="research-row">
+          <span class="research-index">02</span>
+          <div>
+            <h3>NLP and transformer architectures</h3>
+            <p>Language modeling, attention mechanisms, and the computational foundations of modern NLP, with a particular interest in how these systems behave under stress.</p>
+          </div>
+        </article>
+
+        <article class="research-row">
+          <span class="research-index">03</span>
+          <div>
+            <h3>AI safety and alignment evaluation</h3>
+            <p>Red-teaming methodologies, robustness evaluation, and the practical question of how safety fine-tuning can still be circumvented in deployed interfaces.</p>
+          </div>
+        </article>
+
+        <article class="research-row">
+          <span class="research-index">04</span>
+          <div>
+            <h3>Mechanistic interpretability</h3>
+            <p>Understanding internal representations and decision pathways, especially how models encode adversarial context and brittle cues across long interactions.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section" aria-labelledby="projects-title">
+    <div class="shell">
+      <div class="projects-head">
+        <div>
+          <span class="section-number">04</span>
+          <h2 class="section-title" id="projects-title">Selected Projects</h2>
+        </div>
+        <p class="projects-summary">
+          Four public repositories worth opening. Hover treatment is reserved for the things that actually go somewhere.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <a class="project-card" href="https://github.com/batukoray/llama2-from-scratch" target="_blank" rel="noopener noreferrer">
+          <span class="project-eyebrow">NLP · Systems</span>
+          <div class="project-header">
+            <h3>LLaMA From Scratch</h3>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+          <p>Ground-up implementation of the LLaMA architecture for the CS449 NLP course project at Özyeğin University.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Transformers</span>
+            <span class="project-tag">SequenceProcessing</span>
+          </div>
+          <span class="project-linkline">Open Repository</span>
         </a>
-      </p>
 
-      <p class="hero-bio" style="margin-top: 0.6rem;">
-        Selected GitHub repositories:
-        <a href="https://github.com/batukoray/Korado" target="_blank" rel="noopener noreferrer">Korado</a>,
-        <a href="https://github.com/batukoray/HaDi" target="_blank" rel="noopener noreferrer">HaDi</a>,
-        <a href="https://github.com/batukoray/llama2-from-scratch" target="_blank" rel="noopener noreferrer">LLaMA From Scratch</a>,
-        <a href="https://github.com/batukoray/EL_Pulpo" target="_blank" rel="noopener noreferrer">El Pulpo</a>.
-      </p>
-    </div>
-    <div class="hero-line"></div>
-  </section>
+        <a class="project-card" href="https://github.com/batukoray/EL_Pulpo" target="_blank" rel="noopener noreferrer">
+          <span class="project-eyebrow">Productivity · MCP</span>
+          <div class="project-header">
+            <h3>El Pulpo</h3>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+          <p>Personal terminal productivity system with MCP integration for task management, notes, and intelligent workflows.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">MCP</span>
+            <span class="project-tag">CLI</span>
+          </div>
+          <span class="project-linkline">Open Repository</span>
+        </a>
 
-  <section id="research" class="fade-in">
-    <div class="section-header">
-      <span class="section-number">01</span>
-      <h2 class="section-title">Research Interests</h2>
-      <div class="section-line"></div>
-    </div>
+        <a class="project-card" href="https://github.com/batukoray/HaDi" target="_blank" rel="noopener noreferrer">
+          <span class="project-eyebrow">TypeScript · Terminal UI</span>
+          <div class="project-header">
+            <h3>HaDi — Hacker Dispatch</h3>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+          <p>A CLI tool for reading Hacker News through a stylized sci-fi terminal interface.</p>
+          <div class="project-tags">
+            <span class="project-tag">TypeScript</span>
+            <span class="project-tag">CLI</span>
+            <span class="project-tag">Terminal UI</span>
+          </div>
+          <span class="project-linkline">Open Repository</span>
+        </a>
 
-    <div class="research-grid">
-      <div class="research-card">
-        <h3>Adversarial Attacks on LLMs</h3>
-        <p>Multi-turn jailbreaking strategies that exploit rhetorical persuasion rather than gradient-based optimization. Bridging social engineering and machine learning safety.</p>
+        <a class="project-card" href="https://github.com/batukoray/Korado" target="_blank" rel="noopener noreferrer">
+          <span class="project-eyebrow">Optimization · CLI</span>
+          <div class="project-header">
+            <h3>Korado</h3>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+          <p>CLI linear programming and mixed-integer programming solver built on a PuLP/CBC backend.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">PuLP</span>
+            <span class="project-tag">Optimization</span>
+          </div>
+          <span class="project-linkline">Open Repository</span>
+        </a>
       </div>
-
-      <div class="research-card">
-        <h3>NLP &amp; Transformer Architectures</h3>
-        <p>Language modeling, attention mechanisms, and the computational foundations of modern NLP systems. Particular interest in Turkish morphological complexity.</p>
-      </div>
-
-      <div class="research-card">
-        <h3>AI Safety &amp; Alignment</h3>
-        <p>Red-teaming methodologies, robustness evaluation, and understanding how safety fine-tuning can be systematically circumvented.</p>
-      </div>
-
-      <div class="research-card">
-        <h3>Mechanistic Interpretability</h3>
-        <p>Understanding the internal representations and decision pathways of neural networks, with a focus on how models encode and process adversarial inputs.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="fade-in">
-    <div class="section-header">
-      <span class="section-number">02</span>
-      <h2 class="section-title">Projects</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <div class="project-grid">
-      <a class="project-card" href="https://github.com/batukoray/Korado" target="_blank" rel="noopener noreferrer">
-        <div class="project-card-header">
-          <h3>Korado</h3>
-          <span class="project-card-arrow">↗</span>
-        </div>
-        <p>CLI linear programming and mixed-integer programming solver built on PuLP/CBC backend.</p>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">PuLP</span>
-          <span class="project-tag">Optimization</span>
-        </div>
-      </a>
-
-      <a class="project-card" href="https://github.com/batukoray/HaDi" target="_blank" rel="noopener noreferrer">
-        <div class="project-card-header">
-          <h3>HaDi — Hacker Dispatch</h3>
-          <span class="project-card-arrow">↗</span>
-        </div>
-        <p>Curated cybersecurity and hacking intelligence dispatch — aggregating vulnerability disclosures, exploit research, and security news.</p>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Security</span>
-          <span class="project-tag">Automation</span>
-        </div>
-      </a>
-
-      <a class="project-card" href="https://github.com/batukoray/llama2-from-scratch" target="_blank" rel="noopener noreferrer">
-        <div class="project-card-header">
-          <h3>LLaMA From Scratch</h3>
-          <span class="project-card-arrow">↗</span>
-        </div>
-        <p>Ground-up implementation of the LLaMA architecture for CS449 NLP course project at Özyeğin University.</p>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Transformers</span>
-          <span class="project-tag">PyTorch</span>
-        </div>
-      </a>
-
-      <a class="project-card" href="https://github.com/batukoray/EL_Pulpo" target="_blank" rel="noopener noreferrer">
-        <div class="project-card-header">
-          <h3>El Pulpo</h3>
-          <span class="project-card-arrow">↗</span>
-        </div>
-        <p>Personal terminal productivity system with MCP integration for task management, notes, and intelligent workflows.</p>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">MCP</span>
-          <span class="project-tag">CLI</span>
-        </div>
-      </a>
     </div>
   </section>
 
-  <section id="education" class="fade-in">
-    <div class="section-header">
-      <span class="section-number">03</span>
-      <h2 class="section-title">Education</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <div class="edu-item">
-      <div class="edu-year">2024 — present</div>
-      <div class="edu-details">
-        <h3>B.Sc. AI &amp; Data Engineering · B.Sc. Computer Science</h3>
-        <div class="edu-school">Özyeğin University, Istanbul</div>
-        <p>Double major · GPA: 3.72/4.00 · Ranked 1st in department (out of 54)</p>
+  <section id="education" class="education-section" aria-labelledby="education-title">
+    <div class="shell split-shell">
+      <div class="sticky-column">
+        <span class="section-number">05</span>
+        <h2 class="section-title" id="education-title">Education</h2>
+        <p class="section-copy">
+          The academic path is centered at Özyeğin University, with current standing reflected in both the numbers above and the responsibilities carried alongside them.
+        </p>
       </div>
-    </div>
 
-    <div class="edu-item">
-      <div class="edu-year">2019 — 2024</div>
-      <div class="edu-details">
-        <h3>High School Diploma</h3>
-        <div class="edu-school">Eyüboğlu Science and Technology High School, Istanbul</div>
+      <div class="education-rail">
+        <article class="timeline-item">
+          <span class="timeline-year">2024 — Present</span>
+          <h3>B.Sc. AI &amp; Data Engineering · B.Sc. Computer Science</h3>
+          <p>Özyeğin University, Istanbul</p>
+          <ul class="timeline-meta">
+            <li><strong>CGPA</strong>3.77/4.00</li>
+            <li><strong>Honors</strong>High Honor status across all four completed semesters</li>
+            <li><strong>Rank</strong>3rd of 65 in department · top <span class="rank-faculty-percent-copy"></span>% of the Engineering Faculty</li>
+            <li><strong>Roles</strong>Merit scholarship recipient and peer advisor</li>
+          </ul>
+
+          <div class="education-detail-grid">
+            <section class="award-card" aria-labelledby="high-honor-title">
+              <span class="award-kicker">Issued by Özyeğin University · June 2026</span>
+              <h4 id="high-honor-title">High Honor Standing</h4>
+              <p>
+                Achieved High Honor academic standing in all four semesters to date, clearing the required
+                &ge;3.50 GPA bar with zero failing grades every single term.
+              </p>
+              <p>
+                Per-semester GPA: Fall 2024/25, 3.63. Spring 2024/25, 3.82. Fall 2025/26, 3.73.
+                Spring 2025/26, 3.91. Current cumulative GPA: 3.77/4.00.
+              </p>
+
+              <div class="gpa-chart" role="img" aria-label="Semester GPA progression: 3.63 in Fall 2024 slash 25, 3.82 in Spring 2024 slash 25, 3.73 in Fall 2025 slash 26, and 3.91 in Spring 2025 slash 26. All four terms are above the 3.50 High Honor threshold.">
+                <span class="gpa-chart-kicker">Semester GPA Progression</span>
+                <p class="gpa-chart-title">Four consecutive High Honor terms</p>
+                <p class="gpa-chart-caption">Every term cleared the High Honor bar with room to spare.</p>
+                <div class="gpa-chart-grid">
+                  <div class="gpa-plot-shell">
+                    <svg class="gpa-chart-svg" viewBox="0 0 360 128" aria-hidden="true" focusable="false">
+                      <g class="gpa-threshold-group">
+                        <line class="gpa-threshold-line" x1="20" y1="90" x2="340" y2="90"></line>
+                        <text class="gpa-threshold-label" x="20" y="82">High Honor threshold</text>
+                      </g>
+                      <path class="gpa-line-path" d="M 45 71.8 L 135 45.2 L 225 57.8 L 315 32.6"></path>
+                      <g class="gpa-point-group">
+                        <text class="gpa-point-value" x="45" y="59">3.63</text>
+                        <circle class="gpa-point" cx="45" cy="71.8" r="3.8"></circle>
+                      </g>
+                      <g class="gpa-point-group">
+                        <text class="gpa-point-value" x="135" y="32.5">3.82</text>
+                        <circle class="gpa-point" cx="135" cy="45.2" r="3.8"></circle>
+                      </g>
+                      <g class="gpa-point-group">
+                        <text class="gpa-point-value" x="225" y="45">3.73</text>
+                        <circle class="gpa-point" cx="225" cy="57.8" r="3.8"></circle>
+                      </g>
+                      <g class="gpa-point-group">
+                        <text class="gpa-point-value" x="315" y="20">3.91</text>
+                        <circle class="gpa-point" cx="315" cy="32.6" r="3.8"></circle>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="gpa-term-row" aria-hidden="true">
+                    <div class="gpa-term-label">
+                      <span class="gpa-term-top">Fall</span>
+                      <span class="gpa-term-bottom">2024/25</span>
+                    </div>
+                    <div class="gpa-term-label">
+                      <span class="gpa-term-top">Spring</span>
+                      <span class="gpa-term-bottom">2024/25</span>
+                    </div>
+                    <div class="gpa-term-label">
+                      <span class="gpa-term-top">Fall</span>
+                      <span class="gpa-term-bottom">2025/26</span>
+                    </div>
+                    <div class="gpa-term-label">
+                      <span class="gpa-term-top">Spring</span>
+                      <span class="gpa-term-bottom">2025/26</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="award-card" aria-labelledby="merit-scholarship-title">
+              <span class="award-kicker">Issued by Özyeğin University · Aug 2025</span>
+              <h4 id="merit-scholarship-title">2024-2025 Undergraduate Academic Merit Scholarship</h4>
+              <p>
+                One of only three freshmen selected across the entire Faculty of Engineering, awarded through
+                a dedicated first-year quota and ranked purely by cumulative GPA against other unscholarshipped
+                and partially-scholarshipped first-year students in the faculty.
+              </p>
+              <p>
+                Students already holding a full tuition waiver are excluded from that pool. The award provides
+                a 25% tuition fee waiver for the 2025-2026 academic year, combining with a separate 50%
+                national-exam-based scholarship already noted on this site for 75% total tuition coverage.
+              </p>
+            </section>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <span class="timeline-year">2019 — 2024</span>
+          <h3>High School Diploma</h3>
+          <p>Eyüboğlu Science and Technology High School, Istanbul</p>
+        </article>
       </div>
     </div>
   </section>
 </main>
 
-<footer id="contact">
-  <main style="max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;">
-    <div class="footer-email">
-      <a href="mailto:batu.masak@ozu.edu.tr">batu.masak@ozu.edu.tr</a>
-    </div>
+<footer id="contact" class="contact-section">
+  <div class="contact-shell">
+    <div class="contact-grid">
+      <div>
+        <span class="section-number">06</span>
+        <h2 class="contact-title">Research conversations start here.</h2>
+        <p class="contact-copy">
+          Open to research collaborations, internships, and conversations around LLM security, trustworthy language models, and adversarial NLP.
+        </p>
+        <a class="contact-mail magnetic" href="mailto:batu.masak@ozu.edu.tr">batu.masak@ozu.edu.tr</a>
+      </div>
 
-    <p class="footer-sub">Personal: batukoraymasak@gmail.com</p>
-    <p class="footer-sub" style="margin-top: 0.4rem;">Open to research collaborations, internships, and conversations about LLM security.</p>
-
-    <div class="footer-socials">
-      <a href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <div class="contact-side">
+        <p class="contact-note">Personal Email<span>batukoraymasak@gmail.com</span></p>
+        <div class="footer-socials">
+          <a class="magnetic" href="https://github.com/batukoray" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="magnetic" href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
     </div>
-  </main>
+  </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  (() => {
+    const body = document.body;
+    const root = document.documentElement;
+    const hero = document.querySelector(".hero");
+    const header = document.querySelector(".site-header");
+    const networkFrost = document.querySelector(".network-frost");
+    const progressBar = document.querySelector(".scroll-progress span");
+    const counts = document.querySelectorAll(".count");
+    const magneticTargets = document.querySelectorAll(".magnetic");
+    const cursorDot = document.querySelector(".cursor-dot");
+    const networkCanvas = document.querySelector(".network-canvas");
+    const networkContext = networkCanvas ? networkCanvas.getContext("2d") : null;
+    const distributionSvg = document.querySelector(".distribution-svg");
+    const distributionHoverGroup = distributionSvg ? distributionSvg.querySelector(".distribution-hover-group") : null;
+    const distributionHoverTail = distributionSvg ? distributionSvg.querySelector(".distribution-hover-tail") : null;
+    const distributionHoverLine = distributionSvg ? distributionSvg.querySelector(".distribution-hover-line") : null;
+    const distributionHoverDot = distributionSvg ? distributionSvg.querySelector(".distribution-hover-dot") : null;
+    const distributionHoverLabel = distributionSvg ? distributionSvg.querySelector(".distribution-hover-label") : null;
+    const distributionHoverMeta = distributionSvg ? distributionSvg.querySelector(".distribution-hover-meta") : null;
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const desktopQuery = window.matchMedia("(min-width: 768px) and (hover: hover) and (pointer: fine)");
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    let reduceMotion = reducedMotionQuery.matches;
+    let interactiveDesktop = desktopQuery.matches && !reduceMotion;
+    let cleanupInteractive = [];
+    let gsapInitialized = false;
+    let networkState = null;
+    let networkRaf = null;
+    let resizeTimer = null;
+    let distributionResetTimer = null;
+    let distributionActive = false;
+    let distributionHoverZ = 1.93;
+    let cleanupDistributionInteraction = () => {};
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const gsapResetTargets = [
+      ".hero-kicker",
+      ".hero-title",
+      ".hero-lead",
+      ".hero-meta",
+      ".hero-actions",
+      ".hero-strips",
+      ".hero-panel",
+      ".scroll-cue",
+      ".story-card",
+      ".metric-card",
+      ".distribution-card",
+      ".project-card",
+      ".timeline-item",
+      ".research-row",
+      ".award-card"
+    ].join(", ");
+
+    const gpaTextResetTargets = [
+      ".gpa-chart-kicker",
+      ".gpa-chart-title",
+      ".gpa-chart-caption",
+      ".gpa-threshold-group",
+      ".gpa-point-group",
+      ".gpa-term-label"
+    ].join(", ");
+
+    const chartDrawResetTargets = [
+      ".gpa-line-path",
+      ".distribution-curve-path"
+    ].join(", ");
+
+    const distributionResetTargets = [
+      ".distribution-tail-group",
+      ".distribution-marker-group"
+    ].join(", ");
+
+    const setFlags = () => {
+      reduceMotion = reducedMotionQuery.matches;
+      interactiveDesktop = desktopQuery.matches && !reduceMotion;
+      body.classList.toggle("reduced-motion", reduceMotion);
+      body.classList.toggle("interactive-desktop", interactiveDesktop);
+    };
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const academicStanding = {
+      asOf: "June 27, 2026",
+      department: { label: "AI & Data Engineering", rank: 3, pool: 65 },
+      faculty: { label: "Engineering Faculty", rank: 46, pool: 1727 }
+    };
+
+    const formatOrdinal = (value) => {
+      const remainder100 = value % 100;
+      const remainder10 = value % 10;
+      const suffix = remainder10 === 1 && remainder100 !== 11 ? "st" : remainder10 === 2 && remainder100 !== 12 ? "nd" : remainder10 === 3 && remainder100 !== 13 ? "rd" : "th";
+      return value + suffix;
+    };
+
+    const formatInteger = (value) => value.toLocaleString("en-US");
+
+    const getTopPercent = (standing) => ((standing.rank / standing.pool) * 100).toFixed(1);
+
+    const applyAcademicStanding = () => {
+      const facultyPercent = getTopPercent(academicStanding.faculty);
+      const departmentLabel = `${formatOrdinal(academicStanding.department.rank)} of ${formatInteger(academicStanding.department.pool)}`;
+
+      const departmentRankCopy = document.querySelector(".department-rank-copy");
+      const departmentRankSuffix = document.querySelector(".department-rank-suffix");
+      const facultyStandingPercentCopy = document.querySelector(".faculty-standing-percent-copy");
+      const rankFacultyPercentCopy = document.querySelector(".rank-faculty-percent-copy");
+      const facultyStandingPoolCopy = document.querySelector(".faculty-standing-pool-copy");
+      const facultyCount = document.querySelector('[data-standing="faculty"]');
+      const distributionTitle = document.querySelector("#distribution-title");
+      const distributionFigure = document.querySelector(".distribution-figure");
+      const distributionSvgElement = document.querySelector(".distribution-svg");
+      const distributionTailLabel = distributionSvgElement ? distributionSvgElement.querySelector(".distribution-tail-label") : null;
+      const distributionLabelSecondary = distributionSvgElement ? distributionSvgElement.querySelector(".distribution-label-secondary") : null;
+
+      if (departmentRankCopy) {
+        departmentRankCopy.textContent = departmentLabel;
       }
+
+      if (departmentRankSuffix) {
+        departmentRankSuffix.textContent = "/" + formatInteger(academicStanding.department.pool);
+      }
+
+      if (facultyStandingPercentCopy) {
+        facultyStandingPercentCopy.textContent = facultyPercent;
+      }
+
+      if (rankFacultyPercentCopy) {
+        rankFacultyPercentCopy.textContent = facultyPercent;
+      }
+
+      if (facultyStandingPoolCopy) {
+        facultyStandingPoolCopy.textContent = formatInteger(academicStanding.faculty.pool);
+      }
+
+      if (facultyCount) {
+        facultyCount.dataset.count = facultyPercent;
+        facultyCount.textContent = "0.0";
+      }
+
+      if (distributionTitle) {
+        distributionTitle.textContent = "Where a top " + facultyPercent + "% faculty standing sits on a bell curve";
+      }
+
+      if (distributionTailLabel) {
+        distributionTailLabel.textContent = "Top " + facultyPercent + "%";
+      }
+
+      if (distributionLabelSecondary) {
+        distributionLabelSecondary.textContent = formatOrdinal(academicStanding.faculty.rank) + " of " + formatInteger(academicStanding.faculty.pool) + " · " + academicStanding.faculty.label;
+      }
+
+      if (distributionFigure) {
+        distributionFigure.setAttribute(
+          "aria-label",
+          "Illustrative normal distribution showing the top " + facultyPercent + " percent right tail of a standard bell curve. A marker at the cutoff labels a 3.77 CGPA and " + formatOrdinal(academicStanding.faculty.rank) + " of " + formatInteger(academicStanding.faculty.pool) + " in the " + academicStanding.faculty.label + "."
+        );
+      }
+
+      if (distributionSvgElement) {
+        distributionSvgElement.setAttribute(
+          "aria-label",
+          "Interactive normal distribution showing the top " + facultyPercent + " percent right tail of a standard bell curve."
+        );
+      }
+    };
+
+    const syncNavHeight = () => {
+      if (!header) {
+        return;
+      }
+
+      root.style.setProperty("--nav-h", header.offsetHeight + "px");
+    };
+
+    const handleAnchorLinks = () => {
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (event) => {
+          const href = anchor.getAttribute("href");
+          const target = href ? document.querySelector(href) : null;
+
+          if (!target) {
+            return;
+          }
+
+          event.preventDefault();
+          target.scrollIntoView({
+            behavior: reduceMotion ? "auto" : "smooth",
+            block: "start"
+          });
+        });
+      });
+    };
+
+    const updateScrollProgress = () => {
+      if (!progressBar) {
+        return;
+      }
+
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+      progressBar.style.transform = "scaleX(" + Math.min(Math.max(progress, 0), 1) + ")";
+
+      if (hero) {
+        const pastHero = scrollTop >= hero.offsetTop + hero.offsetHeight * 0.72;
+        if (networkCanvas) networkCanvas.classList.toggle("is-blurred", pastHero);
+        if (networkFrost) networkFrost.classList.toggle("is-frosted", pastHero);
+      }
+    };
+
+    const formatCount = (value, decimals) => {
+      return decimals > 0 ? value.toFixed(decimals) : String(Math.round(value));
+    };
+
+    const animateCount = (element) => {
+      if (element.dataset.animated === "true") {
+        return;
+      }
+
+      element.dataset.animated = "true";
+
+      const target = Number(element.dataset.count || element.textContent.trim());
+      const start = Number(element.dataset.start || 0);
+      const decimals = Number(element.dataset.decimals || 0);
+
+      if (Number.isNaN(target)) {
+        return;
+      }
+
+      if (window.gsap && !reduceMotion) {
+        const state = { value: start };
+        element.textContent = formatCount(start, decimals);
+        window.gsap.to(state, {
+          value: target,
+          duration: 1.3,
+          ease: "power2.out",
+          onUpdate: () => {
+            element.textContent = formatCount(state.value, decimals);
+          },
+          onComplete: () => {
+            element.textContent = formatCount(target, decimals);
+          }
+        });
+        return;
+      }
+
+      element.textContent = formatCount(target, decimals);
+    };
+
+    const setupCountObserver = () => {
+      if (!("IntersectionObserver" in window)) {
+        counts.forEach(animateCount);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      counts.forEach((count) => observer.observe(count));
+    };
+
+    const distributionDomain = { min: -3.6, max: 3.6 };
+    const distributionGeometry = {
+      left: 40,
+      right: 680,
+      top: 38,
+      baseline: 192,
+      width: 640,
+      height: 154
+    };
+    const distributionDefaultZ = 1.93;
+
+    const normalPdf = (value) => Math.exp(-(value * value) / 2);
+
+    const normalCdf = (value) => {
+      if (value < 0) {
+        return 1 - normalCdf(-value);
+      }
+
+      const t = 1 / (1 + 0.2316419 * value);
+      const phi = (1 / Math.sqrt(2 * Math.PI)) * Math.exp(-(value * value) / 2);
+      const polynomial =
+        0.319381530 * t -
+        0.356563782 * Math.pow(t, 2) +
+        1.781477937 * Math.pow(t, 3) -
+        1.821255978 * Math.pow(t, 4) +
+        1.330274429 * Math.pow(t, 5);
+
+      return 1 - phi * polynomial;
+    };
+
+    const upperTailPercent = (value) => (1 - normalCdf(value)) * 100;
+
+    const clampDistributionZ = (value) => clamp(value, distributionDomain.min, distributionDomain.max);
+
+    const zToDistributionX = (value) => {
+      const ratio = (clampDistributionZ(value) - distributionDomain.min) / (distributionDomain.max - distributionDomain.min);
+      return distributionGeometry.left + ratio * distributionGeometry.width;
+    };
+
+    const xToDistributionZ = (x) => {
+      const ratio = clamp((x - distributionGeometry.left) / distributionGeometry.width, 0, 1);
+      return distributionDomain.min + ratio * (distributionDomain.max - distributionDomain.min);
+    };
+
+    const pdfToDistributionY = (pdfValue) => distributionGeometry.baseline - pdfValue * (distributionGeometry.baseline - distributionGeometry.top);
+
+    const distributionPoint = (value) => {
+      const clamped = clampDistributionZ(value);
+      return {
+        z: clamped,
+        x: zToDistributionX(clamped),
+        y: pdfToDistributionY(normalPdf(clamped))
+      };
+    };
+
+    const buildDistributionTailPath = (startZ) => {
+      const clamped = clampDistributionZ(startZ);
+      const samples = 40;
+      const startPoint = distributionPoint(clamped);
+      let path = "M " + startPoint.x.toFixed(2) + " " + distributionGeometry.baseline.toFixed(2);
+      path += " L " + startPoint.x.toFixed(2) + " " + startPoint.y.toFixed(2);
+
+      for (let index = 1; index <= samples; index += 1) {
+        const sampleZ = clamped + ((distributionDomain.max - clamped) * index) / samples;
+        const samplePoint = distributionPoint(sampleZ);
+        path += " L " + samplePoint.x.toFixed(2) + " " + samplePoint.y.toFixed(2);
+      }
+
+      path += " L " + distributionGeometry.right.toFixed(2) + " " + distributionGeometry.baseline.toFixed(2) + " Z";
+      return path;
+    };
+
+    const setDistributionHoverVisible = (visible) => {
+      if (!distributionHoverGroup) {
+        return;
+      }
+
+      distributionHoverGroup.classList.toggle("is-visible", visible && !reduceMotion);
+    };
+
+    const renderDistributionHover = (value, interactive) => {
+      if (!distributionHoverGroup || !distributionHoverTail || !distributionHoverLine || !distributionHoverDot || !distributionHoverLabel || !distributionHoverMeta) {
+        return;
+      }
+
+      if (reduceMotion) {
+        setDistributionHoverVisible(false);
+        return;
+      }
+
+      const point = distributionPoint(value);
+      const labelX = clamp(point.x + (point.x < 520 ? 72 : -72), 96, 624);
+      const labelY = clamp(point.y - 44, 42, 152);
+      const tailPath = buildDistributionTailPath(point.z);
+      const tailPercent = upperTailPercent(point.z);
+
+      distributionHoverTail.setAttribute("d", tailPath);
+      distributionHoverLine.setAttribute("x1", String(point.x.toFixed(2)));
+      distributionHoverLine.setAttribute("y1", String(point.y.toFixed(2)));
+      distributionHoverLine.setAttribute("x2", String(labelX.toFixed(2)));
+      distributionHoverLine.setAttribute("y2", String(labelY.toFixed(2)));
+      distributionHoverDot.setAttribute("cx", String(point.x.toFixed(2)));
+      distributionHoverDot.setAttribute("cy", String(point.y.toFixed(2)));
+      distributionHoverLabel.setAttribute("x", String(labelX.toFixed(2)));
+      distributionHoverLabel.setAttribute("y", String((labelY - 4).toFixed(2)));
+      distributionHoverMeta.setAttribute("x", String(labelX.toFixed(2)));
+      distributionHoverMeta.setAttribute("y", String((labelY + 12).toFixed(2)));
+      distributionHoverLabel.textContent = "z = " + point.z.toFixed(2);
+      distributionHoverMeta.textContent = "Top " + tailPercent.toFixed(1) + "%";
+      setDistributionHoverVisible(interactive);
+    };
+
+    const resetDistributionHover = () => {
+      window.clearTimeout(distributionResetTimer);
+      distributionResetTimer = null;
+      distributionHoverZ = distributionDefaultZ;
+      distributionActive = false;
+      renderDistributionHover(distributionDefaultZ, false);
+      setDistributionHoverVisible(false);
+    };
+
+    const scheduleDistributionReset = (delay = 900) => {
+      window.clearTimeout(distributionResetTimer);
+      distributionResetTimer = window.setTimeout(() => {
+        resetDistributionHover();
+      }, delay);
+    };
+
+    const setupDistributionInteraction = () => {
+      cleanupDistributionInteraction();
+
+      if (!distributionSvg || reduceMotion) {
+        resetDistributionHover();
+        return;
+      }
+
+      const handlePointerEnter = () => {
+        distributionActive = true;
+      };
+
+      const handlePointerMove = (event) => {
+        if (reduceMotion) {
+          return;
+        }
+
+        const rect = distributionSvg.getBoundingClientRect();
+        const x = clamp(event.clientX - rect.left, 0, rect.width);
+        distributionHoverZ = xToDistributionZ((x / rect.width) * 720);
+        distributionActive = true;
+        renderDistributionHover(distributionHoverZ, true);
+
+        if (event.pointerType !== "mouse") {
+          scheduleDistributionReset();
+        }
+      };
+
+      const handlePointerLeave = (event) => {
+        if (event.pointerType === "mouse") {
+          resetDistributionHover();
+        } else {
+          scheduleDistributionReset(700);
+        }
+      };
+
+      const handlePointerCancel = () => {
+        scheduleDistributionReset(700);
+      };
+
+      const handlePointerDown = (event) => {
+        if (reduceMotion) {
+          return;
+        }
+
+        const rect = distributionSvg.getBoundingClientRect();
+        const x = clamp(event.clientX - rect.left, 0, rect.width);
+        distributionHoverZ = xToDistributionZ((x / rect.width) * 720);
+        distributionActive = true;
+        renderDistributionHover(distributionHoverZ, true);
+
+        if (event.pointerType !== "mouse") {
+          scheduleDistributionReset();
+        }
+      };
+
+      const handleKeyDown = (event) => {
+        if (reduceMotion) {
+          return;
+        }
+
+        const step = event.shiftKey ? 0.2 : 0.08;
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          distributionHoverZ = clampDistributionZ((distributionActive ? distributionHoverZ : distributionDefaultZ) - step);
+          distributionActive = true;
+          renderDistributionHover(distributionHoverZ, true);
+        } else if (event.key === "ArrowRight") {
+          event.preventDefault();
+          distributionHoverZ = clampDistributionZ((distributionActive ? distributionHoverZ : distributionDefaultZ) + step);
+          distributionActive = true;
+          renderDistributionHover(distributionHoverZ, true);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          distributionHoverZ = distributionDomain.min;
+          distributionActive = true;
+          renderDistributionHover(distributionHoverZ, true);
+        } else if (event.key === "End") {
+          event.preventDefault();
+          distributionHoverZ = distributionDomain.max;
+          distributionActive = true;
+          renderDistributionHover(distributionHoverZ, true);
+        }
+      };
+
+      const handleFocus = () => {
+        if (!distributionActive && !reduceMotion) {
+          renderDistributionHover(distributionHoverZ, false);
+        }
+      };
+
+      const handleBlur = () => {
+        resetDistributionHover();
+      };
+
+      distributionSvg.addEventListener("pointerenter", handlePointerEnter);
+      distributionSvg.addEventListener("pointermove", handlePointerMove);
+      distributionSvg.addEventListener("pointerleave", handlePointerLeave);
+      distributionSvg.addEventListener("pointercancel", handlePointerCancel);
+      distributionSvg.addEventListener("pointerdown", handlePointerDown);
+      distributionSvg.addEventListener("keydown", handleKeyDown);
+      distributionSvg.addEventListener("focus", handleFocus);
+      distributionSvg.addEventListener("blur", handleBlur);
+
+      cleanupDistributionInteraction = () => {
+        distributionSvg.removeEventListener("pointerenter", handlePointerEnter);
+        distributionSvg.removeEventListener("pointermove", handlePointerMove);
+        distributionSvg.removeEventListener("pointerleave", handlePointerLeave);
+        distributionSvg.removeEventListener("pointercancel", handlePointerCancel);
+        distributionSvg.removeEventListener("pointerdown", handlePointerDown);
+        distributionSvg.removeEventListener("keydown", handleKeyDown);
+        distributionSvg.removeEventListener("focus", handleFocus);
+        distributionSvg.removeEventListener("blur", handleBlur);
+      };
+
+      resetDistributionHover();
+    };
+
+    const clearInteractive = () => {
+      cleanupInteractive.forEach((cleanup) => cleanup());
+      cleanupInteractive = [];
+      magneticTargets.forEach((item) => {
+        item.style.removeProperty("--mx");
+        item.style.removeProperty("--my");
+      });
+      if (cursorDot) {
+        cursorDot.style.opacity = "0";
+        cursorDot.style.removeProperty("transform");
+      }
+    };
+
+    const setupInteractiveDesktop = () => {
+      clearInteractive();
+
+      if (!interactiveDesktop || !cursorDot) {
+        return;
+      }
+
+      let dotX = window.innerWidth * 0.5;
+      let dotY = window.innerHeight * 0.5;
+      let currentX = dotX;
+      let currentY = dotY;
+      let primed = false;
+      let rafId = null;
+
+      const renderCursor = () => {
+        currentX += (dotX - currentX) * 0.2;
+        currentY += (dotY - currentY) * 0.2;
+        cursorDot.style.transform = "translate(" + currentX + "px, " + currentY + "px) translate(-50%, -50%)";
+        rafId = window.requestAnimationFrame(renderCursor);
+      };
+
+      const handleMouseMove = (event) => {
+        dotX = event.clientX;
+        dotY = event.clientY;
+        if (!primed) {
+          primed = true;
+          currentX = dotX;
+          currentY = dotY;
+        }
+        cursorDot.style.opacity = "1";
+      };
+
+      const handleMouseLeave = () => {
+        cursorDot.style.opacity = "0";
+      };
+
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseleave", handleMouseLeave);
+      renderCursor();
+
+      cleanupInteractive.push(() => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseleave", handleMouseLeave);
+        if (rafId) {
+          window.cancelAnimationFrame(rafId);
+        }
+      });
+
+      magneticTargets.forEach((item) => {
+        const move = (event) => {
+          const rect = item.getBoundingClientRect();
+          const x = event.clientX - rect.left - rect.width / 2;
+          const y = event.clientY - rect.top - rect.height / 2;
+          item.style.setProperty("--mx", (x * 0.12).toFixed(2) + "px");
+          item.style.setProperty("--my", (y * 0.12).toFixed(2) + "px");
+        };
+
+        const leave = () => {
+          item.style.setProperty("--mx", "0px");
+          item.style.setProperty("--my", "0px");
+        };
+
+        item.addEventListener("mousemove", move);
+        item.addEventListener("mouseleave", leave);
+
+        cleanupInteractive.push(() => {
+          item.removeEventListener("mousemove", move);
+          item.removeEventListener("mouseleave", leave);
+        });
+      });
+    };
+
+    const createRandom = (seed) => {
+      let state = seed >>> 0;
+      return () => {
+        state += 0x6D2B79F5;
+        let value = state;
+        value = Math.imul(value ^ (value >>> 15), value | 1);
+        value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+        return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+      };
+    };
+
+    const isLowPowerDevice = () => {
+      const memory = Number(navigator.deviceMemory || 0);
+      const cores = Number(navigator.hardwareConcurrency || 0);
+      return (memory > 0 && memory <= 4) || (cores > 0 && cores <= 4);
+    };
+
+    const stopNetwork = () => {
+      if (networkRaf) {
+        window.cancelAnimationFrame(networkRaf);
+        networkRaf = null;
+      }
+    };
+
+    const approximateQuadraticLength = (x1, y1, cx, cy, x2, y2) => {
+      let previousX = x1;
+      let previousY = y1;
+      let length = 0;
+      for (let step = 1; step <= 14; step += 1) {
+        const t = step / 14;
+        const point = pointOnQuadratic(x1, y1, cx, cy, x2, y2, t);
+        length += Math.hypot(point.x - previousX, point.y - previousY);
+        previousX = point.x;
+        previousY = point.y;
+      }
+      return length;
+    };
+
+    const pointOnQuadratic = (x1, y1, cx, cy, x2, y2, t) => {
+      const inverse = 1 - t;
+      return {
+        x: inverse * inverse * x1 + 2 * inverse * t * cx + t * t * x2,
+        y: inverse * inverse * y1 + 2 * inverse * t * cy + t * t * y2
+      };
+    };
+
+    const buildNetworkState = () => {
+      if (!networkCanvas || !networkContext) {
+        networkState = null;
+        return;
+      }
+
+      stopNetwork();
+
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const mobile = width < 768;
+      const lowPower = isLowPowerDevice();
+      const animate = !reduceMotion && !mobile && !lowPower;
+      const random = createRandom(Math.round(width * 17 + height * 29 + 2026));
+      const layerCounts =
+        width < 560 ? [3, 3, 3, 2] :
+        width < 768 ? [3, 4, 3, 2] :
+        width < 1120 ? [3, 4, 5, 4, 3] :
+        [4, 5, 6, 5, 3];
+      const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1.15 : lowPower ? 1.3 : 1.6);
+      const paddingX = -clamp(width * (mobile ? 0.08 : 0.11), 32, 130);
+      const paddingY = clamp(height * (mobile ? 0.17 : 0.16), 84, 170);
+      const yShift = mobile ? 0 : Math.round(height * 0.07);
+      const usableWidth = Math.max(width - paddingX * 2, 240);
+      const usableHeight = Math.max(height - paddingY * 2 - yShift, 220);
+
+      networkCanvas.width = Math.round(width * dpr);
+      networkCanvas.height = Math.round(height * dpr);
+      networkCanvas.style.width = width + "px";
+      networkCanvas.style.height = height + "px";
+      networkContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+      networkContext.lineCap = "round";
+      networkContext.lineJoin = "round";
+      networkContext.clearRect(0, 0, width, height);
+
+      const yTop = paddingY + yShift;
+      const yBottom = yTop + usableHeight;
+
+      const layers = layerCounts.map((count, layerIndex) => {
+        const x = layerCounts.length === 1 ? width / 2 : paddingX + (usableWidth * layerIndex) / (layerCounts.length - 1);
+        const verticalGap = count === 1 ? 0 : usableHeight / (count - 1);
+        const jitterMax = verticalGap * 0.26;
+
+        return Array.from({ length: count }, (_, nodeIndex) => {
+          const base = count === 1 ? yTop + usableHeight * 0.5 : yTop + verticalGap * nodeIndex;
+          const noise = count === 1 ? 0 : (random() * 2 - 1) * jitterMax;
+          const y = Math.max(yTop, Math.min(yBottom, base + noise));
+          return {
+            id: "node-" + layerIndex + "-" + nodeIndex,
+            layer: layerIndex,
+            order: nodeIndex,
+            x,
+            y,
+            radius: layerIndex === layerCounts.length - 1 ? 3.9 : 3.3,
+            ampX: animate ? 3 + random() * 4 : 0,
+            ampY: animate ? 4 + random() * 5 : 0,
+            phaseX: random() * Math.PI * 2,
+            phaseY: random() * Math.PI * 2,
+            freqX: 0.22 + random() * 0.24,
+            freqY: 0.18 + random() * 0.2,
+            currentX: x,
+            currentY: y
+          };
+        });
+      });
+
+      const edges = [];
+      const outgoing = new Map();
+      for (let layerIndex = 0; layerIndex < layers.length - 1; layerIndex += 1) {
+        const currentLayer = layers[layerIndex];
+        const nextLayer = layers[layerIndex + 1];
+        const edgeKeys = new Set();
+
+        currentLayer.forEach((node) => {
+          const center = currentLayer.length === 1 ? 0 : Math.round((node.order / (currentLayer.length - 1)) * (nextLayer.length - 1));
+          const targetIndexes = [center - 1, center, center + 1]
+            .filter((targetIndex) => targetIndex >= 0 && targetIndex < nextLayer.length);
+
+          if (nextLayer.length > 4 && !mobile && random() > 0.7) {
+            const alternate = clamp(center + (random() > 0.5 ? 2 : -2), 0, nextLayer.length - 1);
+            targetIndexes.push(alternate);
+          }
+
+          Array.from(new Set(targetIndexes)).forEach((targetIndex) => {
+            const target = nextLayer[targetIndex];
+            const key = node.id + "->" + target.id;
+            if (edgeKeys.has(key)) {
+              return;
+            }
+
+            edgeKeys.add(key);
+            const edge = {
+              from: node,
+              to: target,
+              opacity: 0.055 + random() * 0.165,
+              width: 0.7 + random() * 0.45,
+              bend: (random() - 0.5) * clamp(usableHeight * 0.035, 8, 24),
+              length: 0
+            };
+
+            edges.push(edge);
+            if (!outgoing.has(node.id)) {
+              outgoing.set(node.id, []);
+            }
+            outgoing.get(node.id).push(edge);
+          });
+        });
+      }
+
+      const getEdgeControlPoint = (edge) => {
+        const dx = edge.to.currentX - edge.from.currentX;
+        const dy = edge.to.currentY - edge.from.currentY;
+        const length = Math.hypot(dx, dy) || 1;
+        const perpendicularX = -dy / length;
+        const perpendicularY = dx / length;
+        return {
+          x: (edge.from.currentX + edge.to.currentX) * 0.5 + perpendicularX * edge.bend,
+          y: (edge.from.currentY + edge.to.currentY) * 0.5 + perpendicularY * edge.bend
+        };
+      };
+
+      const updateNodePositions = (time) => {
+        const driftTime = time * 0.001;
+        layers.forEach((layer) => {
+          layer.forEach((node) => {
+            if (!animate) {
+              node.currentX = node.x;
+              node.currentY = node.y;
+              return;
+            }
+
+            node.currentX = node.x + Math.sin(driftTime * node.freqX + node.phaseX) * node.ampX;
+            node.currentY = node.y + Math.cos(driftTime * node.freqY + node.phaseY) * node.ampY;
+          });
+        });
+      };
+
+      updateNodePositions(0);
+
+      edges.forEach((edge) => {
+        const control = getEdgeControlPoint(edge);
+        edge.length = approximateQuadraticLength(
+          edge.from.currentX,
+          edge.from.currentY,
+          control.x,
+          control.y,
+          edge.to.currentX,
+          edge.to.currentY
+        );
+      });
+
+      const routes = layers[0].map((startNode, routeIndex) => {
+        const segments = [];
+        let currentNode = startNode;
+        for (let layerIndex = 0; layerIndex < layers.length - 1; layerIndex += 1) {
+          const available = outgoing.get(currentNode.id) || [];
+          if (!available.length) {
+            break;
+          }
+
+          const sorted = available
+            .slice()
+            .sort((first, second) => {
+              const firstDelta = Math.abs(first.to.order - currentNode.order);
+              const secondDelta = Math.abs(second.to.order - currentNode.order);
+              return firstDelta - secondDelta;
+            });
+          const choicePool = sorted.slice(0, Math.min(3, sorted.length));
+          const chosen = choicePool[(routeIndex + layerIndex + Math.floor(random() * choicePool.length)) % choicePool.length];
+          segments.push(chosen);
+          currentNode = chosen.to;
+        }
+
+        const totalLength = segments.reduce((sum, edge) => sum + edge.length, 0);
+        return totalLength > 0 ? { segments, totalLength } : null;
+      }).filter(Boolean);
+
+      const pulseCount = animate ? Math.min(routes.length * 2, width > 1200 ? 11 : 8) : 0;
+      const pulses = Array.from({ length: pulseCount }, (_, pulseIndex) => {
+        const route = routes[pulseIndex % routes.length];
+        const loopLength = route.totalLength + 120 + random() * 180;
+        return {
+          route,
+          speed: 58 + random() * 28,
+          loopLength,
+          offset: -random() * loopLength,
+          radius: 1.8 + random() * 0.9,
+          prevSegIdx: -1
+        };
+      });
+
+      networkState = {
+        animate,
+        width,
+        height,
+        layers,
+        edges,
+        routes,
+        pulses,
+        rings: [],
+        getEdgeControlPoint,
+        updateNodePositions
+      };
+    };
+
+    const pointOnEdge = (edge, progress) => {
+      if (!networkState) {
+        return { x: 0, y: 0 };
+      }
+
+      const control = networkState.getEdgeControlPoint(edge);
+      return pointOnQuadratic(
+        edge.from.currentX,
+        edge.from.currentY,
+        control.x,
+        control.y,
+        edge.to.currentX,
+        edge.to.currentY,
+        progress
+      );
+    };
+
+    const pointOnRoute = (route, distance) => {
+      let remaining = distance;
+      for (const edge of route.segments) {
+        if (remaining <= edge.length) {
+          return pointOnEdge(edge, edge.length ? remaining / edge.length : 0);
+        }
+        remaining -= edge.length;
+      }
+
+      const lastEdge = route.segments[route.segments.length - 1];
+      return pointOnEdge(lastEdge, 1);
+    };
+
+    const drawNetworkFrame = (time = 0) => {
+      if (!networkState || !networkContext || !networkCanvas) return;
+
+      const { width, height, animate, edges, layers, pulses, rings, updateNodePositions, getEdgeControlPoint } = networkState;
+      updateNodePositions(time);
+      networkContext.clearRect(0, 0, width, height);
+
+      const elapsed = time * 0.001;
+      const TAIL_LEN = 100;
+      const TAIL_SAMPLES = 10;
+
+      // Pre-compute pulse positions once
+      const pulsePositions = animate ? pulses.map((pulse) => {
+        let headDistance = (elapsed * pulse.speed + pulse.offset) % pulse.loopLength;
+        if (headDistance < 0) headDistance += pulse.loopLength;
+        return { pulse, headDistance, active: headDistance <= pulse.route.totalLength };
+      }) : [];
+
+      // B: build active-edge brightness map (no shadow — just color shift)
+      const activeEdges = new Map();
+      pulsePositions.forEach(({ pulse, headDistance, active }) => {
+        if (!active) return;
+        const routeFade = Math.sin((headDistance / pulse.route.totalLength) * Math.PI);
+        let remaining = headDistance;
+        for (const edge of pulse.route.segments) {
+          if (remaining <= edge.length) {
+            activeEdges.set(edge, Math.max(activeEdges.get(edge) || 0, Math.sin((remaining / edge.length) * Math.PI) * routeFade));
+            break;
+          }
+          remaining -= edge.length;
+        }
+      });
+
+      // Draw edges
+      networkContext.save();
+      networkContext.shadowBlur = 0;
+      edges.forEach((edge) => {
+        const b = activeEdges.get(edge) || 0;
+        const control = getEdgeControlPoint(edge);
+        networkContext.beginPath();
+        networkContext.moveTo(edge.from.currentX, edge.from.currentY);
+        networkContext.quadraticCurveTo(control.x, control.y, edge.to.currentX, edge.to.currentY);
+        if (b > 0) {
+          networkContext.strokeStyle = "rgba(" + Math.round(23 + b * 157) + "," + Math.round(20 + b * 112) + "," + Math.round(18 + b * 30) + "," + (edge.opacity + b * (0.55 - edge.opacity)).toFixed(3) + ")";
+          networkContext.lineWidth = edge.width * (1 + b * 0.4);
+        } else {
+          networkContext.strokeStyle = "rgba(23,20,18," + edge.opacity.toFixed(3) + ")";
+          networkContext.lineWidth = edge.width;
+        }
+        networkContext.stroke();
+      });
+      networkContext.restore();
+
+      if (animate) {
+        // A: detect node crossings → spawn rings
+        pulsePositions.forEach(({ pulse, headDistance, active }) => {
+          if (!active) { pulse.prevSegIdx = -1; return; }
+          let cumulative = 0;
+          let currentSegIdx = pulse.route.segments.length - 1;
+          for (let i = 0; i < pulse.route.segments.length; i++) {
+            cumulative += pulse.route.segments[i].length;
+            if (headDistance <= cumulative) { currentSegIdx = i; break; }
+          }
+          if (pulse.prevSegIdx !== -1 && currentSegIdx > pulse.prevSegIdx) {
+            if (rings.length < 15) {
+              const crossedEdge = pulse.route.segments[pulse.prevSegIdx];
+              rings.push({ x: crossedEdge.to.currentX, y: crossedEdge.to.currentY, startTime: time, duration: 420, maxRadius: 16 + Math.random() * 8 });
+            }
+          }
+          pulse.prevSegIdx = currentSegIdx;
+        });
+
+        // C: draw comet tails — single gradient polyline per pulse (no per-segment shadow)
+        pulsePositions.forEach(({ pulse, headDistance, active }) => {
+          if (!active) return;
+          const routeFade = Math.sin((headDistance / pulse.route.totalLength) * Math.PI);
+          if (routeFade <= 0.04) return;
+          const tailDist = Math.max(0, headDistance - TAIL_LEN);
+
+          const pts = [];
+          for (let i = 0; i <= TAIL_SAMPLES; i++) {
+            pts.push(pointOnRoute(pulse.route, tailDist + (headDistance - tailDist) * (i / TAIL_SAMPLES)));
+          }
+          const headPt = pts[TAIL_SAMPLES];
+
+          const grad = networkContext.createLinearGradient(pts[0].x, pts[0].y, headPt.x, headPt.y);
+          grad.addColorStop(0, "rgba(180,132,48,0)");
+          grad.addColorStop(0.5, "rgba(180,132,48," + (routeFade * 0.26).toFixed(3) + ")");
+          grad.addColorStop(1, "rgba(180,132,48," + (routeFade * 0.7).toFixed(3) + ")");
+
+          networkContext.save();
+          networkContext.lineCap = "round";
+          networkContext.lineJoin = "round";
+          networkContext.lineWidth = pulse.radius * 0.9;
+          networkContext.strokeStyle = grad;
+          networkContext.shadowBlur = 0;
+          networkContext.beginPath();
+          networkContext.moveTo(pts[0].x, pts[0].y);
+          for (let i = 1; i <= TAIL_SAMPLES; i++) networkContext.lineTo(pts[i].x, pts[i].y);
+          networkContext.stroke();
+
+          // Head dot — only point that gets a glow
+          networkContext.shadowColor = "rgba(220,170,60," + (routeFade * 0.7).toFixed(3) + ")";
+          networkContext.shadowBlur = 12;
+          networkContext.fillStyle = "rgba(220,168,55," + (routeFade * 0.92).toFixed(3) + ")";
+          networkContext.beginPath();
+          networkContext.arc(headPt.x, headPt.y, pulse.radius, 0, Math.PI * 2);
+          networkContext.fill();
+          networkContext.restore();
+        });
+      }
+
+      // Draw nodes — aura with no shadow, core dot with minimal shadow
+      layers.forEach((layer) => {
+        layer.forEach((node) => {
+          networkContext.beginPath();
+          networkContext.fillStyle = "rgba(23,20,18,0.07)";
+          networkContext.arc(node.currentX, node.currentY, node.radius * 2.2, 0, Math.PI * 2);
+          networkContext.fill();
+
+          networkContext.save();
+          networkContext.fillStyle = "rgba(23,20,18,0.88)";
+          networkContext.shadowColor = "rgba(23,20,18,0.15)";
+          networkContext.shadowBlur = 8;
+          networkContext.beginPath();
+          networkContext.arc(node.currentX, node.currentY, node.radius, 0, Math.PI * 2);
+          networkContext.fill();
+          networkContext.restore();
+        });
+      });
+
+      // A: draw rings — no shadow, clean stroke only
+      if (animate) {
+        networkState.rings = rings.filter(r => time - r.startTime < r.duration);
+        networkState.rings.forEach((ring) => {
+          const p = (time - ring.startTime) / ring.duration;
+          const eased = 1 - Math.pow(1 - p, 2);
+          networkContext.save();
+          networkContext.shadowBlur = 0;
+          networkContext.strokeStyle = "rgba(180,132,48," + ((1 - p) * 0.42).toFixed(3) + ")";
+          networkContext.lineWidth = 1.2 * (1 - p * 0.4);
+          networkContext.beginPath();
+          networkContext.arc(ring.x, ring.y, ring.maxRadius * eased, 0, Math.PI * 2);
+          networkContext.stroke();
+          networkContext.restore();
+        });
+      }
+
+      if (animate) {
+        networkRaf = window.requestAnimationFrame(drawNetworkFrame);
+      }
+    };
+
+    const setupNetworkCanvas = () => {
+      buildNetworkState();
+      if (!networkState) {
+        return;
+      }
+
+      drawNetworkFrame(0);
+      if (networkState.animate) {
+        stopNetwork();
+        networkRaf = window.requestAnimationFrame(drawNetworkFrame);
+      }
+    };
+
+    const setupGsap = () => {
+      if (!window.gsap || !window.ScrollTrigger || reduceMotion || gsapInitialized) {
+        return;
+      }
+
+      gsapInitialized = true;
+      window.gsap.registerPlugin(window.ScrollTrigger);
+
+      const animateDrawPath = (path, trigger, options = {}) => {
+        if (!path || typeof path.getTotalLength !== "function") {
+          return;
+        }
+
+        const length = path.getTotalLength();
+        window.gsap.set(path, {
+          strokeDasharray: length,
+          strokeDashoffset: length
+        });
+        window.gsap.to(path, {
+          strokeDashoffset: 0,
+          duration: options.duration || 1.1,
+          ease: options.ease || "power2.out",
+          scrollTrigger: {
+            trigger,
+            start: options.start || "top 82%"
+          }
+        });
+      };
+
+      window.gsap.from(".hero-kicker", { opacity: 0, y: 28, duration: 0.9, ease: "power3.out", clearProps: "transform,opacity" });
+      window.gsap.from(".hero-title", { opacity: 0, y: 36, duration: 1, ease: "power3.out", delay: 0.08, clearProps: "transform,opacity" });
+      window.gsap.from(".hero-lead, .hero-meta, .hero-actions, .hero-strips", {
+        opacity: 0,
+        y: 26,
+        duration: 0.9,
+        ease: "power3.out",
+        stagger: 0.08,
+        delay: 0.18,
+        clearProps: "transform,opacity"
+      });
+      window.gsap.from(".hero-panel", {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.28,
+        clearProps: "transform,opacity"
+      });
+
+      window.gsap.utils.toArray(".story-card, .metric-card, .distribution-card, .project-card, .timeline-item, .award-card").forEach((card) => {
+        window.gsap.from(card, {
+          opacity: 0,
+          y: 50,
+          duration: 0.9,
+          ease: "power3.out",
+          clearProps: "transform,opacity",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 82%"
+          }
+        });
+      });
+
+      window.gsap.utils.toArray(".research-row").forEach((row) => {
+        window.gsap.from(row, {
+          opacity: 0,
+          x: -30,
+          duration: 0.8,
+          ease: "power3.out",
+          clearProps: "transform,opacity",
+          scrollTrigger: {
+            trigger: row,
+            start: "top 84%"
+          }
+        });
+      });
+
+      window.gsap.utils.toArray(".gpa-chart").forEach((chart) => {
+        const linePath = chart.querySelector(".gpa-line-path");
+        const headerLabels = chart.querySelectorAll(".gpa-chart-kicker, .gpa-chart-title, .gpa-chart-caption");
+        const thresholdGroup = chart.querySelector(".gpa-threshold-group");
+        const pointGroups = chart.querySelectorAll(".gpa-point-group");
+        const termLabels = chart.querySelectorAll(".gpa-term-label");
+
+        animateDrawPath(linePath, chart, { duration: 1.05 });
+
+        window.gsap.from(headerLabels, {
+          opacity: 0,
+          y: 16,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: chart,
+            start: "top 82%"
+          }
+        });
+
+        if (thresholdGroup) {
+          window.gsap.from(thresholdGroup, {
+            opacity: 0,
+            duration: 0.45,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: chart,
+              start: "top 82%"
+            }
+          });
+        }
+
+        window.gsap.from(pointGroups, {
+          opacity: 0,
+          scale: 0.88,
+          duration: 0.55,
+          ease: "power3.out",
+          stagger: 0.08,
+          transformOrigin: "center center",
+          scrollTrigger: {
+            trigger: chart,
+            start: "top 79%"
+          }
+        });
+
+        window.gsap.from(termLabels, {
+          opacity: 0,
+          y: 10,
+          duration: 0.55,
+          ease: "power3.out",
+          stagger: 0.06,
+          scrollTrigger: {
+            trigger: chart,
+            start: "top 79%"
+          }
+        });
+      });
+
+      window.gsap.utils.toArray(".distribution-card").forEach((card) => {
+        const curvePath = card.querySelector(".distribution-curve-path");
+        const tailGroup = card.querySelector(".distribution-tail-group");
+        const markerGroup = card.querySelector(".distribution-marker-group");
+
+        animateDrawPath(curvePath, card, { duration: 1.15 });
+
+        if (tailGroup) {
+          window.gsap.from(tailGroup, {
+            opacity: 0,
+            scaleX: 0.94,
+            duration: 0.65,
+            ease: "power2.out",
+            transformOrigin: "right center",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 78%"
+            }
+          });
+        }
+
+        if (markerGroup) {
+          window.gsap.from(markerGroup, {
+            opacity: 0,
+            y: 14,
+            scale: 0.96,
+            duration: 0.65,
+            ease: "power3.out",
+            transformOrigin: "center center",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 76%"
+            }
+          });
+        }
+      });
+
+      window.gsap.utils.toArray(".story-card, .timeline-item, .research-row").forEach((item) => {
+        window.ScrollTrigger.create({
+          trigger: item,
+          start: "top center+=80",
+          end: "bottom center",
+          toggleClass: { targets: item, className: "is-active" }
+        });
+      });
+
+      window.gsap.to(".scroll-cue", {
+        opacity: 0,
+        y: 18,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top+=120",
+          scrub: true
+        }
+      });
+    };
+
+    const resetGsap = () => {
+      if (!window.gsap || !window.ScrollTrigger) {
+        return;
+      }
+
+      window.ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      window.gsap.killTweensOf(gsapResetTargets);
+      window.gsap.set(gsapResetTargets, { clearProps: "all" });
+      window.gsap.killTweensOf(chartDrawResetTargets);
+      window.gsap.killTweensOf(gpaTextResetTargets);
+      window.gsap.killTweensOf(distributionResetTargets);
+      window.gsap.set(chartDrawResetTargets, { clearProps: "strokeDasharray,strokeDashoffset" });
+      window.gsap.set(gpaTextResetTargets, { clearProps: "opacity,transform" });
+      window.gsap.set(distributionResetTargets, { clearProps: "opacity,transform" });
+      gsapInitialized = false;
+    };
+
+    setFlags();
+    applyAcademicStanding();
+    syncNavHeight();
+    handleAnchorLinks();
+    updateScrollProgress();
+    setupCountObserver();
+    setupNetworkCanvas();
+    setupInteractiveDesktop();
+    setupDistributionInteraction();
+
+    if (document.readyState === "complete") {
+      syncNavHeight();
+      setupGsap();
+    } else {
+      window.addEventListener("load", () => {
+        syncNavHeight();
+        setupGsap();
+        setupNetworkCanvas();
+        setupDistributionInteraction();
+      }, { once: true });
+    }
+
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        syncNavHeight();
+        updateScrollProgress();
+        setupNetworkCanvas();
+        if (window.ScrollTrigger) {
+          window.ScrollTrigger.refresh();
+        }
+      }, 120);
     });
-  });
+    reducedMotionQuery.addEventListener("change", () => {
+      setFlags();
+      syncNavHeight();
+      if (reduceMotion) {
+        resetGsap();
+      } else {
+        setupGsap();
+      }
+      setupNetworkCanvas();
+      setupInteractiveDesktop();
+      setupDistributionInteraction();
+      updateScrollProgress();
+    });
+    desktopQuery.addEventListener("change", () => {
+      setFlags();
+      syncNavHeight();
+      setupNetworkCanvas();
+      setupInteractiveDesktop();
+      setupDistributionInteraction();
+      updateScrollProgress();
+    });
+  })();
 </script>
-
 </body>
 </html>
