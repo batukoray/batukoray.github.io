@@ -25,6 +25,8 @@
     --surface: rgba(255, 255, 255, 0.12);
     --surface-strong: rgba(255, 255, 255, 0.22);
     --surface-soft: rgba(255, 255, 255, 0.08);
+    --surface-sepia: rgba(248, 238, 213, 0.88);
+    --surface-sepia-strong: rgba(246, 235, 206, 0.96);
     --text: #171412;
     --text-dim: #4a4339;
     --text-muted: #6c6459;
@@ -377,29 +379,12 @@
   }
 
   .hero-kicker {
-    position: relative;
-    display: inline-block;
     font-family: var(--mono);
     font-size: 0.78rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     color: var(--text-muted);
-    text-shadow: 0 1px 0 rgba(240, 230, 210, 0.72);
-    isolation: isolate;
-  }
-
-  .hero-kicker::after {
-    content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    color: rgba(142, 109, 49, 0.68);
-    transform: translate(18px, 12px);
-    filter: blur(12px);
-    opacity: 1;
-    pointer-events: none;
-    mix-blend-mode: multiply;
   }
 
   .hero-title {
@@ -410,16 +395,6 @@
     font-size: clamp(4rem, 11vw, 7.85rem);
     max-width: 8ch;
     color: var(--text);
-  }
-
-  .hero-title,
-  .section-title,
-  .contact-title {
-    text-shadow:
-      0 0 4px rgba(255, 240, 206, 0.94),
-      0 0 10px rgba(255, 240, 206, 0.78),
-      0 0 18px rgba(255, 240, 206, 0.52),
-      0 0 28px rgba(255, 240, 206, 0.32);
   }
 
   .hero-title .accent {
@@ -444,7 +419,17 @@
     color: var(--text-muted);
   }
 
+  .hero-title,
+  .section-title,
+  .contact-title {
+    text-shadow:
+      0 0 3px var(--bg),
+      0 0 8px var(--bg),
+      0 0 16px var(--bg);
+  }
+
   .hero-lead,
+  .hero-kicker,
   .hero-meta,
   .section-copy,
   .contact-copy {
@@ -1198,8 +1183,8 @@
     padding: 1.3rem;
     overflow: hidden;
     background:
-      linear-gradient(180deg, rgba(23, 20, 18, 0.03), rgba(23, 20, 18, 0) 64%),
-      #f0e6d2;
+      linear-gradient(180deg, rgba(142, 109, 49, 0.1), rgba(142, 109, 49, 0.07) 64%, rgba(142, 109, 49, 0.05) 100%),
+      var(--surface-sepia);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
@@ -1221,8 +1206,10 @@
     margin-top: 1.15rem;
     padding: 1rem;
     border-radius: 8px;
-    border: 1px solid rgba(23, 20, 18, 0.08);
-    background: #f0e6d2 !important;
+    border: 1px solid rgba(142, 109, 49, 0.16);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 248, 232, 0.08) 55%, rgba(232, 214, 176, 0.08) 100%),
+      var(--surface-sepia-strong) !important;
   }
 
   .gpa-chart-title {
@@ -1794,7 +1781,7 @@
   <section id="top" class="hero">
     <div class="hero-shell">
       <div class="hero-copy">
-        <p class="hero-kicker" data-text="Computer Science and AI Researcher">Computer Science and AI Researcher</p>
+        <p class="hero-kicker">Computer Science and AI Researcher</p>
         <h1 class="hero-title">Batu Koray <span class="accent">Masak</span></h1>
         <p class="hero-lead">
           Undergraduate research intern at Koç University&rsquo;s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in
