@@ -21,7 +21,7 @@
 
 <style>
   :root {
-    --bg: #f0e6d2;
+    --bg: #f8ebd0;
     --surface: rgba(255, 255, 255, 0.12);
     --surface-strong: rgba(255, 255, 255, 0.22);
     --surface-soft: rgba(255, 255, 255, 0.08);
@@ -377,12 +377,29 @@
   }
 
   .hero-kicker {
+    position: relative;
+    display: inline-block;
     font-family: var(--mono);
     font-size: 0.78rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     color: var(--text-muted);
+    text-shadow: 0 1px 0 rgba(240, 230, 210, 0.72);
+    isolation: isolate;
+  }
+
+  .hero-kicker::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    color: rgba(142, 109, 49, 0.68);
+    transform: translate(18px, 12px);
+    filter: blur(12px);
+    opacity: 1;
+    pointer-events: none;
+    mix-blend-mode: multiply;
   }
 
   .hero-title {
@@ -399,11 +416,10 @@
   .section-title,
   .contact-title {
     text-shadow:
-      0 0 4px var(--bg),
-      0 0 10px var(--bg),
-      0 0 18px var(--bg),
-      0 0 28px var(--bg),
-      0 0 40px var(--bg);
+      0 0 4px rgba(255, 240, 206, 0.94),
+      0 0 10px rgba(255, 240, 206, 0.78),
+      0 0 18px rgba(255, 240, 206, 0.52),
+      0 0 28px rgba(255, 240, 206, 0.32);
   }
 
   .hero-title .accent {
@@ -428,7 +444,6 @@
     color: var(--text-muted);
   }
 
-  .hero-kicker,
   .hero-lead,
   .hero-meta,
   .section-copy,
@@ -1779,7 +1794,7 @@
   <section id="top" class="hero">
     <div class="hero-shell">
       <div class="hero-copy">
-        <p class="hero-kicker">AI, NLP, and Trustworthy Language Models</p>
+        <p class="hero-kicker" data-text="Computer Science and AI Researcher">Computer Science and AI Researcher</p>
         <h1 class="hero-title">Batu Koray <span class="accent">Masak</span></h1>
         <p class="hero-lead">
           Undergraduate research intern at Koç University&rsquo;s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in
