@@ -134,6 +134,35 @@
     .project-static:hover { padding-left: clamp(1.25rem, 4.5vw, 5.2rem); background: rgba(231,191,72,.22); box-shadow: none; }
     .project-status { color: var(--red); font: 500 .58rem/1.35 var(--mono); letter-spacing: .07em; text-align: right; text-transform: uppercase; }
 
+    .notes { background: var(--blue); }
+    .notes .section-heading { background: var(--blue-deep); }
+    .notes .section-shell { min-height: 0; }
+    .notes .section-body { padding-block: clamp(3rem, 5vw, 5rem); }
+    .notes-repository { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1.65rem; color: var(--ink); font: 500 .62rem/1.35 var(--mono); letter-spacing: .065em; text-decoration-color: var(--red); text-underline-offset: 4px; text-transform: uppercase; }
+    .notes-viewer { border: 1px solid var(--ink); background: var(--paper); box-shadow: 10px 10px 0 rgba(23,36,50,.18); }
+    .notes-viewer-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.4rem; align-items: end; padding: clamp(1rem, 2vw, 1.5rem); border-bottom: 1px solid var(--ink); background: var(--paper-strong); }
+    .notes-viewer-header h3 { margin: .4rem 0 .35rem; font: 500 clamp(1.65rem, 2.7vw, 2.8rem)/1 var(--serif); letter-spacing: -.012em; text-shadow: 3px 3px 0 rgba(23,36,50,.1); }
+    .notes-viewer-header p { max-width: 620px; margin: 0; color: var(--muted); font-size: .84rem; }
+    .notes-viewer-header .button { white-space: nowrap; }
+    .pdf-toolbar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .8rem; min-height: 52px; padding: .55rem .7rem; border-bottom: 1px solid var(--ink); background: var(--ink); color: var(--paper-strong); }
+    .pdf-control { width: 36px; height: 32px; padding: .35rem .55rem; border: 1px solid rgba(245,240,230,.35); background: transparent; color: inherit; font: 500 .85rem/1 var(--mono); cursor: pointer; transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease; }
+    .pdf-control:hover:not(:disabled), .pdf-control:focus-visible { border-color: var(--gold); background: var(--gold); color: var(--ink); outline: none; transform: translateY(-1px); }
+    .pdf-control:disabled { cursor: default; opacity: .3; }
+    .pdf-page-status { display: flex; flex-direction: column; align-items: center; gap: .15rem; min-width: 7rem; color: var(--paper); text-align: center; }
+    .pdf-page-status strong { font: 500 .72rem/1 var(--mono); letter-spacing: .055em; }
+    .pdf-page-status small { color: var(--gold); font: 500 .55rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .pdf-stage { position: relative; height: min(46vh, 480px); min-height: 340px; padding: clamp(.85rem, 2.2vw, 1.8rem); display: flex; align-items: center; justify-content: center; overflow: hidden; background: #dbe6e8; outline: none; }
+    .pdf-stage:focus-visible { box-shadow: inset 0 0 0 2px var(--red); }
+    .pdf-spread { display: flex; align-items: center; gap: clamp(.6rem, 1.6vw, 1rem); min-height: 100%; max-width: 100%; width: max-content; margin: 0 auto; }
+    .pdf-canvas { display: block; flex: 0 0 auto; max-width: none; border: 1px solid var(--ink); background: #fff; box-shadow: 8px 8px 0 rgba(23,36,50,.18); }
+    .pdf-state { position: absolute; inset: 0; display: grid; place-content: center; max-width: 360px; margin: auto; padding: 1.1rem; color: var(--muted); text-align: center; }
+    .pdf-state-mark { display: block; width: 13px; height: 13px; margin: 0 auto 1rem; border: 1px solid var(--ink); background: var(--gold); box-shadow: 3px 3px 0 rgba(23,36,50,.2); }
+    .pdf-state p { margin: 0; font: 500 .68rem/1.5 var(--mono); letter-spacing: .055em; text-transform: uppercase; }
+    .pdf-state.is-error { color: var(--red); }
+    .pdf-state a { color: inherit; text-underline-offset: 3px; }
+    .pdf-caption { margin: 0; padding: .75rem 1rem; border-top: 1px solid var(--line); color: var(--muted); font: 500 .58rem/1.4 var(--mono); letter-spacing: .055em; text-transform: uppercase; }
+    .pdf-canvas[hidden], .pdf-state[hidden] { display: none; }
+
     .education .section-body { padding-bottom: clamp(4rem, 8vw, 8rem); }
     .edu-item { position: relative; padding: 0 0 3rem 1.6rem; border-left: 1px solid var(--red); }
     .edu-item::before { content: ""; position: absolute; width: 10px; height: 10px; background: var(--gold); border: 1px solid var(--ink); border-radius: 50%; left: -5.5px; top: 5px; }
@@ -189,6 +218,7 @@
       .project { grid-template-columns: 100px 1fr auto; padding: 1.15rem 1.25rem; }
       .project p { grid-column: 2 / 4; }
       .project:hover { padding-left: 1.7rem; }
+      .notes-viewer-header { align-items: start; }
       .contact-shell { grid-template-columns: 1fr; min-height: 100svh; padding: 4rem 1.25rem; }
     }
     @media (max-width: 560px) {
@@ -210,6 +240,10 @@
       .project h3 { grid-column: 1; }
       .project .arrow, .project-status { grid-column: 2; grid-row: 2; }
       .project-tags { margin-top: .2rem; }
+      .header-nav a:nth-child(4) { display: none; }
+      .notes-viewer-header { grid-template-columns: 1fr; }
+      .notes-viewer-header .button { justify-self: start; }
+      .pdf-stage { height: 340px; min-height: 0; padding: .7rem; justify-content: flex-start; }
       .contact h2 { font-size: clamp(3.6rem, 17vw, 5.4rem); }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
@@ -231,7 +265,7 @@
     <div class="header-inner">
       <a class="brand" href="#top">Batu Koray <em>Masak</em></a>
       <nav class="header-nav" aria-label="Primary navigation">
-        <a href="#track">Now</a><a href="#numbers">Standing</a><a href="#research">Focus</a><a href="#projects">Work</a><a href="#education">Education</a><a href="#contact">Connect</a>
+        <a href="#track">Now</a><a href="#numbers">Standing</a><a href="#research">Focus</a><a href="#projects">Work</a><a href="#education">Education</a><a href="#notes">Notes</a><a href="#contact">Connect</a>
       </nav>
     </div>
   </header>
@@ -242,7 +276,7 @@
         <p class="hero-kicker">Computer Science and AI Researcher</p>
         <h1 id="page-title"><span class="given-name">Batu Koray</span><span class="name-line"><span class="surname">Masak</span><span class="last-updated" id="last-updated">(Last updated · July 2026)</span></span></h1>
         <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>. Current work centers on trustworthy language models, adversarial LLM behavior, and NLP systems that break in ways worth studying.</p>
-        <div class="actions"><a class="button primary" href="#contact">Get in Touch</a><a class="button" href="https://github.com/batukoray" target="_blank" rel="noopener">GitHub Profile ↗</a></div>
+        <div class="actions"><a class="button primary" href="#contact">Get in Touch</a><a class="button" href="#notes">Read Notes</a><a class="button" href="https://github.com/batukoray" target="_blank" rel="noopener">GitHub Profile ↗</a></div>
       </div>
       <aside class="hero-aside" aria-label="Current position">
         <figure class="portrait-frame"><img src="https://avatars.githubusercontent.com/u/178801013?v=4" alt="Portrait of Batu Koray Masak"><figcaption class="portrait-caption"><span>Paris, France</span><span>July 2025</span></figcaption></figure>
@@ -258,6 +292,8 @@
     <section class="section research" id="research" aria-labelledby="research-title"><div class="section-shell"><header class="section-heading"><div class="section-heading-inner"><span class="section-number">Study area</span><h2 id="research-title">Research Focus</h2><p>Four questions I keep coming back to.</p></div></header><div class="section-body"><div class="research-list"><article class="research-item"><span class="research-index">1</span><div><h3>Adversarial attacks on LLMs</h3><p>Multi-turn jailbreaking strategies that exploit persuasion, context accumulation, and conversational framing rather than purely automated optimization.</p></div></article><article class="research-item"><span class="research-index">2</span><div><h3>NLP and transformer architectures</h3><p>Language modeling, attention, and transformer internals. The architecture side of the same systems I spend the rest of my time attacking.</p></div></article><article class="research-item"><span class="research-index">3</span><div><h3>AI safety and alignment evaluation</h3><p>Red-teaming methodologies, robustness evaluation, and the practical question of how safety fine-tuning can still be circumvented in deployed interfaces.</p></div></article><article class="research-item"><span class="research-index">4</span><div><h3>Language models in psychology</h3><p>A broader pull toward AI in psychology, from mood and affective signals to the harder question of how much clinical and personality structure a model can actually recover from a person's text. The end I find most interesting is whether the frameworks clinicians actually use, the Big Five traits and the DSM personality-disorder clusters, show up in language at all.</p></div></article></div></div></div></section>
 
     <section class="section projects" id="projects" aria-labelledby="projects-title"><div class="section-shell"><header class="projects-heading"><div><span class="section-number">Research &amp; build</span><h2 id="projects-title">Selected Work</h2></div></header><div class="project-list"><article class="project project-static"><span class="project-type">Research · Data Engineering</span><h3>CPI-Weighted Web Price Indexing</h3><p>Co-authored a paper submitted to ASYU 2026 on CPI-weighted web-based price indexing for Türkiye, supported by large-scale scraping pipelines spanning 1.27M+ product records.</p><span class="project-status">Submitted · ASYU 2026</span></article><a class="project" href="https://github.com/batukoray/llama2-from-scratch" target="_blank" rel="noopener"><span class="project-type">NLP · Systems</span><h3>LLaMA From Scratch</h3><p>Ground-up implementation of the LLaMA architecture for the CS449 NLP course project at Özyeğin University.</p><span class="arrow">↗</span></a><a class="project" href="https://github.com/batukoray/EL_Pulpo" target="_blank" rel="noopener"><span class="project-type">Productivity · MCP</span><h3>El Pulpo</h3><p>Personal terminal productivity system with MCP integration for tasks, notes, and workflows.</p><span class="arrow">↗</span></a><a class="project" href="https://github.com/batukoray/HaDi" target="_blank" rel="noopener"><span class="project-type">TypeScript · Terminal UI</span><h3>HaDi: Hacker Dispatch</h3><p>A CLI tool for reading Hacker News through a stylized sci-fi terminal interface.</p><span class="arrow">↗</span></a><a class="project" href="https://github.com/batukoray/Korado" target="_blank" rel="noopener"><span class="project-type">Optimization · CLI</span><h3>Korado</h3><p>CLI linear programming and mixed-integer programming solver built on a PuLP/CBC backend.</p><span class="arrow">↗</span></a></div></div></section>
+
+    <section class="section notes" id="notes" aria-labelledby="notes-title"><div class="section-shell"><header class="section-heading"><div class="section-heading-inner"><span class="section-number">Personal archive</span><h2 id="notes-title">Academic Notes</h2><p>Selected notes from the mathematics underneath the models.</p><a class="notes-repository" href="https://github.com/batukoray/batu-academia/tree/main" target="_blank" rel="noopener">batu-academia ↗</a></div></header><div class="section-body"><div class="notes-viewer" data-pdf-viewer data-pdf-src="https://raw.githubusercontent.com/batukoray/batu-academia/main/Differential-Equations/Differential_Equations.pdf"><div class="notes-viewer-header"><div><span class="eyebrow">Mathematics notes</span><h3>Differential Equations</h3><p>A compact two-page preview from the batu-academia repository.</p></div><a class="button primary" href="https://github.com/batukoray/batu-academia/blob/main/Differential-Equations/Differential_Equations.pdf" target="_blank" rel="noopener">Open full notes ↗</a></div><div class="pdf-toolbar" aria-label="PDF preview controls"><button class="pdf-control" type="button" data-pdf-prev aria-label="Previous pages" disabled>←</button><div class="pdf-page-status" aria-live="polite"><strong data-pdf-current>1–2</strong><small data-pdf-total>of … pages</small></div><button class="pdf-control" type="button" data-pdf-next aria-label="Next pages" disabled>→</button></div><div class="pdf-stage" data-pdf-stage tabindex="0" aria-label="Differential Equations preview"><div class="pdf-spread" data-pdf-spread><canvas class="pdf-canvas" data-pdf-canvas-one aria-label="First page of Differential Equations notes" hidden></canvas><canvas class="pdf-canvas" data-pdf-canvas-two aria-label="Second page of Differential Equations notes" hidden></canvas></div><div class="pdf-state" data-pdf-loading><span class="pdf-state-mark"></span><p>Loading preview from GitHub</p></div><div class="pdf-state is-error" data-pdf-error hidden><span class="pdf-state-mark"></span><p>This preview could not be rendered. <a href="https://github.com/batukoray/batu-academia/blob/main/Differential-Equations/Differential_Equations.pdf" target="_blank" rel="noopener">Open the full notes ↗</a></p></div></div><p class="pdf-caption">Pages 1–2 shown · use the arrows to browse the notebook</p></div></div></div></section>
 
     <section class="section education" id="education" aria-labelledby="education-title"><div class="section-shell"><header class="section-heading"><div class="section-heading-inner"><span class="section-number">Education</span><h2 id="education-title">Education</h2><p>A double-major foundation in AI, data engineering, and computer science.</p></div></header><div class="section-body"><article class="edu-item"><span class="edu-year">2024 – Present</span><h3>B.Sc. AI &amp; Data Engineering · B.Sc. Computer Science</h3><div class="institution"><img src="https://github.com/batukoray/assets_of_mine/blob/main/ozyegin_logo.png?raw=true" alt="Özyeğin University logo"><p><a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University, Istanbul</a></p></div><ul class="edu-facts"><li><strong>CGPA</strong>3.77 / 4.00</li><li><strong>Honors</strong>High Honor status across all four completed semesters</li><li><strong>Rank</strong>3rd of 65 in department · top 2.7% of Engineering Faculty</li><li><strong>Roles</strong>Mathematics TA · Peer Advisor (2025–2026)</li></ul><div class="education-details"><section class="detail"><span class="eyebrow">Issued by Özyeğin University · June 2026</span><h4>High Honor Standing</h4><p>Achieved High Honor academic standing in all four semesters to date, clearing the required ≥3.50 GPA bar with zero failing grades every single term.</p><div class="gpa-line" aria-label="Semester GPA progression: 3.63, 3.82, 3.73, and 3.91"><div class="gpa-term" style="--height:55%"><b>3.63</b><span>F24/25</span></div><div class="gpa-term" style="--height:76%"><b>3.82</b><span>S24/25</span></div><div class="gpa-term" style="--height:65%"><b>3.73</b><span>F25/26</span></div><div class="gpa-term" style="--height:95%"><b>3.91</b><span>S25/26</span></div></div></section><section class="detail"><span class="eyebrow">Issued by Özyeğin University · Aug 2025</span><h4>Academic Merit Scholarship</h4><p>One of only three freshmen selected across the entire Faculty of Engineering, ranked purely by cumulative GPA. Provides a 25% tuition waiver for 2025–2026, stacking with an existing 50% scholarship for 75% total coverage.</p></section><section class="detail"><span class="eyebrow">Özyeğin University · Sep 2025 to June 2026</span><h4>Peer Advisor</h4><p>Mentored approximately 20 first-year AI &amp; Data Engineering students, maintained a curated GitHub repository of course materials and academic guides, and ran an active advising channel for coursework, programs, and research opportunities.</p></section><section class="detail"><span class="eyebrow">ETS · February 2026</span><h4>TOEFL iBT · 110 / 120</h4><p>CEFR C1 proficiency, with perfect section scores in Listening and Writing.</p></section></div></article><article class="edu-item"><span class="edu-year">2019 – 2024</span><h3>High School Diploma</h3><div class="institution"><img class="eyuboglu-logo" src="https://www.eyuboglu.k12.tr/images/eyuboglu.webp" alt="Eyüboğlu Eğitim Kurumları logo" loading="lazy"><p><a href="https://www.eyuboglu.k12.tr/en" target="_blank" rel="noopener">Eyüboğlu Science and Technology High School, Istanbul</a></p></div></article></div></div></section>
   </main>
@@ -294,6 +330,129 @@
       .catch(() => {
         // Keep the server-rendered value if the visitor is offline or rate-limited.
       });
+
+    const pdfViewer = document.querySelector('[data-pdf-viewer]');
+    if (pdfViewer) {
+      const pdfCanvasOne = pdfViewer.querySelector('[data-pdf-canvas-one]');
+      const pdfCanvasTwo = pdfViewer.querySelector('[data-pdf-canvas-two]');
+      const pdfStage = pdfViewer.querySelector('[data-pdf-stage]');
+      const pdfLoading = pdfViewer.querySelector('[data-pdf-loading]');
+      const pdfError = pdfViewer.querySelector('[data-pdf-error]');
+      const pdfCurrent = pdfViewer.querySelector('[data-pdf-current]');
+      const pdfTotal = pdfViewer.querySelector('[data-pdf-total]');
+      const pdfPrevious = pdfViewer.querySelector('[data-pdf-prev]');
+      const pdfNext = pdfViewer.querySelector('[data-pdf-next]');
+      let pdfDocument;
+      let currentSpread = 1;
+      let renderSequence = 0;
+
+      const setPdfState = (state) => {
+        pdfLoading.hidden = state !== 'loading';
+        pdfError.hidden = state !== 'error';
+        if (state !== 'ready') {
+          pdfCanvasOne.hidden = true;
+          pdfCanvasTwo.hidden = true;
+        }
+      };
+
+      const renderPdfPage = async (page, canvas, scale) => {
+        const viewport = page.getViewport({ scale });
+        const outputScale = window.devicePixelRatio || 1;
+        const context = canvas.getContext('2d');
+
+        canvas.width = Math.floor(viewport.width * outputScale);
+        canvas.height = Math.floor(viewport.height * outputScale);
+        canvas.style.width = `${viewport.width}px`;
+        canvas.style.height = `${viewport.height}px`;
+
+        await page.render({
+          canvasContext: context,
+          viewport,
+          transform: outputScale !== 1 ? [outputScale, 0, 0, outputScale, 0, 0] : null
+        }).promise;
+        canvas.hidden = false;
+      };
+
+      const updatePdfControls = () => {
+        const secondPage = pdfDocument && currentSpread + 1 <= pdfDocument.numPages;
+        pdfCurrent.textContent = secondPage ? `${currentSpread}–${currentSpread + 1}` : `${currentSpread}`;
+        pdfPrevious.disabled = currentSpread <= 1;
+        pdfNext.disabled = !pdfDocument || currentSpread + 1 >= pdfDocument.numPages;
+      };
+
+      const renderPdfSpread = async () => {
+        if (!pdfDocument) return;
+        const sequence = ++renderSequence;
+
+        try {
+          pdfCanvasOne.hidden = true;
+          pdfCanvasTwo.hidden = true;
+          const firstPage = await pdfDocument.getPage(currentSpread);
+          const secondPage = currentSpread + 1 <= pdfDocument.numPages ? await pdfDocument.getPage(currentSpread + 1) : null;
+          const firstViewport = firstPage.getViewport({ scale: 1 });
+          const secondViewport = secondPage?.getViewport({ scale: 1 });
+          const availableWidth = Math.max(pdfStage.clientWidth - 32, 240);
+          const availableHeight = Math.max(pdfStage.clientHeight - 32, 260);
+          const gap = Math.max(9.6, Math.min(pdfStage.clientWidth * .016, 16));
+          const spreadWidth = firstViewport.width + (secondViewport ? secondViewport.width + gap : 0);
+          const spreadHeight = Math.max(firstViewport.height, secondViewport?.height || 0);
+          const fitScale = Math.min(.92, availableWidth / spreadWidth, availableHeight / spreadHeight);
+
+          await Promise.all([
+            renderPdfPage(firstPage, pdfCanvasOne, fitScale),
+            secondPage ? renderPdfPage(secondPage, pdfCanvasTwo, fitScale) : Promise.resolve()
+          ]);
+
+          if (sequence !== renderSequence) return;
+          setPdfState('ready');
+          updatePdfControls();
+        } catch {
+          if (sequence === renderSequence) setPdfState('error');
+        }
+      };
+
+      const changePdfSpread = (direction) => {
+        if (!pdfDocument) return;
+        const nextSpread = currentSpread + direction * 2;
+        if (nextSpread < 1 || nextSpread > pdfDocument.numPages) return;
+        currentSpread = nextSpread;
+        updatePdfControls();
+        setPdfState('loading');
+        renderPdfSpread();
+      };
+
+      pdfPrevious.addEventListener('click', () => changePdfSpread(-1));
+      pdfNext.addEventListener('click', () => changePdfSpread(1));
+      pdfStage.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          changePdfSpread(-1);
+        }
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          changePdfSpread(1);
+        }
+      });
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(renderPdfSpread, 150);
+      }, { passive: true });
+
+      (async () => {
+        try {
+          const pdfjs = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs');
+          pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+          pdfDocument = await pdfjs.getDocument(pdfViewer.dataset.pdfSrc).promise;
+          pdfTotal.textContent = `of ${pdfDocument.numPages} pages`;
+          updatePdfControls();
+          await renderPdfSpread();
+        } catch {
+          setPdfState('error');
+        }
+      })();
+    }
 
     if (window.matchMedia('(pointer: fine)').matches) {
       const cursor = document.getElementById('custom-cursor');
