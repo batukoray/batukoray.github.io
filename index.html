@@ -54,18 +54,15 @@
     h1 .last-updated { margin: 0 0 .3em; color: var(--muted); font: 600 italic clamp(.55rem, .075em, .85rem)/1.1 var(--serif); letter-spacing: .015em; text-shadow: none; }
     h1 .last-updated-date { color: var(--red); }
     .hero-lead { max-width: 660px; margin-bottom: 1.7rem; font-size: clamp(1.02rem, 1.4vw, 1.28rem); line-height: 1.65; }
+    .hero-lead-current { display: block; margin-top: 1em; }
     .hero-lead a { color: #92762d; text-underline-offset: 3px; }
     .actions { display: flex; gap: .65rem; flex-wrap: wrap; }
-    .button { display: inline-flex; align-items: center; min-height: 44px; padding: .65rem .9rem; border: 1px solid var(--ink); font: 500 .67rem/1 var(--mono); letter-spacing: .065em; text-decoration: none; text-transform: uppercase; transition: background .2s, color .2s, transform .2s; }
-    .button:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+    .button { display: inline-flex; align-items: center; min-height: 44px; padding: .65rem .9rem; border: 1px solid var(--ink); font: 500 .67rem/1 var(--mono); letter-spacing: .065em; text-decoration: none; text-transform: uppercase; transition: transform .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(1px); transition-duration: .1s; }
     .button.primary { background: var(--gold); }
-    .button.notes-cta { gap: .7rem; background: var(--ink); color: var(--paper-strong); }
-    .button.notes-cta::after { content: "↘"; color: var(--gold); font: 1rem/1 var(--serif); transition: transform .2s ease; }
-    .button.primary:hover { background: #d6ad37; color: var(--ink); }
-    .button.notes-cta:hover { background: #2d3b48; color: var(--paper-strong); }
-    .button.notes-cta:hover::after { transform: translate(2px, 2px); }
+    .button.notes-cta { background: var(--ink); color: var(--paper-strong); }
     .button.github-cta { background: var(--red); border-color: var(--ink); color: var(--paper-strong); }
-    .button.github-cta:hover { background: #a94633; border-color: var(--ink); color: var(--paper-strong); }
 
     .hero-aside { align-self: center; max-width: 505px; width: 100%; justify-self: end; transform: translateY(clamp(-5.5rem, -5vw, -2.5rem)); }
     .portrait-frame { position: relative; padding: clamp(.65rem, 1vw, .9rem); background: var(--paper-strong); border: 1px solid var(--ink); box-shadow: 11px 11px 0 rgba(23,36,50,.18); }
@@ -82,7 +79,7 @@
     .signal-strip { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(240px, 1.4fr) repeat(4, minmax(145px, 1fr)); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
     .signal-strip > div { min-height: 96px; padding: 1rem 1.15rem; border-left: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
     .signal-strip > div:first-child { padding-left: 1.15rem; border: 0; }
-    .signal-strip b { font: 500 clamp(1.5rem, 2.4vw, 2.25rem)/1.08 var(--serif); letter-spacing: .025em; font-kerning: normal; }
+    .signal-strip b { color: var(--ink); font: 500 clamp(1.5rem, 2.4vw, 2.25rem)/1.08 var(--serif); letter-spacing: .025em; font-kerning: normal; text-shadow: 3px 3px 0 rgba(23,36,50,.18); }
     .signal-strip span { margin-top: .3rem; font: 500 .6rem/1.45 var(--mono); letter-spacing: .085em; word-spacing: .08em; text-transform: uppercase; }
     .signal-strip .intro { font-size: .9rem; line-height: 1.45; letter-spacing: .012em; }
 
@@ -284,8 +281,8 @@
       <div class="hero-copy">
         <p class="hero-kicker">Computer Science and AI Researcher</p>
         <h1 id="page-title"><span class="given-name">Batu Koray</span><span class="name-line"><span class="surname">Masak</span><span class="last-updated" id="last-updated">(Last updated · <span class="last-updated-date" id="last-updated-date">July 2026</span>)</span></span></h1>
-        <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>. Current work centers on trustworthy language models, adversarial LLM behavior, and NLP systems that break in ways worth studying.</p>
-        <div class="actions"><a class="button primary" href="#contact">Get in Touch</a><a class="button notes-cta" href="#notes">Academic Notes</a><a class="button github-cta" href="https://github.com/batukoray" target="_blank" rel="noopener">GitHub Profile ↗</a></div>
+        <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>.<span class="hero-lead-current">Current work: getting fine-tuned language models to admit what was in their training data. They deny everything.</span></p>
+        <div class="actions"><a class="button primary" href="#contact">Get in Touch</a><a class="button notes-cta" href="#notes">Academic Notes</a><a class="button github-cta" href="https://github.com/batukoray" target="_blank" rel="noopener">GitHub Profile</a></div>
       </div>
       <aside class="hero-aside" aria-label="Current position">
         <figure class="portrait-frame"><img src="https://avatars.githubusercontent.com/u/178801013?v=4" alt="Portrait of Batu Koray Masak"><figcaption class="portrait-caption"><span>Paris, France</span><span>July 2025</span></figcaption></figure>
