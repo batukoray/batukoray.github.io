@@ -5,6 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Batu Koray Masak is an AI &amp; Computer Science undergraduate at Özyeğin University and a Koç University research intern focused on AI security.">
   <title>Batu Koray Masak</title>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "https://batukoray.github.io/#profile",
+      "url": "https://batukoray.github.io/",
+      "name": "Batu Koray Masak",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://batukoray.github.io/#person",
+        "name": "Batu Koray Masak",
+        "url": "https://batukoray.github.io/",
+        "image": [
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://batukoray.github.io/images/batu-eray-paris.png",
+            "caption": "Paris, France. Batu, on the left, with his best pal Eray.",
+            "description": "Batu Koray Masak, on the left, with his best pal Eray in Paris, France."
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://batukoray.github.io/images/batu-library-picture.jpeg",
+            "caption": "Batu in front of his library.",
+            "description": "Batu in front of his library."
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://batukoray.github.io/images/batu-with-cat.jpeg",
+            "caption": "Batu with a cat at Özyeğin University.",
+            "description": "Batu with a cat at Özyeğin University."
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://batukoray.github.io/images/batu-with-cat-greece.jpg",
+            "caption": "Batu with a cat by the sea in Greece.",
+            "description": "Batu with a cat by the sea in Greece."
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://batukoray.github.io/images/batu-next-to-eiffel.png",
+            "caption": "Batu beside the Eiffel Tower in Paris.",
+            "description": "Batu beside the Eiffel Tower in Paris, France."
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://batukoray.github.io/images/batu-suited.png",
+            "caption": "Batu in a suit, photographed in a mirror.",
+            "description": "Batu in a suit, photographed in a mirror."
+          },
+          {
+            "@type": "ImageObject",
+            "contentUrl": "https://batukoray.github.io/images/batu-teaching-eulers-identity.png",
+            "caption": "Teaching Euler's identity through Taylor series.",
+            "description": "Batu teaching Euler's identity through Taylor series."
+          }
+        ],
+        "sameAs": [
+          "https://github.com/batukoray",
+          "https://www.linkedin.com/in/batu-koray-masak/"
+        ]
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -68,8 +131,13 @@
     .portrait-frame { position: relative; padding: clamp(.65rem, 1vw, .9rem); background: var(--paper-strong); border: 1px solid var(--ink); box-shadow: 11px 11px 0 rgba(23,36,50,.18); }
     .portrait-frame::before, .portrait-frame::after { content: ""; position: absolute; width: 10px; height: 10px; border: 1px solid var(--red); background: var(--gold); }
     .portrait-frame::before { top: -5px; left: -5px; } .portrait-frame::after { bottom: -5px; right: -5px; }
-    .portrait-frame img { display: block; width: 100%; aspect-ratio: .89; object-fit: cover; object-position: center; }
+    .portrait-stage { position: relative; aspect-ratio: .89; overflow: hidden; background: center / cover no-repeat; }
+    .portrait-frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition: opacity .5s ease; }
+    .portrait-frame img.is-fading-out { opacity: 0; }
     .portrait-caption { display: flex; justify-content: space-between; gap: 1rem; padding-top: .7rem; font: 500 .59rem/1.3 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .portrait-description { margin: .5rem 0 0; color: var(--muted); font-size: .76rem; line-height: 1.45; }
+    .portrait-frame figcaption { opacity: 1; transition: opacity .5s ease; }
+    .portrait-frame figcaption.is-fading-out { opacity: 0; }
     .position-note { margin: 1.1rem 0 0 auto; padding: 1.1rem 1.15rem; max-width: 430px; border: 1px solid var(--ink); border-left: 4px solid var(--red); background: linear-gradient(135deg, #f5d66d 0%, var(--gold) 100%); box-shadow: 8px 8px 0 rgba(23,36,50,.2); }
     .position-note img { display: block; width: 112px; max-height: 42px; object-fit: contain; object-position: left; margin-bottom: .55rem; }
     .position-note .university-link { display: inline-block; }
@@ -285,7 +353,7 @@
         <div class="actions"><a class="button primary" href="#contact">Get in Touch</a><a class="button notes-cta" href="#notes">Academic Notes</a><a class="button github-cta" href="https://github.com/batukoray" target="_blank" rel="noopener">GitHub Profile</a></div>
       </div>
       <aside class="hero-aside" aria-label="Current position">
-        <figure class="portrait-frame"><img src="https://avatars.githubusercontent.com/u/178801013?v=4" alt="Portrait of Batu Koray Masak"><figcaption class="portrait-caption"><span>Paris, France</span><span>July 2025</span></figcaption></figure>
+        <figure class="portrait-frame"><div class="portrait-stage" data-portrait-stage><img src="/images/batu-library-picture.jpeg" alt="Batu in front of his library" width="1280" height="1280" data-portrait-image></div><figcaption data-portrait-caption><div class="portrait-caption"><span data-portrait-location>Istanbul, Turkey</span><span data-portrait-date>July 2026</span></div><p class="portrait-description" data-portrait-description>Batu in front of his library.</p></figcaption></figure>
         <div class="position-note"><a class="university-link" href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Ko%C3%A7_University_logo.svg/3840px-Ko%C3%A7_University_logo.svg.png" alt="Koç University logo"></a><strong><a href="https://mysite.ku.edu.tr/emregursoy/spade-lab/" target="_blank" rel="noopener">SPADE Lab</a></strong><p>Undergraduate Researcher · Methodologies of Membership Inference Attacks on Large Language Models</p></div>
       </aside>
       <div class="signal-strip" aria-label="Academic highlights"><div class="intro">Proof I do more than lose to LLMs:</div><div><b>3.77</b><span>CGPA / 4.00</span></div><div><b>3 / 65</b><span>Department rank</span></div><div><b>2.7%</b><span>Engineering Faculty</span></div><div><b>4 / 4</b><span>High Honor terms</span></div></div>
@@ -322,6 +390,148 @@
     window.addEventListener('scroll', updatePageBackground, { passive: true });
     window.addEventListener('resize', updatePageBackground, { passive: true });
     updatePageBackground();
+
+    const portraitImage = document.querySelector('[data-portrait-image]');
+    const portraitStage = document.querySelector('[data-portrait-stage]');
+    const portraitCaption = document.querySelector('[data-portrait-caption]');
+    const portraitLocation = document.querySelector('[data-portrait-location]');
+    const portraitDate = document.querySelector('[data-portrait-date]');
+    const portraitDescription = document.querySelector('[data-portrait-description]');
+    const portraitOptions = [
+      {
+        src: '/images/batu-library-picture.jpeg',
+        alt: 'Batu in front of his library',
+        width: 1280,
+        height: 1280,
+        location: 'Istanbul, Turkey',
+        date: 'July 2026',
+        description: 'Batu in front of his library.'
+      },
+      {
+        src: '/images/batu-teaching-eulers-identity.png',
+        alt: 'Batu teaching Euler’s identity through Taylor series',
+        width: 1390,
+        height: 1392,
+        location: 'Mathematics teaching',
+        date: 'Euler’s identity',
+        description: 'Teaching Euler’s identity through Taylor series.'
+      },
+      {
+        src: '/images/batu-with-cat.jpeg',
+        alt: 'Batu with a cat at Özyeğin University',
+        width: 1127,
+        height: 1127,
+        location: 'Özyeğin University',
+        date: 'February 2026',
+        description: 'Batu with a cat at Özyeğin University.'
+      },
+      {
+        src: '/images/batu-with-cat-greece.jpg',
+        alt: 'Batu with a cat by the sea in Greece',
+        width: 1782,
+        height: 1784,
+        location: 'Greece',
+        date: 'By the sea',
+        description: 'Batu with a cat by the sea in Greece.'
+      },
+      {
+        src: '/images/batu-suited.png',
+        alt: 'Batu in a suit, photographed in a mirror',
+        width: 878,
+        height: 880,
+        location: 'Portrait',
+        date: 'Suit and tie',
+        description: 'Batu in a suit, photographed in a mirror.'
+      },
+      {
+        src: '/images/batu-next-to-eiffel.png',
+        alt: 'Batu beside the Eiffel Tower in Paris, France',
+        width: 1278,
+        height: 1280,
+        location: 'Paris, France',
+        date: 'July 2025',
+        description: 'Batu beside the Eiffel Tower in Paris.'
+      },
+      {
+        src: '/images/batu-eray-paris.png',
+        alt: 'Batu Koray Masak, on the left, with his best pal Eray in Paris, France',
+        width: 1090,
+        height: 1092,
+        location: 'Paris, France',
+        date: 'July 2025',
+        description: 'Paris, France. Batu, on the left, with his best pal Eray.'
+      }
+    ];
+    if (portraitImage) {
+      const fadeDuration = 500;
+      const slideDuration = 6500;
+      let portraitIndex = 0;
+      let recentPortraitIndices = [portraitIndex];
+      let nextPortraitIndex;
+      let nextPortraitPreload;
+      let portraitTransitioning = false;
+
+      const renderPortrait = (portrait) => {
+        portraitImage.src = portrait.src;
+        portraitImage.alt = portrait.alt;
+        portraitImage.width = portrait.width;
+        portraitImage.height = portrait.height;
+        portraitLocation.textContent = portrait.location;
+        portraitDate.textContent = portrait.date;
+        portraitDescription.textContent = portrait.description;
+      };
+
+      const chooseNextPortraitIndex = () => {
+        const candidates = portraitOptions.map((_, index) => index).filter((index) => !recentPortraitIndices.includes(index));
+        return candidates[Math.floor(Math.random() * candidates.length)];
+      };
+
+      const preloadNextPortrait = () => {
+        nextPortraitIndex = chooseNextPortraitIndex();
+        nextPortraitPreload = new Image();
+        nextPortraitPreload.src = portraitOptions[nextPortraitIndex].src;
+      };
+
+      const advancePortrait = () => {
+        if (portraitTransitioning) return;
+        const nextIndex = nextPortraitIndex ?? chooseNextPortraitIndex();
+        const nextPortrait = portraitOptions[nextIndex];
+        const beginTransition = () => {
+          if (portraitTransitioning) return;
+          portraitTransitioning = true;
+          portraitStage.style.backgroundImage = `url("${nextPortrait.src}")`;
+          portraitImage.classList.add('is-fading-out');
+          portraitCaption.classList.add('is-fading-out');
+          window.setTimeout(() => {
+            portraitIndex = nextIndex;
+            recentPortraitIndices.push(portraitIndex);
+            if (recentPortraitIndices.length > 4) recentPortraitIndices.shift();
+            renderPortrait(nextPortrait);
+            portraitImage.classList.remove('is-fading-out');
+            portraitCaption.classList.remove('is-fading-out');
+            window.setTimeout(() => {
+              portraitStage.style.backgroundImage = '';
+              portraitTransitioning = false;
+              preloadNextPortrait();
+            }, fadeDuration);
+          }, fadeDuration);
+        };
+
+        if (nextPortraitPreload?.complete) {
+          beginTransition();
+          return;
+        }
+
+        nextPortraitPreload.addEventListener('load', beginTransition, { once: true });
+        nextPortraitPreload.addEventListener('error', beginTransition, { once: true });
+      };
+
+      renderPortrait(portraitOptions[portraitIndex]);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        preloadNextPortrait();
+        window.setInterval(advancePortrait, slideDuration);
+      }
+    }
 
     const lastUpdatedDate = document.getElementById('last-updated-date');
     fetch('https://api.github.com/repos/batukoray/batukoray.github.io/commits?sha=main&per_page=1', {
