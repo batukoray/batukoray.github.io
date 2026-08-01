@@ -24,9 +24,10 @@
       --mono: "DM Mono", ui-monospace, monospace;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scrollbar-width: none; }
+    html { scroll-behavior: smooth; scrollbar-width: none; background: var(--blue); transition: background-color .5s ease; }
     html::-webkit-scrollbar { display: none; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--sans); }
+    body { margin: 0; background: var(--blue); color: var(--ink); font: 400 16px/1.55 var(--sans); transition: background-color .5s ease; }
+    html.is-lower-half, html.is-lower-half body { background: var(--red); }
     a { color: inherit; }
     .skip { position: fixed; left: 12px; top: -100px; z-index: 40; padding: .65rem .85rem; background: var(--ink); color: var(--paper); font: .75rem var(--mono); }
     .skip:focus { top: 12px; }
@@ -52,6 +53,7 @@
     .name-line { display: flex; align-items: flex-end; flex-wrap: wrap; gap: .2em .32em; }
     .surname { color: var(--red); font-style: italic; }
     h1 .last-updated { margin: 0 0 .3em; color: var(--muted); font: 600 italic clamp(.55rem, .075em, .85rem)/1.1 var(--serif); letter-spacing: .015em; text-shadow: none; }
+    h1 .last-updated-date { color: var(--red); }
     .hero-lead { max-width: 660px; margin-bottom: 1.7rem; font-size: clamp(1.02rem, 1.4vw, 1.28rem); line-height: 1.65; }
     .hero-lead a { color: #92762d; text-underline-offset: 3px; }
     .actions { display: flex; gap: .65rem; flex-wrap: wrap; }
@@ -274,7 +276,7 @@
     <section class="hero" id="top" aria-labelledby="page-title">
       <div class="hero-copy">
         <p class="hero-kicker">Computer Science and AI Researcher</p>
-        <h1 id="page-title"><span class="given-name">Batu Koray</span><span class="name-line"><span class="surname">Masak</span><span class="last-updated" id="last-updated">(Last updated · July 2026)</span></span></h1>
+        <h1 id="page-title"><span class="given-name">Batu Koray</span><span class="name-line"><span class="surname">Masak</span><span class="last-updated" id="last-updated">(Last updated · <span class="last-updated-date" id="last-updated-date">July 2026</span>)</span></span></h1>
         <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>. Current work centers on trustworthy language models, adversarial LLM behavior, and NLP systems that break in ways worth studying.</p>
         <div class="actions"><a class="button primary" href="#contact">Get in Touch</a><a class="button" href="#notes">Read Notes</a><a class="button" href="https://github.com/batukoray" target="_blank" rel="noopener">GitHub Profile ↗</a></div>
       </div>
@@ -308,7 +310,18 @@
     window.addEventListener('scroll', setHeader, { passive: true });
     setHeader();
 
-    const lastUpdated = document.getElementById('last-updated');
+    const updatePageBackground = () => {
+      const root = document.documentElement;
+      const scrollRange = root.scrollHeight - window.innerHeight;
+      const scrollProgress = scrollRange > 0 ? window.scrollY / scrollRange : 1;
+      const inLowerHalf = scrollProgress >= .5;
+      root.classList.toggle('is-lower-half', inLowerHalf);
+    };
+    window.addEventListener('scroll', updatePageBackground, { passive: true });
+    window.addEventListener('resize', updatePageBackground, { passive: true });
+    updatePageBackground();
+
+    const lastUpdatedDate = document.getElementById('last-updated-date');
     fetch('https://api.github.com/repos/batukoray/batukoray.github.io/commits?sha=main&per_page=1', {
       headers: { Accept: 'application/vnd.github+json' }
     })
@@ -325,7 +338,7 @@
           year: 'numeric',
           timeZone: 'UTC'
         }).format(new Date(committedAt));
-        lastUpdated.textContent = `(Last updated · ${monthYear})`;
+        lastUpdatedDate.textContent = monthYear;
       })
       .catch(() => {
         // Keep the server-rendered value if the visitor is offline or rate-limited.
