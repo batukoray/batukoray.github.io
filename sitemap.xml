@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://batukoray.github.io/</loc>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/batu-eray-paris.png</image:loc>
+      <image:title>Batu Koray Masak and Eray in Paris, France</image:title>
+      <image:caption>Paris, France. Batu, on the left, with his best pal Eray.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/batu-library-picture.jpg</image:loc>
+      <image:title>Batu in front of his library</image:title>
+      <image:caption>Batu in front of his library.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/batu-with-cat.jpeg</image:loc>
+      <image:title>Batu with a cat at Özyeğin University</image:title>
+      <image:caption>Batu with a cat at Özyeğin University.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/batu-with-cat-greece.jpg</image:loc>
+      <image:title>Batu with a cat by the sea in Greece</image:title>
+      <image:caption>Batu with a cat by the sea in Greece.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/batu-next-to-eiffel.png</image:loc>
+      <image:title>Batu beside the Eiffel Tower in Paris</image:title>
+      <image:caption>Batu beside the Eiffel Tower in Paris.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/batu-suited.png</image:loc>
+      <image:title>Batu in a suit, photographed in a mirror</image:title>
+      <image:caption>Batu in a suit, photographed in a mirror.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/batu-teaching-eulers-identity.png</image:loc>
+      <image:title>Teaching Euler's identity through Taylor series</image:title>
+      <image:caption>Teaching Euler's identity through Taylor series.</image:caption>
+    </image:image>
+  </url>
+</urlset>
