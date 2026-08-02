@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://batukoray.github.io/sitemap.xml
