@@ -102,6 +102,30 @@
       --sans: "DM Sans", Arial, sans-serif;
       --mono: "DM Mono", ui-monospace, monospace;
     }
+    :root:lang(zh) {
+      --serif: "Fraunces", "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+      --sans: "DM Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --mono: "DM Mono", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", ui-monospace, monospace;
+    }
+    :lang(zh) .header-nav a,
+    :lang(zh) .button,
+    :lang(zh) .portrait-caption,
+    :lang(zh) .signal-strip span,
+    :lang(zh) .section-number,
+    :lang(zh) .metric small,
+    :lang(zh) .project-type,
+    :lang(zh) .project-tags,
+    :lang(zh) .project-status,
+    :lang(zh) .track-list time,
+    :lang(zh) .track-list .label,
+    :lang(zh) .hero-kicker,
+    :lang(zh) .eyebrow {
+      letter-spacing: 0;
+      word-spacing: normal;
+      text-transform: none;
+    }
+    ::selection { background: rgba(112,166,194,.42); color: var(--ink); }
+    ::-moz-selection { background: rgba(112,166,194,.42); color: var(--ink); }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scrollbar-width: none; background: var(--blue); }
     html::-webkit-scrollbar { display: none; }
@@ -113,14 +137,27 @@
 
     .site-header { position: fixed; z-index: 20; top: 0; left: 0; width: 100%; transform: translateY(-112%); transition: transform .45s cubic-bezier(.2,.8,.2,1); border-bottom: 1px solid var(--ink); background: var(--ink); box-shadow: 0 6px 0 rgba(23,36,50,.24); }
     .site-header.show { transform: translateY(0); }
-    .header-inner { min-height: 48px; max-width: 1440px; padding: 0 clamp(.85rem, 3.1vw, 3.2rem); margin: auto; display: flex; justify-content: space-between; align-items: stretch; gap: .75rem; }
-    .brand { display: inline-flex; align-items: center; gap: .55rem; color: var(--paper-strong); text-decoration: none; font: 500 1.24rem/1 var(--serif); letter-spacing: -.015em; white-space: nowrap; text-shadow: -2px 2px 0 rgba(200,84,61,.55); }
+    .header-inner { min-height: 48px; max-width: 1440px; padding: 0 clamp(.85rem, 3.1vw, 3.2rem); margin: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; gap: .75rem; }
+    .brand { grid-column: 1; justify-self: start; display: inline-flex; align-items: center; gap: .55rem; color: var(--paper-strong); text-decoration: none; font: 500 1.24rem/1 var(--serif); letter-spacing: -.015em; white-space: nowrap; text-shadow: -2px 2px 0 rgba(200,84,61,.55); }
     .brand em { color: var(--gold); font-style: normal; }
-    .header-nav { display: flex; gap: 0; align-items: stretch; border-left: 1px solid rgba(245,240,230,.22); }
+    .header-nav { grid-column: 3; justify-self: end; display: flex; gap: 0; align-items: stretch; border-left: 1px solid rgba(245,240,230,.22); }
     .header-nav a { position: relative; display: inline-flex; align-items: center; padding: 0 clamp(.52rem, 1vw, .92rem); border-right: 1px solid rgba(245,240,230,.22); color: var(--paper-strong); text-decoration: none; font: 500 .75rem/1 var(--mono); letter-spacing: .045em; text-transform: uppercase; transition: background .18s ease, color .18s ease, transform .18s ease; }
     .header-nav a::after { content: ""; position: absolute; left: .52rem; right: .52rem; bottom: 7px; height: 2px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .18s ease; }
     .header-nav a:hover { color: var(--ink); background: var(--gold); transform: translateY(3px); }
     .header-nav a:hover::after { transform: scaleX(1); }
+    .header-language { grid-column: 2; display: flex; align-items: stretch; border-left: 1px solid rgba(245,240,230,.22); }
+    .language-switcher { display: flex; align-items: center; gap: .15rem; opacity: 1; transition: opacity .2s ease; will-change: opacity; }
+    .language-switcher.is-fading { opacity: 0; pointer-events: none; }
+    .language-switcher-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .language-switcher button { min-width: 2rem; height: 100%; padding: 0 .35rem; border: 0; background: transparent; color: var(--ink); font: 500 .63rem/1 var(--mono); letter-spacing: .045em; cursor: pointer; transition: background .18s ease, color .18s ease, transform .18s ease; }
+    .language-switcher button:hover, .language-switcher button:focus-visible { background: var(--gold); color: var(--ink); outline: none; transform: translateY(2px); }
+    .language-switcher button[aria-pressed="true"] { background: var(--gold); color: var(--ink); }
+    .language-switcher-floating { position: fixed; z-index: 30; top: 1rem; left: 50%; right: auto; transform: translateX(-50%); padding: .35rem; border: 1px solid var(--ink); background: var(--paper-strong); box-shadow: 5px 5px 0 rgba(23,36,50,.2); }
+    .language-switcher-floating button { min-width: 3.3rem; min-height: 2.35rem; padding: .65rem .75rem; font-size: .75rem; }
+    .language-switcher-floating button:hover, .language-switcher-floating button:focus-visible { transform: translateY(-1px); }
+    .language-switcher-header { padding: 0; }
+    .language-switcher-header button { min-width: 2.35rem; padding: 0 .45rem; color: var(--paper-strong); }
+    .language-switcher-header button:hover, .language-switcher-header button:focus-visible { transform: translateY(3px); }
 
     .hero { position: relative; min-height: 100svh; padding: clamp(1.1rem, 3vw, 3.4rem); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(310px, .9fr); grid-template-rows: 1fr auto; gap: clamp(1.7rem, 5vw, 6rem); max-width: 1540px; margin: auto; background: var(--blue); box-shadow: 0 0 0 100vmax var(--blue); clip-path: inset(0 -100vmax); }
     .hero-copy { align-self: center; padding: clamp(3.5rem, 10vh, 8rem) 0 1rem clamp(.5rem, 6vw, 6.4rem); transform: translateY(clamp(-5.5rem, -5vw, -2.5rem)); }
@@ -316,6 +353,8 @@
       .brand { font-size: 1.08rem; }
       .header-nav { gap: 0; }
       .header-nav a { padding: 0 .52rem; font-size: .61rem; }
+      .header-nav a:nth-child(5) { display: none; }
+      .language-switcher-header button { min-width: 1.85rem; padding: 0 .28rem; font-size: .56rem; }
       h1 { font-size: clamp(4.35rem, 22vw, 6.8rem); }
       .hero-copy { padding-left: 0; padding-right: 0; }
       .position-note { margin-right: 0; }
@@ -336,24 +375,36 @@
       .pdf-stage { height: 340px; min-height: 0; padding: .7rem; justify-content: flex-start; }
       .contact h2 { font-size: clamp(3.6rem, 17vw, 5.4rem); }
     }
+    @media (max-width: 400px) { .header-nav a:nth-child(6) { display: none; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+    .selection-marquee { position: fixed; z-index: 999; pointer-events: none; display: block; opacity: 0; visibility: hidden; border: 1px solid rgba(55,128,170,.9); border-radius: 7px; background: rgba(143,184,206,.3); box-shadow: inset 0 0 0 1px rgba(251,248,241,.42), 0 2px 8px rgba(23,36,50,.08); transition: opacity .12s ease; }
+    .selection-marquee.is-active { opacity: 1; visibility: visible; }
     .custom-cursor { position: fixed; z-index: 1000; top: 0; left: 0; width: 54px; height: 64px; pointer-events: none; opacity: 0; transform: translate3d(-100px, -100px, 0); transition: opacity .12s ease; }
     .custom-cursor.is-visible { opacity: 1; }
-    .custom-cursor svg { display: block; width: 100%; height: 100%; overflow: visible; transform-origin: 5px 4px; transition: transform .15s cubic-bezier(.2,.75,.25,1); }
+    .custom-cursor svg { display: block; width: 100%; height: 100%; overflow: visible; transform-box: fill-box; transform-origin: 5px 4px; transition: transform .15s cubic-bezier(.2,.75,.25,1); }
     .custom-cursor .cursor-shadow { transform: translate(var(--shadow-x, 5px), var(--shadow-y, 5px)); fill: rgba(23,36,50,.35); }
     .custom-cursor .cursor-arrow { fill: #fff; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
-    .custom-cursor.is-pressed svg { transform: translate(2px, 3px) scale(.8); }
+    .custom-cursor.is-pressed svg { transform: scale(.8); }
     .custom-cursor.is-releasing svg { animation: cursor-release .28s cubic-bezier(.2,.8,.3,1) both; }
-    @keyframes cursor-release { 0% { transform: translate(2px, 3px) scale(.8); } 62% { transform: translate(-1px, -1px) scale(1.1); } 100% { transform: translate(0, 0) scale(1); } }
+    @keyframes cursor-release { 0% { transform: scale(.8); } 62% { transform: scale(1.1); } 100% { transform: scale(1); } }
     @media (pointer: fine) { .cursor-active, .cursor-active a, .cursor-active button, .cursor-active [role="button"] { cursor: none; } }
     @media (pointer: coarse) { .custom-cursor { display: none; } }
   </style>
 </head>
 <body>
   <a class="skip" href="#main" aria-label="Skip to content">Skip to content</a>
+  <div data-language-home>
+    <div class="language-switcher language-switcher-floating" data-language-switcher role="group" aria-label="Language">
+      <span class="language-switcher-label" data-language-label>Language</span>
+      <button type="button" data-language="en" aria-pressed="true">EN</button>
+      <button type="button" data-language="tr" aria-pressed="false">TR</button>
+      <button type="button" data-language="zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a class="brand" href="#top">Batu Koray <em>Masak</em></a>
+      <div class="header-language" data-language-slot></div>
       <nav class="header-nav" aria-label="Primary navigation">
         <a href="#track">Now</a><a href="#numbers">Standing</a><a href="#research">Focus</a><a href="#projects">Work</a><a href="#education">Education</a><a href="#notes">Notes</a><a href="#contact">Connect</a>
       </nav>
@@ -388,13 +439,38 @@
     <section class="section education" id="education" aria-labelledby="education-title"><div class="section-shell"><header class="section-heading"><div class="section-heading-inner"><span class="section-number">Education</span><h2 id="education-title">Education</h2><p>A double-major foundation in AI, data engineering, and computer science.</p></div></header><div class="section-body"><article class="edu-item"><span class="edu-year">2024 – Present</span><h3>B.Sc. AI &amp; Data Engineering · B.Sc. Computer Science</h3><div class="institution"><img src="https://github.com/batukoray/assets_of_mine/blob/main/ozyegin_logo.png?raw=true" alt="Özyeğin University logo"><p><a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University, Istanbul</a></p></div><ul class="edu-facts"><li><strong>CGPA</strong>3.77 / 4.00</li><li><strong>Honors</strong>High Honor status across all four completed semesters</li><li><strong>Rank</strong>3rd of 65 in department · top 2.7% of Engineering Faculty</li><li><strong>Roles</strong>Mathematics TA · Peer Advisor (2025–2026)</li></ul><div class="education-details"><section class="detail"><span class="eyebrow">Issued by Özyeğin University · June 2026</span><h4>High Honor Standing</h4><p>Achieved High Honor academic standing in all four semesters to date, clearing the required ≥3.50 GPA bar with zero failing grades every single term.</p><div class="gpa-line" aria-label="Semester GPA progression: 3.63, 3.82, 3.73, and 3.91"><div class="gpa-term" style="--height:55%"><b>3.63</b><span>F24/25</span></div><div class="gpa-term" style="--height:76%"><b>3.82</b><span>S24/25</span></div><div class="gpa-term" style="--height:65%"><b>3.73</b><span>F25/26</span></div><div class="gpa-term" style="--height:95%"><b>3.91</b><span>S25/26</span></div></div></section><section class="detail"><span class="eyebrow">Issued by Özyeğin University · Aug 2025</span><h4>Academic Merit Scholarship</h4><p>One of only three freshmen selected across the entire Faculty of Engineering, ranked purely by cumulative GPA. Provides a 25% tuition waiver for 2025–2026, stacking with an existing 50% scholarship for 75% total coverage.</p></section><section class="detail"><span class="eyebrow">Özyeğin University · Sep 2025 to June 2026</span><h4>Peer Advisor</h4><p>Mentored approximately 20 first-year AI &amp; Data Engineering students, maintained a curated GitHub repository of course materials and academic guides, and ran an active advising channel for coursework, programs, and research opportunities.</p></section><section class="detail"><span class="eyebrow">ETS · February 2026</span><h4>TOEFL iBT · 110 / 120</h4><p>CEFR C1 proficiency, with perfect section scores in Listening and Writing.</p></section></div></article><article class="edu-item"><span class="edu-year">2019 – 2024</span><h3>High School Diploma</h3><div class="institution"><img class="eyuboglu-logo" src="https://www.eyuboglu.k12.tr/images/eyuboglu.webp" alt="Eyüboğlu Eğitim Kurumları logo" loading="lazy"><p><a href="https://www.eyuboglu.k12.tr/en" target="_blank" rel="noopener">Eyüboğlu Science and Technology High School, Istanbul</a></p></div></article></div></div></section>
   </main>
 
-  <footer class="contact" id="contact"><div class="contact-shell"><div><span class="section-number" style="color:var(--gold)">Open channel</span><h2>Research conversations start here.</h2><p class="contact-copy">If you're working on anything in this space, I'd like to hear about it.</p><p class="contact-threads"><span>LLM Security</span><span>Trustworthy Language Models</span><span>Adversarial NLP</span></p></div><aside class="contact-card"><div class="contact-links"><a href="mailto:batu.masak@ozu.edu.tr"><span>batu.masak [at] ozu.edu.tr</span><span>↗</span></a><a href="mailto:batukoraymasak@gmail.com"><span>batukoraymasak [at] gmail.com</span><span>↗</span></a><a href="https://github.com/batukoray" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a><a href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a></div><p class="contact-note">Istanbul, Turkey · 2026</p></aside></div></footer>
+  <footer class="contact" id="contact"><div class="contact-shell"><div><span class="section-number" style="color:var(--gold)">Open channel</span><h2>Reach out!</h2><p class="contact-copy">If you're working on anything in this space, I'd like to hear about it.</p><p class="contact-threads"><span>LLM Security</span><span>Trustworthy Language Models</span><span>Adversarial NLP</span></p></div><aside class="contact-card"><div class="contact-links"><a href="mailto:batu.masak@ozu.edu.tr"><span>batu.masak [at] ozu.edu.tr</span><span>↗</span></a><a href="mailto:batukoraymasak@gmail.com"><span>batukoraymasak [at] gmail.com</span><span>↗</span></a><a href="https://github.com/batukoray" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a><a href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a></div><p class="contact-note">Istanbul, Turkey · 2026</p></aside></div></footer>
 
+  <div class="selection-marquee" id="selection-marquee" aria-hidden="true"></div>
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true"><svg viewBox="0 0 48 58"><path class="cursor-shadow" d="M5 4v34l9-8 6 17 8-4-7-17h15z"></path><path class="cursor-arrow" d="M5 4v34l9-8 6 17 8-4-7-17h15z"></path></svg></div>
 
+  <script src="/translations.js"></script>
   <script>
     const header = document.getElementById('site-header');
-    const setHeader = () => header.classList.toggle('show', window.scrollY > 45);
+    const languageSwitcher = document.querySelector('[data-language-switcher]');
+    const languageHome = document.querySelector('[data-language-home]');
+    const languageSlot = document.querySelector('[data-language-slot]');
+    let languageInHeader = false;
+    let languageTransitionTimer;
+    let languageTransitionId = 0;
+    const setHeader = () => {
+      const isScrolled = window.scrollY > 45;
+      header.classList.toggle('show', isScrolled);
+      if (isScrolled === languageInHeader) return;
+      languageInHeader = isScrolled;
+      const transitionId = ++languageTransitionId;
+      languageSwitcher?.classList.add('is-fading');
+      window.clearTimeout(languageTransitionTimer);
+      languageTransitionTimer = window.setTimeout(() => {
+        if (transitionId !== languageTransitionId || !languageSwitcher) return;
+        languageSwitcher.classList.toggle('language-switcher-floating', !isScrolled);
+        languageSwitcher.classList.toggle('language-switcher-header', isScrolled);
+        (isScrolled ? languageSlot : languageHome)?.append(languageSwitcher);
+        window.requestAnimationFrame(() => {
+          if (transitionId === languageTransitionId) languageSwitcher.classList.remove('is-fading');
+        });
+      }, 200);
+    };
     window.addEventListener('scroll', setHeader, { passive: true });
     setHeader();
 
@@ -416,66 +492,66 @@
     const portraitOptions = [
       {
         src: '/images/batu-library-picture.jpg',
-        alt: 'Batu in front of his library',
+        altKey: 'portrait.library.alt',
         width: 2048,
         height: 2048,
-        location: 'Istanbul, Turkey',
-        date: 'July 2026',
-        description: 'Batu in front of his library.'
+        locationKey: 'portrait.library.location',
+        dateKey: 'portrait.library.date',
+        descriptionKey: 'portrait.library.description'
       },
       {
         src: '/images/batu-teaching-eulers-identity.png',
-        alt: 'Batu teaching Euler’s identity through Taylor series',
+        altKey: 'portrait.teaching.alt',
         width: 1390,
         height: 1392,
-        location: 'Mathematics teaching',
-        date: 'Euler’s identity',
-        description: 'Teaching Euler’s identity through Taylor series.'
+        locationKey: 'portrait.teaching.location',
+        dateKey: 'portrait.teaching.date',
+        descriptionKey: 'portrait.teaching.description'
       },
       {
         src: '/images/batu-with-cat.jpeg',
-        alt: 'Batu with a cat at Özyeğin University',
+        altKey: 'portrait.campusCat.alt',
         width: 1127,
         height: 1127,
-        location: 'Özyeğin University',
-        date: 'February 2026',
-        description: 'Batu with a cat at Özyeğin University.'
+        locationKey: 'portrait.campusCat.location',
+        dateKey: 'portrait.campusCat.date',
+        descriptionKey: 'portrait.campusCat.description'
       },
       {
         src: '/images/batu-with-cat-greece.jpg',
-        alt: 'Batu with a cat by the sea in Greece',
+        altKey: 'portrait.greeceCat.alt',
         width: 1782,
         height: 1784,
-        location: 'Greece',
-        date: 'By the sea',
-        description: 'Batu with a cat by the sea in Greece.'
+        locationKey: 'portrait.greeceCat.location',
+        dateKey: 'portrait.greeceCat.date',
+        descriptionKey: 'portrait.greeceCat.description'
       },
       {
         src: '/images/batu-suited.png',
-        alt: 'Batu in a suit, photographed in a mirror',
+        altKey: 'portrait.suited.alt',
         width: 878,
         height: 880,
-        location: 'Portrait',
-        date: 'Suit and tie',
-        description: 'Batu in a suit, photographed in a mirror.'
+        locationKey: 'portrait.suited.location',
+        dateKey: 'portrait.suited.date',
+        descriptionKey: 'portrait.suited.description'
       },
       {
         src: '/images/batu-next-to-eiffel.png',
-        alt: 'Batu beside the Eiffel Tower in Paris, France',
+        altKey: 'portrait.eiffel.alt',
         width: 1278,
         height: 1280,
-        location: 'Paris, France',
-        date: 'July 2025',
-        description: 'Batu beside the Eiffel Tower in Paris.'
+        locationKey: 'portrait.eiffel.location',
+        dateKey: 'portrait.eiffel.date',
+        descriptionKey: 'portrait.eiffel.description'
       },
       {
         src: '/images/batu-eray-paris.png',
-        alt: 'Batu Koray Masak, on the left, with his best pal Eray in Paris, France',
+        altKey: 'portrait.paris.alt',
         width: 1090,
         height: 1092,
-        location: 'Paris, France',
-        date: 'July 2025',
-        description: 'Paris, France. Batu, on the left, with his best pal Eray.'
+        locationKey: 'portrait.paris.location',
+        dateKey: 'portrait.paris.date',
+        descriptionKey: 'portrait.paris.description'
       }
     ];
     if (portraitImage) {
@@ -489,12 +565,12 @@
 
       const renderPortrait = (portrait) => {
         portraitImage.src = portrait.src;
-        portraitImage.alt = portrait.alt;
+        portraitImage.alt = window.siteLanguage.t(portrait.altKey);
         portraitImage.width = portrait.width;
         portraitImage.height = portrait.height;
-        portraitLocation.textContent = portrait.location;
-        portraitDate.textContent = portrait.date;
-        portraitDescription.textContent = portrait.description;
+        portraitLocation.textContent = window.siteLanguage.t(portrait.locationKey);
+        portraitDate.textContent = window.siteLanguage.t(portrait.dateKey);
+        portraitDescription.textContent = window.siteLanguage.t(portrait.descriptionKey);
       };
 
       const chooseNextPortraitIndex = () => {
@@ -543,6 +619,7 @@
       };
 
       renderPortrait(portraitOptions[portraitIndex]);
+      window.refreshPortraitLanguage = () => renderPortrait(portraitOptions[portraitIndex]);
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         preloadNextPortrait();
         window.setInterval(advancePortrait, slideDuration);
@@ -561,12 +638,14 @@
         const committedAt = latestCommit?.commit?.committer?.date;
         if (!committedAt) throw new Error('Latest GitHub commit has no committer date');
 
-        const monthYear = new Intl.DateTimeFormat('en', {
+        window.siteLastUpdatedAt = committedAt;
+        const monthYear = new Intl.DateTimeFormat(window.siteLanguage?.locale() || 'en-US', {
           month: 'long',
           year: 'numeric',
           timeZone: 'UTC'
         }).format(new Date(committedAt));
         lastUpdatedDate.textContent = monthYear;
+        window.applySiteLanguage?.();
       })
       .catch(() => {
         // Keep the server-rendered value if the visitor is offline or rate-limited.
@@ -616,10 +695,16 @@
 
       const updatePdfControls = () => {
         const secondPage = pdfDocument && currentSpread + 1 <= pdfDocument.numPages;
-        pdfCurrent.textContent = secondPage ? `${currentSpread}–${currentSpread + 1}` : `${currentSpread}`;
+        const pageRange = secondPage ? `${currentSpread}–${currentSpread + 1}` : `${currentSpread}`;
+        const totalPages = pdfDocument?.numPages || 102;
+        const pagerTemplate = window.siteLanguage?.t('notes.pager') || '1–2 of 102 pages';
+        pdfCurrent.textContent = pagerTemplate.replace('1–2', pageRange).replace('102', `${totalPages}`);
+        pdfTotal.textContent = '';
+        pdfTotal.hidden = true;
         pdfPrevious.disabled = currentSpread <= 1;
         pdfNext.disabled = !pdfDocument || currentSpread + 1 >= pdfDocument.numPages;
       };
+      window.refreshPdfLanguage = updatePdfControls;
 
       const renderPdfSpread = async () => {
         if (!pdfDocument) return;
@@ -696,6 +781,81 @@
     }
 
     if (window.matchMedia('(pointer: fine)').matches) {
+      const marquee = document.getElementById('selection-marquee');
+      const marqueeExcluded = 'a, button, input, textarea, select, option, [contenteditable], img, canvas, video, audio, iframe, svg';
+      let pointerDown = false;
+      let marqueeStarted = false;
+      let marqueeStartX = 0;
+      let marqueeStartY = 0;
+      let marqueeFrame = 0;
+      let marqueeResetTimer = 0;
+
+      const clearMarqueeGeometry = () => {
+        marquee.style.left = '';
+        marquee.style.top = '';
+        marquee.style.width = '';
+        marquee.style.height = '';
+      };
+
+      const resetMarquee = () => {
+        pointerDown = false;
+        marqueeStarted = false;
+        window.cancelAnimationFrame(marqueeFrame);
+        window.clearTimeout(marqueeResetTimer);
+        marquee.classList.remove('is-active');
+        clearMarqueeGeometry();
+      };
+
+      const finishMarquee = () => {
+        pointerDown = false;
+        window.cancelAnimationFrame(marqueeFrame);
+        if (!marqueeStarted) return;
+        marqueeStarted = false;
+        marquee.classList.remove('is-active');
+        window.clearTimeout(marqueeResetTimer);
+        marqueeResetTimer = window.setTimeout(clearMarqueeGeometry, 140);
+      };
+
+      const updateMarquee = (clientX, clientY) => {
+        const left = Math.min(marqueeStartX, clientX);
+        const top = Math.min(marqueeStartY, clientY);
+        marquee.style.left = `${left}px`;
+        marquee.style.top = `${top}px`;
+        marquee.style.width = `${Math.abs(clientX - marqueeStartX)}px`;
+        marquee.style.height = `${Math.abs(clientY - marqueeStartY)}px`;
+      };
+
+      document.addEventListener('pointerdown', (event) => {
+        if (event.pointerType !== 'mouse' || event.button !== 0) return;
+        const target = event.target instanceof Element ? event.target : null;
+        if (!target || target.closest(marqueeExcluded)) return;
+        resetMarquee();
+        pointerDown = true;
+        marqueeStartX = event.clientX;
+        marqueeStartY = event.clientY;
+      });
+
+      window.addEventListener('pointermove', (event) => {
+        if (!pointerDown || event.pointerType !== 'mouse') return;
+        const distance = Math.max(Math.abs(event.clientX - marqueeStartX), Math.abs(event.clientY - marqueeStartY));
+        if (!marqueeStarted && distance < 6) return;
+        if (!marqueeStarted) {
+          marqueeStarted = true;
+          marquee.classList.add('is-active');
+        }
+        const clientX = event.clientX;
+        const clientY = event.clientY;
+        window.cancelAnimationFrame(marqueeFrame);
+        marqueeFrame = window.requestAnimationFrame(() => updateMarquee(clientX, clientY));
+      }, { passive: false });
+
+      window.addEventListener('pointerup', finishMarquee, { passive: true });
+      window.addEventListener('pointercancel', finishMarquee, { passive: true });
+      window.addEventListener('blur', resetMarquee);
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') resetMarquee();
+      });
+
       const cursor = document.getElementById('custom-cursor');
       document.documentElement.classList.add('cursor-active');
       window.addEventListener('mousemove', ({ clientX, clientY }) => {
@@ -704,7 +864,7 @@
         const distance = Math.hypot(dx, dy) || 1;
         const shadowX = 3 + Math.round((dx / distance) * 6);
         const shadowY = 6;
-        cursor.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`;
+        cursor.style.transform = `translate3d(${clientX - 5}px, ${clientY - 4}px, 0)`;
         cursor.style.setProperty('--shadow-x', `${shadowX}px`);
         cursor.style.setProperty('--shadow-y', `${shadowY}px`);
         cursor.classList.add('is-visible');
