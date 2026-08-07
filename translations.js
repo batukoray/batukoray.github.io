@@ -133,14 +133,11 @@ window.siteTranslations = {
     "work.heading": { en: "Selected Work", tr: "Seçilmiş İşler", zh: "精选作品" },
     "work.cpi.tag": { en: "Research · Data Engineering", tr: "Araştırma · Veri Mühendisliği", zh: "研究 · 数据工程" },
     "work.cpi.title": { en: "CPI-Weighted Web Price Indexing", tr: "TÜFE Ağırlıklı Web Tabanlı Fiyat Endekslemesi", zh: "CPI 加权的网络价格指数" },
-    "work.cpi.body": { en: "Co-authored a paper submitted to ASYU 2026 on CPI-weighted web-based price indexing for Türkiye, supported by large-scale scraping pipelines spanning 1.27M+ product records.", tr: "Türkiye için TÜFE ağırlıklı web tabanlı fiyat endekslemesi üzerine, 1.27 milyondan fazla ürün kaydını kapsayan büyük ölçekli kazıma hatlarıyla desteklenen ve ASYU 2026'ya gönderilen bir makalenin ortak yazarıyım.", zh: "合著论文，主题是面向土耳其的 CPI 加权网络价格指数，背后是覆盖 127 万条以上商品记录的大规模抓取管线，已投稿 ASYU 2026。" },
-    "work.cpi.status": { en: "Submitted · ASYU 2026", tr: "Gönderildi · ASYU 2026", zh: "已投稿 · ASYU 2026" },
-    "work.llama.tag": { en: "NLP · Systems", tr: "NLP · Sistemler", zh: "NLP · 系统" },
+    "work.cpi.body": { en: "Co-authored a paper accepted to ASYU 2026 on CPI-weighted web price indexing for Türkiye, where I wrote the Literature Review section. I also personally built 7 of the scrapers behind the 1.27M+ product record pipeline, as part of an 18-person team under Prof. Olcay Taner Yıldız.", tr: "Türkiye için TÜFE ağırlıklı web fiyat endekslemesi üzerine ASYU 2026'ya kabul edilen bir makalenin ortak yazarıyım; Literatür Taraması bölümünü ben yazdım. Ayrıca 1.27 milyondan fazla ürün kaydını toplayan hattın 7 kazıyıcısını bizzat geliştirdim; bu çalışma Prof. Olcay Taner Yıldız danışmanlığında 18 kişilik bir ekibin parçasıydı.", zh: "合著论文，主题是面向土耳其的 CPI 加权网络价格指数，已被 ASYU 2026 录用，我负责撰写其中的文献综述部分。我还亲自开发了负责收集 127 万余条商品记录的 7 个抓取器，是 Olcay Taner Yıldız 教授指导的 18 人团队的一员。" },
+    "work.cpi.status": { en: "Accepted · ASYU 2026", tr: "Kabul Edildi · ASYU 2026", zh: "已录用 · ASYU 2026" },
+    "work.llama.tag": { en: "NLP · LLMs", tr: "NLP · LLM", zh: "NLP · 大语言模型" },
     "work.llama.title": { en: "LLaMA From Scratch", tr: "LLaMA From Scratch", zh: "LLaMA From Scratch" },
-    "work.llama.body": { en: "Ground-up implementation of the LLaMA architecture for the CS449 NLP course project at Özyeğin University.", tr: "Özyeğin Üniversitesi'ndeki CS449 NLP ders projesi için LLaMA mimarisinin sıfırdan uygulanması.", zh: "为 Özyeğin 大学 CS449 自然语言处理课程项目从零实现 LLaMA 架构。" },
-    "work.elpulpo.tag": { en: "Productivity · MCP", tr: "Üretkenlik · MCP", zh: "效率工具 · MCP" },
-    "work.elpulpo.title": { en: "El Pulpo", tr: "El Pulpo", zh: "El Pulpo" },
-    "work.elpulpo.body": { en: "Personal terminal productivity system with MCP integration for tasks, notes, and workflows.", tr: "Görevler, notlar ve iş akışları için MCP entegrasyonuna sahip kişisel terminal üretkenlik sistemi.", zh: "个人终端效率系统，集成 MCP，管理任务、笔记和工作流。" },
+    "work.llama.body": { en: "A LLaMA-2-style decoder-only transformer with RoPE, masked self-attention, RMSNorm, and SwiGLU feed-forward layers, built with a classmate from CS449 (Introduction to Natural Language Processing) on our existing SequenceProcessing and ComputationalGraph primitives.", tr: "RoPE, maskeli self-attention, RMSNorm ve SwiGLU ileri beslemeli katmanlara sahip, CS449 (Doğal Dil İşlemeye Giriş) dersinden bir arkadaşımla kendi SequenceProcessing ve ComputationalGraph altyapımız üzerine inşa ettiğimiz LLaMA-2 tarzı bir decoder-only transformer.", zh: "一个 LLaMA-2 风格的纯解码器 Transformer，包含 RoPE、掩码自注意力、RMSNorm 和 SwiGLU 前馈层，与一位 CS449（自然语言处理导论）课程同学合作，构建在我们已有的 SequenceProcessing 和 ComputationalGraph 基础设施之上。" },
     "work.hadi.tag": { en: "TypeScript · Terminal UI", tr: "TypeScript · Terminal Arayüzü", zh: "TypeScript · 终端界面" },
     "work.hadi.title": { en: "HaDi: Hacker Dispatch", tr: "HaDi: Hacker Dispatch", zh: "HaDi: Hacker Dispatch" },
     "work.hadi.body": { en: "A CLI tool for reading Hacker News through a stylized sci-fi terminal interface.", tr: "Hacker News'i stilize bir bilimkurgu terminal arayüzünden okumak için bir CLI aracı.", zh: "一个 CLI 工具，用风格化的科幻终端界面阅读 Hacker News。" },
@@ -298,15 +295,12 @@ window.siteTranslations = {
     ['.project-list > :nth-child(2) .project-type', 'work.llama.tag'],
     ['.project-list > :nth-child(2) h3', 'work.llama.title'],
     ['.project-list > :nth-child(2) p', 'work.llama.body'],
-    ['.project-list > :nth-child(3) .project-type', 'work.elpulpo.tag'],
-    ['.project-list > :nth-child(3) h3', 'work.elpulpo.title'],
-    ['.project-list > :nth-child(3) p', 'work.elpulpo.body'],
-    ['.project-list > :nth-child(4) .project-type', 'work.hadi.tag'],
-    ['.project-list > :nth-child(4) h3', 'work.hadi.title'],
-    ['.project-list > :nth-child(4) p', 'work.hadi.body'],
-    ['.project-list > :nth-child(5) .project-type', 'work.korado.tag'],
-    ['.project-list > :nth-child(5) h3', 'work.korado.title'],
-    ['.project-list > :nth-child(5) p', 'work.korado.body'],
+    ['.project-list > :nth-child(3) .project-type', 'work.hadi.tag'],
+    ['.project-list > :nth-child(3) h3', 'work.hadi.title'],
+    ['.project-list > :nth-child(3) p', 'work.hadi.body'],
+    ['.project-list > :nth-child(4) .project-type', 'work.korado.tag'],
+    ['.project-list > :nth-child(4) h3', 'work.korado.title'],
+    ['.project-list > :nth-child(4) p', 'work.korado.body'],
     ['.notes .section-number', 'notes.eyebrow'],
     ['#notes-title', 'notes.heading'],
     ['.notes .section-heading p', 'notes.subheading'],
@@ -399,6 +393,14 @@ window.siteTranslations = {
       currentWorkBody.innerHTML = linkedCopy('now.kusrp.body', [
         { labels: { en: 'SPADE (Security, Privacy and Data Engineering) Lab', tr: 'SPADE (Güvenlik, Gizlilik ve Veri Mühendisliği) Laboratuvarı', zh: 'SPADE（安全、隐私与数据工程）实验室' }, href: 'https://mysite.ku.edu.tr/emregursoy/spade-lab/' },
         { labels: { en: 'Koç University', tr: 'Koç Üniversitesi', zh: 'Koç 大学' }, href: 'https://www.ku.edu.tr/en/' }
+      ]);
+    }
+
+    const cpiBody = document.querySelector('.project-list > :nth-child(1) p');
+    if (cpiBody) {
+      cpiBody.innerHTML = linkedCopy('work.cpi.body', [
+        { labels: { en: 'ASYU 2026', tr: 'ASYU 2026', zh: 'ASYU 2026' }, href: 'https://asyu2026.ozyegin.edu.tr/en' },
+        { labels: { en: 'Prof. Olcay Taner Yıldız', tr: 'Prof. Olcay Taner Yıldız', zh: 'Olcay Taner Yıldız' }, href: 'https://www.ozyegin.edu.tr/en/faculty/olcayyildiz' }
       ]);
     }
   };
