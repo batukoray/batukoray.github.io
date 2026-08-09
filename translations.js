@@ -89,7 +89,7 @@ window.siteTranslations = {
     "signal.gpa.body": { en: "Maintained while double-majoring in AI & Data Engineering and Computer Science.", tr: "Yapay Zeka ve Veri Mühendisliği ile Bilgisayar Mühendisliği çift ana dallarını sürdürürken korundu.", zh: "在攻读人工智能与数据工程、计算机科学双专业期间保持不变。" },
     "signal.rank.label": { en: "Department rank", tr: "Bölüm sıralaması", zh: "系内排名" },
     "signal.rank.caption": { en: "AI & Data Engineering", tr: "Yapay Zekâ ve Veri Mühendisliği", zh: "人工智能与数据工程" },
-    "signal.rank.body": { en: "Currently ranked 3rd in department.", tr: "Şu anda bölümde 3. sırada.", zh: "目前系内排名第 3。" },
+    "signal.rank.body": { en: "Consistently ranked in the top 3 of my department throughout university.", tr: "Üniversite hayatım boyunca bölümde sürekli ilk 3'te yer aldım.", zh: "大学期间，我在系内排名始终保持在前 3 名。" },
     "signal.faculty.label": { en: "Faculty standing", tr: "Fakülte sıralaması", zh: "学院排名" },
     "signal.faculty.caption": { en: "Engineering Faculty", tr: "Mühendislik Fakültesi", zh: "工程学院" },
     "signal.faculty.body": { en: "Top 2.7% across 1,727 engineering students.", tr: "1,727 mühendislik öğrencisi arasında ilk %2.7.", zh: "在 1,727 名工程学院学生中位列前 2.7%。" },
