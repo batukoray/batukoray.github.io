@@ -178,6 +178,25 @@
     .button.primary { background: var(--gold); }
     .button.notes-cta { background: var(--ink); color: var(--paper-strong); }
     .button.github-cta { background: var(--red); border-color: var(--ink); color: var(--paper-strong); }
+    .button.primary.personal-cta { --magnet-x: 0px; --magnet-y: 0px; position: relative; isolation: isolate; overflow: hidden; padding-right: 2.2rem; border-color: var(--ink); color: var(--paper-strong); background: #090908; box-shadow: 3px 3px 0 rgba(23,36,50,.3); transform: translate3d(var(--magnet-x), var(--magnet-y), 0); animation: personal-cta-shadow 3.2s ease-in-out infinite; transition: transform .24s cubic-bezier(.2,.8,.2,1), box-shadow .24s ease; }
+    .personal-cta::before { content: ""; position: absolute; z-index: 0; inset: 4px; border: 1px solid rgba(245,240,230,.34); background: rgba(245,240,230,.05); opacity: 0; transform: scale(.985); transition: opacity .2s ease, transform .35s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+    .personal-cta-space { position: absolute; z-index: 0; inset: 0; overflow: hidden; opacity: .78; background: linear-gradient(108deg, transparent 0%, transparent 48%, rgba(200,93,49,.14) 100%), radial-gradient(circle at 67% 27%, rgba(245,240,230,.92) 0 1px, transparent 1.8px), radial-gradient(circle at 75% 72%, rgba(245,240,230,.82) 0 1px, transparent 1.8px), radial-gradient(circle at 87% 42%, rgba(245,240,230,.8) 0 1px, transparent 1.8px), radial-gradient(circle at 60% 66%, rgba(200,93,49,.9) 0 1px, transparent 1.8px), radial-gradient(circle at 92% 80%, rgba(245,240,230,.7) 0 1px, transparent 1.8px); background-size: 100% 100%, 82px 54px, 108px 72px, 126px 64px, 96px 86px, 142px 94px; animation: personal-cta-space-drift 11s linear infinite, personal-cta-space-breathe 4.8s ease-in-out infinite; pointer-events: none; }
+    .personal-cta-space::before { content: ""; position: absolute; right: .35rem; top: 50%; width: 4.5rem; height: 1.25rem; border: 1px solid rgba(245,240,230,.42); border-radius: 50%; transform: translateY(-50%) rotate(-18deg); animation: personal-cta-orbit 5.5s ease-in-out infinite; }
+    .personal-cta-space::after { content: ""; position: absolute; right: 1.85rem; top: 50%; width: .36rem; height: .36rem; border-radius: 50%; background: var(--gold); box-shadow: 0 0 .45rem rgba(231,191,72,.9); transform: translateY(-50%); animation: personal-cta-planet 3.6s ease-in-out infinite; }
+    .personal-cta-sweep { position: absolute; z-index: 1; top: -35%; bottom: -35%; left: -28%; width: 24%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.58), transparent); transform: skewX(-18deg) translateX(-180%); animation: personal-cta-sweep 3.4s cubic-bezier(.45,.05,.55,.95) infinite; pointer-events: none; }
+    .personal-cta-label, .personal-cta-alt { position: relative; z-index: 2; display: inline-block; white-space: nowrap; transition: transform .42s cubic-bezier(.2,.8,.2,1), opacity .28s ease; }
+    .personal-cta-alt { position: absolute; left: .9rem; top: 50%; transform: translateY(120%); opacity: 0; }
+    .personal-cta:hover { transform: translate3d(var(--magnet-x), calc(var(--magnet-y) - 2px), 0); box-shadow: 6px 6px 0 rgba(23,36,50,.3); }
+    .personal-cta:hover::before { opacity: 1; transform: scale(1); }
+    .personal-cta:hover .personal-cta-label { transform: translateY(-120%); opacity: 0; }
+    .personal-cta:hover .personal-cta-alt { transform: translateY(-50%); opacity: 1; }
+    .personal-cta:active { transform: translate3d(0, 1px, 0); box-shadow: 2px 2px 0 rgba(23,36,50,.3); }
+    @keyframes personal-cta-shadow { 0%, 100% { box-shadow: 3px 3px 0 rgba(23,36,50,.3); } 50% { box-shadow: 6px 6px 0 rgba(23,36,50,.38); } }
+    @keyframes personal-cta-sweep { 0%, 12% { opacity: 0; transform: skewX(-18deg) translateX(-180%); } 20% { opacity: .95; } 56% { opacity: .55; transform: skewX(-18deg) translateX(650%); } 64%, 100% { opacity: 0; transform: skewX(-18deg) translateX(650%); } }
+    @keyframes personal-cta-space-drift { 0%, 100% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; } 50% { background-position: 0 0, 7px -4px, -8px 5px, 6px 3px, -5px -6px, 9px 4px; } }
+    @keyframes personal-cta-space-breathe { 0%, 100% { opacity: .58; } 50% { opacity: .88; } }
+    @keyframes personal-cta-orbit { 0%, 100% { transform: translateY(-50%) rotate(-18deg) scaleX(.92); opacity: .44; } 50% { transform: translateY(-50%) rotate(-10deg) scaleX(1.04); opacity: .78; } }
+    @keyframes personal-cta-planet { 0%, 100% { transform: translateY(-50%) translateX(0); opacity: .72; } 50% { transform: translateY(-50%) translateX(-7px); opacity: 1; } }
 
     .hero-aside { align-self: center; max-width: 505px; width: 100%; justify-self: end; transform: translateY(clamp(-5.5rem, -5vw, -2.5rem)); }
     .portrait-frame { position: relative; padding: clamp(.65rem, 1vw, .9rem); background: var(--paper-strong); border: 1px solid var(--ink); box-shadow: 11px 11px 0 rgba(23,36,50,.18); }
@@ -374,7 +393,7 @@
       .contact h2 { font-size: clamp(3.6rem, 17vw, 5.4rem); }
     }
     @media (max-width: 400px) { .header-nav a:nth-child(6) { display: none; } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .personal-cta, .personal-cta::before, .personal-cta-space, .personal-cta-space::before, .personal-cta-space::after, .personal-cta-sweep { animation: none; transform: none; } .personal-cta::before, .personal-cta-label, .personal-cta-alt { transition: none; } }
     .custom-cursor { position: fixed; z-index: 1000; top: 0; left: 0; width: 36px; height: 44px; pointer-events: none; opacity: 0; transform: translate3d(-100px, -100px, 0); transition: opacity .12s ease; }
     .custom-cursor.is-visible { opacity: 1; }
     .custom-cursor svg { display: block; width: 100%; height: 100%; overflow: visible; transform-box: fill-box; transform-origin: 5px 4px; transition: transform .15s cubic-bezier(.2,.75,.25,1); }
@@ -411,8 +430,8 @@
     <section class="hero" id="top" aria-labelledby="page-title">
       <div class="hero-copy">
         <h1 id="page-title"><span class="given-name">Batu Koray</span><span class="name-line"><span class="surname">Masak</span><span class="last-updated" id="last-updated">(Last updated · <span class="last-updated-date" id="last-updated-date">August 2026</span>)</span></span></h1>
-        <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>.<span class="hero-lead-current">Current work: getting fine-tuned language models to admit what was in their training data. They deny everything.</span></p>
-        <div class="actions"><a class="button primary" href="#contact">Get in Touch</a><a class="button notes-cta" href="#notes">Academic Notes</a><a class="button github-cta" href="https://github.com/batukoray" target="_blank" rel="noopener">GitHub Profile</a></div>
+        <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>.<span class="hero-lead-current">I currently conduct research on Membership Inference Attacks in the domain of Large Language Models at SPADE Lab, a topic in AI Security that is becoming more important by the day.</span></p>
+        <div class="actions"><a class="button github-cta" href="https://github.com/batukoray" target="_blank" rel="noopener">GitHub Profile</a><a class="button primary personal-cta" href="/personal/"><span class="personal-cta-space" aria-hidden="true"></span><span class="personal-cta-sweep" aria-hidden="true"></span><span class="personal-cta-label">For A More Personal Website...</span><span class="personal-cta-alt" aria-hidden="true">Open personal page</span></a></div>
       </div>
       <aside class="hero-aside" aria-label="Current position">
         <figure class="portrait-frame"><div class="portrait-stage" data-portrait-stage><img src="/images/batu-library-picture.jpg" alt="Me in front of my library" width="2048" height="2048" data-portrait-image></div><figcaption data-portrait-caption></figcaption></figure>
@@ -766,7 +785,21 @@
 
     if (window.matchMedia('(pointer: fine)').matches) {
       const cursor = document.getElementById('custom-cursor');
+      const personalCta = document.querySelector('.personal-cta');
       document.documentElement.classList.add('cursor-active');
+      if (personalCta && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        personalCta.addEventListener('pointermove', (event) => {
+          const bounds = personalCta.getBoundingClientRect();
+          const x = event.clientX - bounds.left;
+          const y = event.clientY - bounds.top;
+          personalCta.style.setProperty('--magnet-x', `${((x / bounds.width) - .5) * 6}px`);
+          personalCta.style.setProperty('--magnet-y', `${((y / bounds.height) - .5) * 4}px`);
+        }, { passive: true });
+        personalCta.addEventListener('pointerleave', () => {
+          personalCta.style.setProperty('--magnet-x', '0px');
+          personalCta.style.setProperty('--magnet-y', '0px');
+        });
+      }
       window.addEventListener('mousemove', ({ clientX, clientY }) => {
         const dx = clientX - window.innerWidth / 2;
         const dy = clientY - window.innerHeight / 2;
