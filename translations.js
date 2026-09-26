@@ -24,12 +24,12 @@ window.siteTranslations = {
       zh: "你好！我是 Koç 大学安全、隐私与数据工程（SPADE）实验室的本科研究员，同时在 Özyeğin 大学攻读人工智能与数据工程、计算机科学双学位。"
     },
     "hero.currentWork": {
-      en: "My current work: getting fine-tuned language models to admit what was in their training data. They deny everything.",
+      en: "I currently conduct research on Membership Inference Attacks in the domain of Large Language Models at SPADE Lab, a topic in AI Security that is becoming more important by the day.",
       tr: "Mevcut çalışmam: fine-tunelanmış dil modellerine eğitim verilerinde ne olduğunu itiraf ettirmek. Susmayı tercih ediyorlar.",
       zh: "我目前的工作：让微调过的语言模型交代自己的训练数据里有什么。它们矢口否认。"
     },
-    "hero.ctaContact": { en: "Get in Touch", tr: "İletişime Geçin", zh: "联系我" },
-    "hero.ctaNotes": { en: "Academic Notes", tr: "Akademik Notlar", zh: "学术笔记" },
+    "hero.ctaPersonal": { en: "For A More Personal Website...", tr: "Daha Kişisel Bir Web Sitesi İçin...", zh: "前往更个人化的网站..." },
+    "hero.ctaPersonalAlt": { en: "Open personal page", tr: "Kişisel sayfayı aç", zh: "打开个人页面" },
     "hero.ctaGithub": { en: "GitHub Profile", tr: "GitHub Profili", zh: "GitHub 主页" },
     "hero.card.logoAlt": { en: "Koç University logo", tr: "Koç Üniversitesi logosu", zh: "Koç 大学校徽" },
     "hero.card.lab": { en: "SPADE Lab", tr: "SPADE Laboratuvarı", zh: "SPADE 实验室" },
@@ -218,8 +218,8 @@ window.siteTranslations = {
     ['.header-nav a:nth-child(5)', 'nav.education'],
     ['.header-nav a:nth-child(6)', 'nav.notes'],
     ['.header-nav a:nth-child(7)', 'nav.connect'],
-    ['.actions .primary', 'hero.ctaContact'],
-    ['.actions .notes-cta', 'hero.ctaNotes'],
+    ['.actions .personal-cta-label', 'hero.ctaPersonal'],
+    ['.actions .personal-cta-alt', 'hero.ctaPersonalAlt'],
     ['.actions .github-cta', 'hero.ctaGithub'],
     ['.position-note strong a', 'hero.card.lab'],
     ['.position-note p', 'hero.card.role'],
