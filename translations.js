@@ -31,6 +31,7 @@ window.siteTranslations = {
     "hero.ctaPersonal": { en: "For A More Personal Website...", tr: "Daha Kişisel Bir Web Sitesi İçin...", zh: "前往更个人化的网站..." },
     "hero.ctaPersonalAlt": { en: "Open personal page", tr: "Kişisel sayfayı aç", zh: "打开个人页面" },
     "hero.ctaGithub": { en: "GitHub Profile", tr: "GitHub Profili", zh: "GitHub 主页" },
+    "hero.ctaBeta": { en: "For The Beta Version...", tr: "Beta Sürümü İçin...", zh: "前往测试版..." },
     "hero.card.logoAlt": { en: "Koç University logo", tr: "Koç Üniversitesi logosu", zh: "Koç 大学校徽" },
     "hero.card.lab": { en: "SPADE Lab", tr: "SPADE Laboratuvarı", zh: "SPADE 实验室" },
     "hero.card.role": {
@@ -221,6 +222,7 @@ window.siteTranslations = {
     ['.actions .personal-cta-label', 'hero.ctaPersonal'],
     ['.actions .personal-cta-alt', 'hero.ctaPersonalAlt'],
     ['.actions .github-cta', 'hero.ctaGithub'],
+    ['.actions .beta-cta-label', 'hero.ctaBeta'],
     ['.position-note strong a', 'hero.card.lab'],
     ['.position-note p', 'hero.card.role'],
     ['#track-title', 'now.heading'],
