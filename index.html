@@ -203,7 +203,7 @@
     @keyframes personal-cta-orbit { 0%, 100% { transform: translateY(-50%) rotate(-18deg) scaleX(.92); opacity: .44; } 50% { transform: translateY(-50%) rotate(-10deg) scaleX(1.04); opacity: .78; } }
     @keyframes personal-cta-planet { 0%, 100% { transform: translateY(-50%) translateX(0); opacity: .72; } 50% { transform: translateY(-50%) translateX(-7px); opacity: 1; } }
 
-    .hero-aside { align-self: center; max-width: 505px; width: 100%; justify-self: end; transform: translateY(clamp(-5.5rem, -5vw, -2.5rem)); }
+    .hero-aside { align-self: center; max-width: 505px; width: 100%; justify-self: end; transform: translateY(clamp(-3.75rem, -3.5vw, -1.25rem)); }
     .portrait-frame { position: relative; padding: clamp(.65rem, 1vw, .9rem); background: var(--paper-strong); border: 1px solid var(--ink); box-shadow: 11px 11px 0 rgba(23,36,50,.18); }
     .portrait-frame::before, .portrait-frame::after { content: ""; position: absolute; width: 10px; height: 10px; border: 1px solid var(--red); background: var(--gold); }
     .portrait-frame::before { top: -5px; left: -5px; } .portrait-frame::after { bottom: -5px; right: -5px; }
@@ -310,6 +310,7 @@
     .contact-copy { max-width: 620px; font-size: 1.04rem; }
     .contact-threads { display: flex; flex-wrap: wrap; gap: .45rem .85rem; max-width: 630px; margin: 2rem 0 0; padding: .9rem 0; border-top: 1px solid rgba(251,248,241,.45); border-bottom: 1px solid rgba(251,248,241,.45); font: 500 .62rem/1.35 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
     .contact-threads span { color: var(--gold); }
+    .contact .actions { margin-top: 1.5rem; }
     .contact-card { position: relative; min-height: min(42svh, 440px); padding: clamp(3.1rem, 4vw, 4rem) clamp(1.3rem, 3vw, 2.8rem) clamp(1.3rem, 3vw, 2.8rem); display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--ink); background: linear-gradient(145deg, var(--paper-strong) 0%, #edf5f8 100%); color: var(--ink); box-shadow: 14px 14px 0 var(--ink); }
     .contact-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 13px; background: var(--gold); border-bottom: 1px solid var(--ink); }
     .contact-card::after { content: ""; position: absolute; top: 24px; right: 24px; width: 11px; height: 11px; background: var(--red); box-shadow: 3px 3px 0 rgba(23,36,50,.22); }
@@ -394,8 +395,7 @@
     <section class="hero" id="top" aria-labelledby="page-title">
       <div class="hero-copy">
         <h1 id="page-title"><span class="given-name">Batu Koray</span><span class="name-line"><span class="surname">Masak</span><span class="last-updated" id="last-updated">(Last updated · <span class="last-updated-date" id="last-updated-date">August 2026</span>)</span></span></h1>
-        <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s Security, Privacy and Data Engineering (SPADE) Lab and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>.<span class="hero-lead-current">I currently conduct research on Membership Inference Attacks in the domain of Large Language Models at SPADE Lab, a topic in AI Security that is becoming more important by the day.</span></p>
-        <div class="actions"><a class="button primary personal-cta" href="/personal/"><span class="personal-cta-space" aria-hidden="true"></span><span class="personal-cta-sweep" aria-hidden="true"></span><span class="personal-cta-label">For A More Personal Website...</span><span class="personal-cta-alt" aria-hidden="true">Open personal page</span></a></div>
+        <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s <a href="https://mysite.ku.edu.tr/emregursoy/spade-lab/" target="_blank" rel="noopener">Security, Privacy and Data Engineering (SPADE) Lab</a> and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>.<span class="hero-lead-current">I currently conduct research on Membership Inference Attacks in the domain of Large Language Models at SPADE Lab, a topic in AI Security that is becoming more important by the day.</span></p>
       </div>
       <aside class="hero-aside" aria-label="Current position">
         <figure class="portrait-frame"><div class="portrait-stage" data-portrait-stage><img src="/images/batu-membership-inference-whiteboard.jpg" alt="Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve" width="1290" height="1290" data-portrait-image></div><figcaption data-portrait-caption></figcaption></figure>
@@ -418,7 +418,7 @@
 
   </main>
 
-  <footer class="contact" id="contact"><div class="contact-shell"><div><h2>What's next?</h2><p class="contact-copy">Always open to interesting work.</p><p class="contact-threads"><span>Membership inference</span><span>LLM privacy</span><span>Adversarial NLP</span></p></div><aside class="contact-card"><div class="contact-links"><a href="mailto:batu.masak@ozu.edu.tr"><span>batu.masak [at] ozu.edu.tr</span><span>↗</span></a><a href="mailto:batukoraymasak@gmail.com"><span>batukoraymasak [at] gmail.com</span><span>↗</span></a><a href="https://github.com/batukoray" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a><a href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a></div><p class="contact-note">Istanbul, Turkey · 2026</p></aside></div></footer>
+  <footer class="contact" id="contact"><div class="contact-shell"><div><h2>What's next?</h2><p class="contact-copy">Always open to interesting work.</p><p class="contact-threads"><span>Membership inference</span><span>LLM privacy</span><span>Adversarial NLP</span></p><div class="actions"><a class="button primary personal-cta" href="/personal/"><span class="personal-cta-space" aria-hidden="true"></span><span class="personal-cta-sweep" aria-hidden="true"></span><span class="personal-cta-label">For A More Personal Website...</span><span class="personal-cta-alt" aria-hidden="true">Open personal page</span></a></div></div><aside class="contact-card"><div class="contact-links"><a href="mailto:batu.masak@ozu.edu.tr"><span>batu.masak [at] ozu.edu.tr</span><span>↗</span></a><a href="mailto:batukoraymasak@gmail.com"><span>batukoraymasak [at] gmail.com</span><span>↗</span></a><a href="https://github.com/batukoray" target="_blank" rel="noopener"><span>GitHub</span><span>↗</span></a><a href="https://www.linkedin.com/in/batu-koray-masak/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a></div><p class="contact-note">Istanbul, Turkey · 2026</p></aside></div></footer>
 
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true"><svg viewBox="0 0 48 58"><path class="cursor-shadow" d="M5 4v34l9-8 6 17 8-4-7-17h15z"></path><path class="cursor-arrow" d="M5 4v34l9-8 6 17 8-4-7-17h15z"></path></svg></div>
 

@@ -199,8 +199,8 @@ window.siteTranslations = {
     ['.header-nav a:nth-child(4)', 'nav.focus'],
     ['.header-nav a:nth-child(5)', 'nav.work'],
     ['.header-nav a:nth-child(6)', 'nav.connect'],
-    ['.actions .personal-cta-label', 'hero.ctaPersonal'],
-    ['.actions .personal-cta-alt', 'hero.ctaPersonalAlt'],
+    ['.personal-cta-label', 'hero.ctaPersonal'],
+    ['.personal-cta-alt', 'hero.ctaPersonalAlt'],
     ['.position-note strong a', 'hero.card.lab'],
     ['.position-note p', 'hero.card.role'],
     ['#track-title', 'now.heading'],
@@ -318,6 +318,7 @@ window.siteTranslations = {
     if (heroIntro) {
       heroIntro.innerHTML = `${linkedCopy('hero.intro', [
         { labels: { en: 'Koç University', tr: 'Koç Üniversitesi', zh: 'Koç 大学' }, href: 'https://www.ku.edu.tr/en/' },
+        { labels: { en: 'Security, Privacy and Data Engineering (SPADE) Lab', tr: 'Güvenlik, Gizlilik ve Veri Mühendisliği (SPADE) Laboratuvarı', zh: '安全、隐私与数据工程（SPADE）实验室' }, href: 'https://mysite.ku.edu.tr/emregursoy/spade-lab/' },
         { labels: { en: 'Özyeğin University', tr: 'Özyeğin Üniversitesi', zh: 'Özyeğin 大学' }, href: 'https://www.ozyegin.edu.tr/en' }
       ])}<span class="hero-lead-current">${escapeHtml(translate('hero.currentWork'))}</span>`;
     }
