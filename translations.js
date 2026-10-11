@@ -320,7 +320,9 @@ window.siteTranslations = {
         { labels: { en: 'Koç University', tr: 'Koç Üniversitesi', zh: 'Koç 大学' }, href: 'https://www.ku.edu.tr/en/' },
         { labels: { en: 'Security, Privacy and Data Engineering (SPADE) Lab', tr: 'Güvenlik, Gizlilik ve Veri Mühendisliği (SPADE) Laboratuvarı', zh: '安全、隐私与数据工程（SPADE）实验室' }, href: 'https://mysite.ku.edu.tr/emregursoy/spade-lab/' },
         { labels: { en: 'Özyeğin University', tr: 'Özyeğin Üniversitesi', zh: 'Özyeğin 大学' }, href: 'https://www.ozyegin.edu.tr/en' }
-      ])}<span class="hero-lead-current">${escapeHtml(translate('hero.currentWork'))}</span>`;
+      ])}<span class="hero-lead-current">${linkedCopy('hero.currentWork', [
+        { labels: { en: 'Membership Inference Attacks', tr: 'Membership Inference Attacks', zh: 'Membership Inference Attacks' }, href: 'https://arxiv.org/pdf/1610.05820' }
+      ])}</span>`;
     }
 
     const currentWorkBody = document.querySelector('.track-list > li:nth-child(1) p');
