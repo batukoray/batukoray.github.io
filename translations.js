@@ -36,6 +36,11 @@ window.siteTranslations = {
       tr: "Lisans Araştırmacısı · Büyük Dil Modellerine Yönelik Membership Inference Attack Metodolojileri",
       zh: "本科研究员 · 针对大语言模型的成员推理攻击方法"
     },
+    "portrait.whiteboard.alt": {
+      en: "Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve",
+      tr: "Batu Koray Masak, üyelik çıkarımı notları ve ROC eğrisi bulunan bir beyaz tahtanın önünde",
+      zh: "Batu Koray Masak 站在写有成员推理笔记和 ROC 曲线的白板前"
+    },
     "portrait.library.description": { en: "Me in front of my library.", tr: "Ben, kütüphanemin önünde.", zh: "我在自己的藏书前。" },
     "portrait.library.alt": { en: "Me in front of my library", tr: "Ben, kütüphanemin önünde", zh: "我在自己的藏书前" },
     "portrait.library.location": { en: "Istanbul, Turkey", tr: "İstanbul, Türkiye", zh: "土耳其伊斯坦布尔" },

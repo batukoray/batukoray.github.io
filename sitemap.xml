@@ -4,6 +4,11 @@
   <url>
     <loc>https://batukoray.github.io/</loc>
     <image:image>
+      <image:loc>https://batukoray.github.io/images/batu-membership-inference-whiteboard.jpg</image:loc>
+      <image:title>Batu Koray Masak in front of a whiteboard with membership inference notes</image:title>
+      <image:caption>Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve.</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://batukoray.github.io/images/batu-eray-paris.png</image:loc>
       <image:title>Batu Koray Masak and Eray in Paris, France</image:title>
       <image:caption>Paris, France. Batu, on the left, with his best pal Eray.</image:caption>

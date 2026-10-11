@@ -36,6 +36,14 @@
         "image": [
           {
             "@type": "ImageObject",
+            "contentUrl": "https://batukoray.github.io/images/batu-membership-inference-whiteboard.jpg",
+            "caption": "Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve.",
+            "description": "Batu Koray Masak standing in front of a whiteboard with membership inference notes and an ROC curve.",
+            "width": 1290,
+            "height": 1290
+          },
+          {
+            "@type": "ImageObject",
             "contentUrl": "https://batukoray.github.io/images/batu-eray-paris.png",
             "caption": "Paris, France. Me, on the left, with my best pal Eray.",
             "description": "Batu Koray Masak, on the left, with his best pal Eray in Paris, France."
@@ -390,7 +398,7 @@
         <div class="actions"><a class="button primary personal-cta" href="/personal/"><span class="personal-cta-space" aria-hidden="true"></span><span class="personal-cta-sweep" aria-hidden="true"></span><span class="personal-cta-label">For A More Personal Website...</span><span class="personal-cta-alt" aria-hidden="true">Open personal page</span></a></div>
       </div>
       <aside class="hero-aside" aria-label="Current position">
-        <figure class="portrait-frame"><div class="portrait-stage" data-portrait-stage><img src="/images/batu-library-picture.jpg" alt="Me in front of my library" width="2048" height="2048" data-portrait-image></div><figcaption data-portrait-caption></figcaption></figure>
+        <figure class="portrait-frame"><div class="portrait-stage" data-portrait-stage><img src="/images/batu-membership-inference-whiteboard.jpg" alt="Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve" width="1290" height="1290" data-portrait-image></div><figcaption data-portrait-caption></figcaption></figure>
         <div class="position-note"><a class="university-link" href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/24/Ko%C3%A7_University_logo.svg/3840px-Ko%C3%A7_University_logo.svg.png" alt="Koç University logo"></a><strong><a href="https://mysite.ku.edu.tr/emregursoy/spade-lab/" target="_blank" rel="noopener">SPADE Lab</a></strong><p>Undergraduate Researcher · Methodologies of Membership Inference Attacks on Large Language Models</p></div>
       </aside>
     </section>
@@ -457,6 +465,12 @@
     const portraitStage = document.querySelector('[data-portrait-stage]');
     const portraitCaption = document.querySelector('[data-portrait-caption]');
     const portraitOptions = [
+      {
+        src: '/images/batu-membership-inference-whiteboard.jpg',
+        altKey: 'portrait.whiteboard.alt',
+        width: 1290,
+        height: 1290
+      },
       {
         src: '/images/batu-library-picture.jpg',
         altKey: 'portrait.library.alt',
