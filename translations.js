@@ -24,8 +24,8 @@ window.siteTranslations = {
     },
     "hero.currentWork": {
       en: "I currently conduct research on Membership Inference Attacks in the domain of Large Language Models at SPADE Lab, a topic in AI Security that is becoming more important by the day.",
-      tr: "Mevcut çalışmam: fine-tunelanmış dil modellerine eğitim verilerinde ne olduğunu itiraf ettirmek. Susmayı tercih ediyorlar.",
-      zh: "我目前的工作：让微调过的语言模型交代自己的训练数据里有什么。它们矢口否认。"
+      tr: "Şu anda SPADE Lab'de Büyük Dil Modelleri alanındaki Membership Inference Attacks üzerine araştırma yürütüyorum. Yapay zekâ güvenliğinin bu konusu her geçen gün daha da önem kazanıyor.",
+      zh: "我目前在 SPADE Lab 研究大型语言模型领域的成员推理攻击。这是人工智能安全中一个日益重要的课题。"
     },
     "hero.ctaPersonal": { en: "For A More Personal Website...", tr: "Daha Kişisel Bir Web Sitesi İçin...", zh: "前往更个人化的网站..." },
     "hero.ctaPersonalAlt": { en: "Open personal page", tr: "Kişisel sayfayı aç", zh: "打开个人页面" },
@@ -42,31 +42,31 @@ window.siteTranslations = {
       zh: "Batu Koray Masak 站在写有成员推理笔记和 ROC 曲线的白板前"
     },
     "portrait.library.description": { en: "Me in front of my library.", tr: "Ben, kütüphanemin önünde.", zh: "我在自己的藏书前。" },
-    "portrait.library.alt": { en: "Me in front of my library", tr: "Ben, kütüphanemin önünde", zh: "我在自己的藏书前" },
+    "portrait.library.alt": { en: "Batu Koray Masak in front of his library", tr: "Batu Koray Masak, kütüphanesinin önünde", zh: "Batu Koray Masak 在自己的藏书前" },
     "portrait.library.location": { en: "Istanbul, Turkey", tr: "İstanbul, Türkiye", zh: "土耳其伊斯坦布尔" },
     "portrait.library.date": { en: "July 2026", tr: "Temmuz 2026", zh: "2026 年 7 月" },
     "portrait.teaching.description": { en: "Teaching Euler's identity through Taylor series.", tr: "Taylor serileriyle Euler özdeşliğini anlatırken.", zh: "用泰勒级数讲解欧拉恒等式。" },
-    "portrait.teaching.alt": { en: "Me teaching Euler's identity through Taylor series", tr: "Taylor serileriyle Euler özdeşliğini anlatırken", zh: "我用泰勒级数讲解欧拉恒等式" },
+    "portrait.teaching.alt": { en: "Batu Koray Masak teaching Euler's identity through Taylor series", tr: "Batu Koray Masak, Taylor serileriyle Euler özdeşliğini anlatırken", zh: "Batu Koray Masak 用泰勒级数讲解欧拉恒等式" },
     "portrait.teaching.location": { en: "Mathematics teaching", tr: "Matematik öğretimi", zh: "数学教学" },
     "portrait.teaching.date": { en: "Euler's identity", tr: "Euler özdeşliği", zh: "欧拉恒等式" },
     "portrait.campusCat.description": { en: "Me with a cat at Özyeğin University.", tr: "Özyeğin Üniversitesi'nde bir kediyle.", zh: "我和一只猫，在 Özyeğin 大学。" },
-    "portrait.campusCat.alt": { en: "Me with a cat at Özyeğin University", tr: "Özyeğin Üniversitesi'nde bir kediyle", zh: "我和一只猫，在 Özyeğin 大学" },
+    "portrait.campusCat.alt": { en: "Batu Koray Masak with a cat at Özyeğin University", tr: "Batu Koray Masak, Özyeğin Üniversitesi'nde bir kediyle", zh: "Batu Koray Masak 和一只猫在 Özyeğin 大学" },
     "portrait.campusCat.location": { en: "Özyeğin University", tr: "Özyeğin Üniversitesi", zh: "Özyeğin 大学" },
     "portrait.campusCat.date": { en: "February 2026", tr: "Şubat 2026", zh: "2026 年 2 月" },
     "portrait.greeceCat.description": { en: "Me with a cat by the sea in Greece.", tr: "Yunanistan'da deniz kenarında bir kediyle.", zh: "我和一只猫，在希腊海边。" },
-    "portrait.greeceCat.alt": { en: "Me with a cat by the sea in Greece", tr: "Yunanistan'da deniz kenarında bir kediyle", zh: "我和一只猫，在希腊海边" },
+    "portrait.greeceCat.alt": { en: "Batu Koray Masak with a cat by the sea in Greece", tr: "Batu Koray Masak, Yunanistan'da deniz kenarında bir kediyle", zh: "Batu Koray Masak 和一只猫在希腊海边" },
     "portrait.greeceCat.location": { en: "Greece", tr: "Yunanistan", zh: "希腊" },
     "portrait.greeceCat.date": { en: "By the sea", tr: "Deniz kenarı", zh: "海边" },
     "portrait.suited.description": { en: "Me in a suit, photographed in a mirror.", tr: "Takım elbiseyle, aynada.", zh: "我身着西装，镜中留影。" },
-    "portrait.suited.alt": { en: "Me in a suit, photographed in a mirror", tr: "Takım elbiseyle, aynada", zh: "我身着西装，镜中留影" },
+    "portrait.suited.alt": { en: "Batu Koray Masak in a suit, photographed in a mirror", tr: "Batu Koray Masak, aynada takım elbiseyle çekilmiş", zh: "Batu Koray Masak 身着西装的镜中照片" },
     "portrait.suited.location": { en: "Portrait", tr: "Portre", zh: "肖像" },
     "portrait.suited.date": { en: "Suit and tie", tr: "Takım elbise ve kravat", zh: "西装与领带" },
     "portrait.eiffel.description": { en: "Me beside the Eiffel Tower in Paris.", tr: "Paris'te Eyfel Kulesi'nin yanında.", zh: "我在巴黎埃菲尔铁塔旁。" },
-    "portrait.eiffel.alt": { en: "Me beside the Eiffel Tower in Paris, France", tr: "Fransa'nın Paris şehrinde Eyfel Kulesi'nin yanında", zh: "我在法国巴黎的埃菲尔铁塔旁" },
+    "portrait.eiffel.alt": { en: "Batu Koray Masak beside the Eiffel Tower in Paris, France", tr: "Batu Koray Masak, Fransa'nın Paris şehrinde Eyfel Kulesi'nin yanında", zh: "Batu Koray Masak 在法国巴黎的埃菲尔铁塔旁" },
     "portrait.eiffel.location": { en: "Paris, France", tr: "Paris, Fransa", zh: "法国巴黎" },
     "portrait.eiffel.date": { en: "July 2025", tr: "Temmuz 2025", zh: "2025 年 7 月" },
     "portrait.paris.description": { en: "Me, on the left, with my best pal Eray.", tr: "Solda, en yakın dostum Eray ile.", zh: "我（左），与我最好的朋友 Eray。" },
-    "portrait.paris.alt": { en: "Me, on the left, with my best pal Eray", tr: "Solda, en yakın dostum Eray ile", zh: "我（左），与我最好的朋友 Eray" },
+    "portrait.paris.alt": { en: "Batu Koray Masak, on the left, with his friend Eray in Paris", tr: "Batu Koray Masak, solda, Paris'te arkadaşı Eray ile", zh: "Batu Koray Masak（左）在巴黎与朋友 Eray 合影" },
     "portrait.paris.location": { en: "Paris, France", tr: "Paris, Fransa", zh: "法国巴黎" },
     "portrait.paris.date": { en: "July 2025", tr: "Temmuz 2025", zh: "2025 年 7 月" },
     "now.heading": { en: "Current Track", tr: "Güncel Rota", zh: "当前动向" },
@@ -321,7 +321,7 @@ window.siteTranslations = {
         { labels: { en: 'Security, Privacy and Data Engineering (SPADE) Lab', tr: 'Güvenlik, Gizlilik ve Veri Mühendisliği (SPADE) Laboratuvarı', zh: '安全、隐私与数据工程（SPADE）实验室' }, href: 'https://mysite.ku.edu.tr/emregursoy/spade-lab/' },
         { labels: { en: 'Özyeğin University', tr: 'Özyeğin Üniversitesi', zh: 'Özyeğin 大学' }, href: 'https://www.ozyegin.edu.tr/en' }
       ])}<span class="hero-lead-current">${linkedCopy('hero.currentWork', [
-        { labels: { en: 'Membership Inference Attacks', tr: 'Membership Inference Attacks', zh: 'Membership Inference Attacks' }, href: 'https://arxiv.org/pdf/1610.05820' }
+        { labels: { en: 'Membership Inference Attacks', tr: 'Membership Inference Attacks', zh: '成员推理攻击' }, href: 'https://arxiv.org/pdf/1610.05820' }
       ])}</span>`;
     }
 
@@ -363,8 +363,7 @@ window.siteTranslations = {
       button.setAttribute('aria-pressed', `${button.dataset.language === currentLanguage}`);
     });
     textBindings.forEach(([selector, key]) => setText(selector, key));
-    setAttribute('.university-link img', 'alt', 'hero.card.logoAlt');
-    setAttribute('.edu-item:nth-child(1) .institution img', 'alt', 'education.ozu.logoAlt');
+    setAttribute('.university-link', 'aria-label', 'hero.card.logoAlt');
     setAttribute('.edu-item:nth-child(2) .institution img', 'alt', 'education.highschool.logoAlt');
     updateRichCopy();
     updateEducationFacts();
