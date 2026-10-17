@@ -74,21 +74,31 @@ window.siteTranslations = {
     "now.kusrp.dates": { en: "July 2026 - Present", tr: "Temmuz 2026 – Bugüne", zh: "2026 年 7 月至今" },
     "now.kusrp.title": { en: "Undergraduate Researcher at Koç University", tr: "Koç Üniversitesi'nde Lisans Araştırmacısı", zh: "Koç 大学本科研究员" },
     "now.kusrp.body": {
-      en: "Working in the SPADE (Security, Privacy and Data Engineering) Lab at Koç University on membership inference attacks against fine-tuned autoregressive language models. The question is basically: can you tell whether a given piece of text was in a model's training data just from how it behaves? Turns out they're worse at keeping secrets than they'd like you to think. Part of the lab's ongoing work on trustworthy language models.",
-      tr: "Koç Üniversitesi'ndeki SPADE (Güvenlik, Gizlilik ve Veri Mühendisliği) Laboratuvarı'nda, ince ayarlanmış otoregresif dil modellerine yönelik üyelik çıkarımı saldırıları üzerine çalışıyorum. Soru temelde şu: bir metnin bir modelin eğitim verisinde olup olmadığını, sadece modelin nasıl davrandığına bakarak anlayabilir misiniz? Sır tutma konusunda sandığınızdan daha kötüler. SPADE Lab'ın güvenilir dil modelleri üzerine yürüttüğü çalışmanın bir parçası.",
-      zh: "在 Koç 大学的 SPADE（安全、隐私与数据工程）实验室，研究针对微调后自回归语言模型的成员推理攻击。问题基本上是：仅凭一个模型的行为表现，你能否判断某段文本是否出现在它的训练数据里？结果发现，它们保守秘密的本事远不如它们希望你以为的那么好。这是实验室在可信语言模型方向上持续工作的一部分。"
+      en: "Working in the SPADE (Security, Privacy and Data Engineering) Lab at Koç University under Asst. Prof. M. Emre Gürsoy, researching membership inference attacks against fine-tuned autoregressive language models. The question is basically: can you tell whether a given piece of text was in a model's training data just from how it behaves? Turns out they're worse at keeping secrets than they'd like you to think.",
+      tr: "Koç Üniversitesi'ndeki SPADE (Güvenlik, Gizlilik ve Veri Mühendisliği) Laboratuvarı'nda, Dr. Öğr. Üyesi M. Emre Gürsoy'un danışmanlığında, ince ayarlanmış otoregresif dil modellerine yönelik üyelik çıkarımı saldırılarını araştırıyorum. Soru temelde şu: bir metnin bir modelin eğitim verisinde olup olmadığını, sadece modelin nasıl davrandığına bakarak anlayabilir misiniz? Sır tutma konusunda sandığınızdan daha kötüler.",
+      zh: "在 Koç 大学的 SPADE（安全、隐私与数据工程）实验室，我在助理教授 M. Emre Gürsoy 的指导下，研究针对微调后自回归语言模型的成员推理攻击。问题基本上是：仅凭一个模型的行为表现，你能否判断某段文本是否出现在它的训练数据里？结果发现，它们保守秘密的本事远不如它们希望你以为的那么好。"
     },
-    "now.ta.dates": { en: "Summer term · July–August 2026", tr: "Yaz dönemi · Temmuz–Ağustos 2026", zh: "暑期学期 · 2026 年 7 月至 8 月" },
-    "now.ta.title": { en: "Mathematics Teaching Assistant at Özyeğin University", tr: "Özyeğin Üniversitesi'nde Matematik Asistanı", zh: "Özyeğin 大学数学助教" },
+    "now.kusrp.body2": {
+      en: "I build fine-tuning datasets, fine-tune models on HPC clusters, run the attacks and report metrics like AUROC and TPR@1%FPR, and help develop NLP and statistics-driven attack methods. I present weekly results to the lab, and I'm very grateful for Prof. Gürsoy's mentorship.",
+      tr: "İnce ayar veri kümeleri hazırlıyorum, modellere HPC kümelerinde ince ayar yapıyorum, saldırıları çalıştırıp AUROC ve TPR@1%FPR gibi metrikleri raporluyorum ve doğal dil işleme ile istatistik temelli saldırı yöntemlerinin geliştirilmesine yardımcı oluyorum. Her hafta laboratuvara sonuçları sunuyorum ve Emre Hoca'nın mentorluğu için çok minnettarım.",
+      zh: "我构建微调数据集、在 HPC 集群上微调模型、运行攻击并汇报 AUROC 和 TPR@1%FPR 等指标，也协助开发基于自然语言处理和统计学的攻击方法。我每周向实验室汇报结果，并非常感谢 Gürsoy 教授的悉心指导。"
+    },
+    "now.ta.dates": { en: "July 2026 - Present", tr: "Temmuz 2026 – Bugüne", zh: "2026 年 7 月至今" },
+    "now.ta.title": { en: "Teaching Assistant at Özyeğin University", tr: "Özyeğin Üniversitesi'nde Öğretim Asistanı", zh: "Özyeğin 大学助教" },
     "now.ta.body": {
-      en: "During the Summer 2026 term, I gave remote peer-teaching sessions for MATH103 (Single-Variable Calculus), MATH104 (Multi-Variable Calculus & Infinite Series), MATH212 (Differential Equations) and MATH217 (Probability & Statistics). I did this for two reasons: because I love mathematics, and because teaching the fundamentals forces me to understand them more deeply.",
-      tr: "2026 Yaz Dönemi boyunca MATH103 (Tek Değişkenli Kalkülüs), MATH104 (Çok Değişkenli Kalkülüs ve Sonsuz Seriler), MATH212 (Diferansiyel Denklemler) ve MATH217 (Olasılık ve İstatistik) dersleri için uzaktan akran öğretimi oturumları verdim. Bunu iki sebeple yaptım: matematiği sevdiğim için ve temelleri öğretmek, onları daha derinlemesine anlamaya zorladığı için.",
-      zh: "在 2026 年暑期学期，我为 MATH103（单变量微积分）、MATH104（多变量微积分与无穷级数）、MATH212（微分方程）和 MATH217（概率与统计）提供了远程同伴教学。我这样做有两个原因：因为我热爱数学，也因为教授基础知识迫使我对其理解得更深。"
+      en: "I give face-to-face and remote peer-teaching sessions through Özyeğin University's Office for Learning and Teaching Enhancement (OLTE), with problem-solving support and exam preparation for mathematics and engineering courses. In Summer 2026 I taught MATH103 (Single-Variable Calculus), MATH104 (Multi-Variable Calculus & Infinite Series), MATH212 (Differential Equations) and MATH217 (Probability & Statistics), and in the 2026–2027 Fall term I'm teaching Probability & Statistics and Data Science.",
+      tr: "Özyeğin Üniversitesi'ndeki Öğrenme ve Öğretme Ofisi (OLTE) aracılığıyla yüz yüze ve uzaktan akran öğretimi yapıyorum; matematik ve mühendislik derslerinde problem çözme desteği ve sınav hazırlığı sağlıyorum. 2026 Yaz Dönemi'nde MATH103 (Tek Değişkenli Kalkülüs), MATH104 (Çok Değişkenli Kalkülüs ve Sonsuz Seriler), MATH212 (Diferansiyel Denklemler) ve MATH217 (Olasılık ve İstatistik) dersleri için oturumlar verdim; 2026–2027 Güz Dönemi'nde ise Olasılık ve İstatistik ile Veri Bilimi dersleri için oturumlar veriyorum.",
+      zh: "我通过 Özyeğin 大学的 Office for Learning and Teaching Enhancement（OLTE）开展面对面和远程的同伴教学，并为数学与工程类课程提供解题辅导和考试准备。2026 年暑期学期，我为 MATH103（单变量微积分）、MATH104（多变量微积分与无穷级数）、MATH212（微分方程）和 MATH217（概率与统计）提供了同伴教学；2026–2027 学年秋季学期，则为概率与统计以及数据科学课程提供同伴教学。"
     },
-    "signal.heading": { en: "The Bloomberg Terminal", tr: "The Bloomberg Terminal", zh: "The Bloomberg Terminal" },
+    "now.ta.body2": {
+      en: "I do this for two reasons: because I love mathematics, and because teaching the fundamentals forces me to understand them more deeply.",
+      tr: "Bunu iki sebeple yapıyorum: matematiği sevdiğim için ve temelleri öğretmek, onları daha derinlemesine anlamaya zorladığı için.",
+      zh: "我这样做有两个原因：因为我热爱数学，也因为教授基础知识迫使我对其理解得更深。"
+    },
+    "signal.heading": { en: "Academic Statistics", tr: "Akademik İstatistikler", zh: "学业数据" },
     "signal.subheading": { en: "A quick view of academic standing and the work behind it.", tr: "Akademik duruma ve arkasındaki çalışmaya hızlı bir bakış.", zh: "对学业表现及其背后工作的快速一览。" },
     "signal.gpa.caption": { en: "CGPA / 4.00", tr: "GNO / 4.00", zh: "总平均绩点 / 4.00" },
-    "signal.gpa.body": { en: "Maintained while double-majoring in AI & Data Engineering and Computer Science.", tr: "Yapay Zeka ve Veri Mühendisliği ile Bilgisayar Mühendisliği çift ana dallarını sürdürürken korundu.", zh: "在攻读人工智能与数据工程、计算机科学双专业期间保持不变。" },
+    "signal.gpa.body": { en: "Maintained while double-majoring in AI & Data Engineering and Computer Science.", tr: "Yapay Zekâ ve Veri Mühendisliği ile Bilgisayar Mühendisliği çift ana dallarını sürdürürken korundu.", zh: "在攻读人工智能与数据工程、计算机科学双专业期间保持不变。" },
     "signal.rank.caption": { en: "AI & Data Engineering", tr: "Yapay Zekâ ve Veri Mühendisliği", zh: "人工智能与数据工程" },
     "signal.rank.body": { en: "Consistently ranked in the top 3 of my department throughout university.", tr: "Üniversite hayatım boyunca bölümde sürekli ilk 3'te yer aldım.", zh: "大学期间，我在系内排名始终保持在前 3 名。" },
     "signal.faculty.caption": { en: "Engineering Faculty", tr: "Mühendislik Fakültesi", zh: "工程学院" },
@@ -131,7 +141,7 @@ window.siteTranslations = {
     "education.ozu.rankLabel": { en: "Rank", tr: "Sıralama", zh: "排名" },
     "education.ozu.rankValue": { en: "3rd of 65 in department · top 3% of Engineering Faculty", tr: "Bölümde 65 kişi içinde 3. · Mühendislik Fakültesi'nde ilk %3", zh: "系内 65 人中排名第 3 · 工程学院前 3%" },
     "education.ozu.rolesLabel": { en: "Roles", tr: "Görevler", zh: "担任角色" },
-    "education.ozu.rolesValue": { en: "Mathematics TA · Peer Advisor (2025–2026)", tr: "Matematik Asistanı · Akran Danışmanı (2025–2026)", zh: "数学助教 · 朋辈导师（2025–2026）" },
+    "education.ozu.rolesValue": { en: "Teaching Assistant · Peer Advisor (2025–2026)", tr: "Öğretim Asistanı · Akran Danışmanı (2025–2026)", zh: "助教 · 朋辈导师（2025–2026）" },
     "education.honor.issuer": { en: "Issued by Özyeğin University · June 2026", tr: "Özyeğin Üniversitesi tarafından verildi · Haziran 2026", zh: "由 Özyeğin 大学颁发 · 2026 年 6 月" },
     "education.honor.title": { en: "High Honor Standing", tr: "Yüksek Onur Derecesi", zh: "高荣誉学业资格" },
     "education.honor.body": { en: "Achieved High Honor academic standing in all four semesters to date, clearing the required ≥3.50 GPA bar with zero failing grades every single term.", tr: "Bugüne kadarki dört dönemin dördünde de yüksek onur öğrencisi oldum; gereken ≥3.50 GNO barajını her dönem, tek bir başarısız ders olmadan aştım.", zh: "至今四个学期全部达到高荣誉学业标准，每一学期都达到 ≥3.50 的绩点要求，且没有任何一门不及格。" },
@@ -154,11 +164,8 @@ window.siteTranslations = {
     "education.frc.instagramLink": { en: "Team 8151 Wildfire on Instagram ↗", tr: "Team 8151 Wildfire Instagram'da ↗", zh: "Team 8151 Wildfire 的 Instagram ↗" },
     "education.coursework.title": { en: "Programming coursework", tr: "Programlama dersleri", zh: "编程课程" },
     "education.coursework.body": { en: "My first formal programming courses were in high school, where I learned Java and Python.", tr: "İlk resmi programlama derslerimi lisede aldım; orada Java ve Python öğrendim.", zh: "我最早正式学习编程是在高中，在那里学习了 Java 和 Python。" },
-    "contact.heading": { en: "What's next?", tr: "Sırada ne var?", zh: "下一步是什么？" },
-    "contact.body": { en: "Always open to interesting work.", tr: "İlginç çalışmalara her zaman açığım.", zh: "我始终愿意了解有意思的工作。" },
-    "contact.thread1": { en: "Membership inference", tr: "Üyelik çıkarımı", zh: "成员推理" },
-    "contact.thread2": { en: "LLM privacy", tr: "LLM gizliliği", zh: "大模型隐私" },
-    "contact.thread3": { en: "Adversarial NLP", tr: "Adversarial NLP", zh: "对抗性自然语言处理" },
+    "contact.heading": { en: "Thank you for reading about me!", tr: "Hakkımda okuduğunuz için teşekkürler!", zh: "感谢你阅读我的介绍！" },
+    "contact.body": { en: "Feel free to reach out to me!", tr: "Bana ulaşmaktan çekinmeyin!", zh: "欢迎随时联系我！" },
     "contact.note": { en: "Istanbul, Turkey · 2026", tr: "İstanbul, Türkiye · 2026", zh: "土耳其伊斯坦布尔 · 2026" }
   }
 };
@@ -207,9 +214,11 @@ window.siteTranslations = {
     ['.track .section-heading p', 'now.subheading'],
     ['.track-list > li:nth-child(1) time', 'now.kusrp.dates'],
     ['.track-list > li:nth-child(1) h3', 'now.kusrp.title'],
+    ['.track-list > li:nth-child(1) p + p', 'now.kusrp.body2'],
     ['.track-list > li:nth-child(2) .label', 'now.ta.dates'],
     ['.track-list > li:nth-child(2) h3', 'now.ta.title'],
     ['.track-list > li:nth-child(2) p', 'now.ta.body'],
+    ['.track-list > li:nth-child(2) p + p', 'now.ta.body2'],
     ['#numbers-title', 'signal.heading'],
     ['.metrics .section-heading p', 'signal.subheading'],
     ['.metric:nth-child(1) h3', 'signal.gpa.caption'],
@@ -276,9 +285,6 @@ window.siteTranslations = {
     ['.edu-item:nth-child(2) .education-details .detail-minor p', 'education.coursework.body'],
     ['.contact h2', 'contact.heading'],
     ['.contact-copy', 'contact.body'],
-    ['.contact-threads span:nth-child(1)', 'contact.thread1'],
-    ['.contact-threads span:nth-child(2)', 'contact.thread2'],
-    ['.contact-threads span:nth-child(3)', 'contact.thread3'],
     ['.contact-note', 'contact.note']
   ];
 
@@ -329,7 +335,8 @@ window.siteTranslations = {
     if (currentWorkBody) {
       currentWorkBody.innerHTML = linkedCopy('now.kusrp.body', [
         { labels: { en: 'SPADE (Security, Privacy and Data Engineering) Lab', tr: 'SPADE (Güvenlik, Gizlilik ve Veri Mühendisliği) Laboratuvarı', zh: 'SPADE（安全、隐私与数据工程）实验室' }, href: 'https://mysite.ku.edu.tr/emregursoy/spade-lab/' },
-        { labels: { en: 'Koç University', tr: 'Koç Üniversitesi', zh: 'Koç 大学' }, href: 'https://www.ku.edu.tr/en/' }
+        { labels: { en: 'Koç University', tr: 'Koç Üniversitesi', zh: 'Koç 大学' }, href: 'https://www.ku.edu.tr/en/' },
+        { labels: { en: 'Asst. Prof. M. Emre Gürsoy', tr: 'Dr. Öğr. Üyesi M. Emre Gürsoy', zh: '助理教授 M. Emre Gürsoy' }, href: 'https://mysite.ku.edu.tr/emregursoy/' }
       ]);
     }
 
