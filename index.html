@@ -116,6 +116,23 @@
       --sans: "DM Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
       --mono: "DM Mono", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", ui-monospace, monospace;
     }
+    :root:lang(ja) {
+      --serif: "Fraunces", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --sans: "DM Sans", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      --mono: "DM Mono", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", ui-monospace, monospace;
+    }
+    :root:lang(ko) {
+      --serif: "Fraunces", "Noto Serif KR", AppleMyungjo, Batang, serif;
+      --sans: "DM Sans", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --mono: "DM Mono", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", ui-monospace, monospace;
+    }
+    :where(:lang(ja), :lang(ko)) :is(.header-nav a, .button, .portrait-caption, .section-number, .project-type, .project-tags, .project-status, .track-list time, .track-list .label, .hero-kicker, .eyebrow) {
+      letter-spacing: 0;
+      word-spacing: normal;
+      text-transform: none;
+    }
+    :lang(ko) { word-break: keep-all; overflow-wrap: anywhere; }
+    :where(:lang(fr), :lang(es), :lang(de)) .section-heading h2 { hyphens: auto; overflow-wrap: anywhere; }
     :lang(zh) .header-nav a,
     :lang(zh) .button,
     :lang(zh) .portrait-caption,
@@ -145,6 +162,7 @@
     .site-header { position: fixed; z-index: 20; top: 0; left: 0; width: 100%; transform: translateY(-112%); transition: transform .45s cubic-bezier(.2,.8,.2,1); border-bottom: 1px solid var(--ink); background: var(--ink); box-shadow: 0 6px 0 rgba(23,36,50,.24); }
     .site-header.show { transform: translateY(0); }
     .header-inner { min-height: 48px; max-width: 1440px; padding: 0 clamp(.85rem, 3.1vw, 3.2rem); margin: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; gap: .75rem; }
+    :where(:lang(fr), :lang(es), :lang(de), :lang(ja), :lang(ko)) .header-inner { grid-template-columns: auto auto minmax(0, 1fr); }
     .brand { grid-column: 1; justify-self: start; display: inline-flex; align-items: center; gap: .55rem; color: var(--paper-strong); text-decoration: none; font: 500 1.24rem/1 var(--serif); letter-spacing: -.015em; white-space: nowrap; }
     .brand em { font-style: italic; }
     .header-nav { grid-column: 3; justify-self: end; display: flex; gap: 0; align-items: stretch; border-left: 1px solid rgba(245,240,230,.22); }
@@ -162,11 +180,29 @@
     .language-switcher-floating { position: fixed; z-index: 30; top: 1rem; left: 50%; right: auto; transform: translateX(-50%); padding: .35rem; border: 1px solid var(--ink); background: var(--paper-strong); box-shadow: 5px 5px 0 rgba(23,36,50,.2); }
     .language-switcher-floating button { min-width: 3.3rem; min-height: 2.35rem; padding: .65rem .75rem; font-size: .75rem; }
     .language-switcher-floating button:hover, .language-switcher-floating button:focus-visible { transform: translateY(-1px); }
-    .language-switcher-header { padding: 0; }
+    .language-switcher-header { position: relative; padding: 0; }
     .language-switcher-header button { min-width: 2.35rem; padding: 0 .45rem; color: var(--paper-strong); }
     .language-switcher-header button:hover, .language-switcher-header button:focus-visible { transform: translateY(3px); }
+    .language-more { position: relative; display: flex; align-self: stretch; }
+    .language-more-toggle { display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap; }
+    .language-globe { width: 1.2rem; height: 1.2rem; flex-shrink: 0; }
+    .language-switcher-header .language-globe { width: 1rem; height: 1rem; }
+    .language-more-chevron { width: .65rem; height: .4rem; flex-shrink: 0; transition: transform .18s ease; }
+    .language-more-toggle[aria-expanded="true"] .language-more-chevron { transform: rotate(180deg); }
+    .language-switcher .language-more-toggle[aria-expanded="true"], .language-switcher .language-more-toggle.is-active { background: var(--gold); color: var(--ink); }
+    .language-options { position: absolute; z-index: 1; top: 100%; right: 0; width: 13rem; max-width: calc(100vw - 2rem); padding: .35rem; border: 1px solid var(--ink); background: var(--paper-strong); box-shadow: 5px 5px 0 rgba(23,36,50,.2); }
+    .language-options[hidden] { display: none; }
+    .language-switcher .language-options button { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; width: 100%; min-width: 0; height: auto; min-height: 2.75rem; padding: .7rem .85rem; color: var(--ink); font: 500 .85rem/1.3 var(--sans); letter-spacing: 0; text-align: left; transform: none; }
+    .language-options-note { margin: .35rem .45rem .15rem; padding: .7rem .4rem .35rem; border-top: 1px solid var(--line); color: var(--muted); font: 400 .7rem/1.5 var(--sans); letter-spacing: 0; }
+    .language-note-viewport { display: block; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; touch-action: pan-x; user-select: none; mask-image: linear-gradient(to right, #000 calc(100% - .75rem), transparent); }
+    .language-note-viewport::-webkit-scrollbar { display: none; }
+    .language-note-viewport:hover, .language-note-viewport:focus-visible { mask-image: none; }
+    .language-note-track { display: flex; width: max-content; }
+    .language-note-track > span { flex-shrink: 0; padding-right: 2rem; white-space: nowrap; }
+    .language-note-viewport:focus-visible { outline: 1px solid var(--muted); outline-offset: 2px; }
+    .language-switcher .language-more-toggle:focus-visible, .language-switcher .language-options button:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px; }
 
-    .hero { position: relative; padding: clamp(1.1rem, 3vw, 3.4rem) clamp(1.1rem, 3vw, 3.4rem) 8px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(310px, .9fr); grid-template-rows: 1fr auto; gap: clamp(1.7rem, 5vw, 6rem); max-width: 1540px; margin: auto; background: var(--blue-deep); box-shadow: 0 0 0 100vmax var(--blue-deep); clip-path: inset(0 -100vmax); }
+    .hero { position: relative; padding: clamp(1.1rem, 3vw, 3.4rem) clamp(1.1rem, 3vw, 3.4rem) 8px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(310px, .9fr); grid-template-rows: 1fr auto; gap: clamp(1.7rem, 5vw, 6rem); max-width: 1540px; margin: auto; background: var(--blue); box-shadow: 0 0 0 100vmax var(--blue); clip-path: inset(0 -100vmax); }
     .hero-copy { align-self: center; padding: 0 0 .25rem clamp(.5rem, 6vw, 6.4rem); }
     .hero-kicker, .eyebrow { color: var(--red); font: 500 .66rem/1.2 var(--mono); letter-spacing: .095em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
@@ -206,11 +242,11 @@
 
     .hero-aside { align-self: center; min-width: 0; max-width: 505px; width: 100%; justify-self: end; transform: translateY(clamp(-3.75rem, -3.5vw, -1.25rem)); }
     .portrait-frame { position: relative; max-width: 100%; padding: 0; background: #f5d66d; border: 1px solid var(--ink); box-shadow: 11px 11px 0 rgba(23,36,50,.18); }
-    .portrait-frame::before, .portrait-frame::after { content: ""; position: absolute; z-index: 2; width: 19.6px; height: 19.6px; border: 3px solid var(--ink); background: #3f4144; }
-    .portrait-frame::before { top: -9.8px; left: -9.8px; } .portrait-frame::after { bottom: -9.8px; right: -9.8px; }
-    .portrait-stage { position: relative; width: 100%; max-width: 100%; aspect-ratio: .89; overflow: hidden; background: center / cover no-repeat; }
-    .portrait-frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; transition: opacity .5s ease; }
-    .portrait-frame img.is-fading-out { opacity: 0; }
+    .portrait-stage { position: relative; isolation: isolate; width: 100%; max-width: 100%; aspect-ratio: .89; overflow: hidden; background: center / cover no-repeat; }
+    .portrait-frame img { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 1.2s ease; }
+    .portrait-frame img.is-previous { z-index: 1; opacity: 1; transition: none; }
+    .portrait-frame img.is-active { z-index: 2; opacity: 1; }
+    .portrait-stage:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
     .portrait-caption { display: flex; justify-content: space-between; gap: 1rem; padding-top: .7rem; font: 500 .59rem/1.3 var(--mono); letter-spacing: .07em; text-transform: uppercase; }
     .portrait-description { margin: .5rem 0 0; color: var(--muted); font-size: .76rem; line-height: 1.45; }
     .portrait-frame figcaption { opacity: 1; transition: opacity .5s ease; }
@@ -319,7 +355,11 @@
     .contact-links a:hover { padding-left: .75rem; color: var(--red); background: var(--blue); }
     .contact-note { margin-top: 1.4rem; color: var(--muted); font: 500 .62rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 
+    @media (max-width: 1024px) {
+      :where(:lang(fr), :lang(es), :lang(de), :lang(ja), :lang(ko)) .header-nav a:nth-child(-n+3) { display: none; }
+    }
     @media (max-width: 860px) {
+      .header-inner { grid-template-columns: auto auto minmax(0, 1fr); gap: .5rem; }
       .header-nav a:nth-child(1), .header-nav a:nth-child(2), .header-nav a:nth-child(3) { display: none; }
       .hero { grid-template-columns: 1fr; grid-template-rows: auto; padding-top: 1rem; padding-bottom: .65rem; gap: 2rem; }
       .hero-copy { padding: 2rem 1rem 0; transform: none; }
@@ -358,6 +398,10 @@
       .contact h2 { font-size: clamp(3.6rem, 17vw, 5.4rem); }
     }
     @media (max-width: 400px) { .header-nav a:nth-child(6) { display: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .language-note-viewport { overflow-x: auto; mask-image: none; }
+      .language-note-track > [aria-hidden="true"] { display: none; }
+    }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .personal-cta, .personal-cta::before, .personal-cta-space, .personal-cta-space::before, .personal-cta-space::after, .personal-cta-sweep { animation: none; transform: none; } .personal-cta::before, .personal-cta-label, .personal-cta-alt { transition: none; } }
     .custom-cursor { position: fixed; z-index: 1000; top: 0; left: 0; width: 36px; height: 44px; pointer-events: none; opacity: 0; transform: translate3d(-100px, -100px, 0); transition: opacity .12s ease; }
     .custom-cursor.is-visible { opacity: 1; }
@@ -378,7 +422,35 @@
       <span class="language-switcher-label" data-language-label>Language</span>
       <button type="button" data-language="en" aria-pressed="true">EN</button>
       <button type="button" data-language="tr" aria-pressed="false">TR</button>
-      <button type="button" data-language="zh" aria-pressed="false">中文</button>
+      <div class="language-more" data-language-more>
+        <button class="language-more-toggle" id="more-languages-toggle" type="button" aria-label="More languages" aria-expanded="false" aria-controls="more-language-options">
+          <svg class="language-globe" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="1.4"/>
+            <g transform="rotate(-15 12 12)" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".85">
+              <ellipse cx="12" cy="12" rx="4.35" ry="9.25"/>
+              <path d="M2.75 12h18.5M4.1 7.2c4.9 2 10.9 2 15.8 0M4.1 16.8c4.9-2 10.9-2 15.8 0"/>
+            </g>
+          </svg>
+          <span data-more-languages-label>More</span>
+          <svg class="language-more-chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="m1 1 4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="language-options" id="more-language-options" role="group" aria-labelledby="more-languages-toggle" hidden>
+          <button type="button" data-language="fr" aria-pressed="false"><span lang="fr">Français</span></button>
+          <button type="button" data-language="es" aria-pressed="false"><span lang="es">Español</span></button>
+          <button type="button" data-language="zh" aria-pressed="false"><span lang="zh-CN">中文</span></button>
+          <button type="button" data-language="de" aria-pressed="false"><span lang="de">Deutsch</span></button>
+          <button type="button" data-language="ja" aria-pressed="false"><span lang="ja">日本語</span></button>
+          <button type="button" data-language="ko" aria-pressed="false"><span lang="ko">한국어</span></button>
+          <p class="language-options-note">
+            <span class="language-note-viewport" tabindex="0">
+              <span class="language-note-track">
+                <span data-language-options-note>Of the languages listed above, I have basic proficiency in Spanish only.</span>
+                <span data-language-options-note aria-hidden="true">Of the languages listed above, I have basic proficiency in Spanish only.</span>
+              </span>
+            </span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
   <header class="site-header" id="site-header">
@@ -398,7 +470,19 @@
         <p class="hero-lead">Undergraduate researcher at <a href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener">Koç University</a>’s <a href="https://mysite.ku.edu.tr/emregursoy/spade-lab/" target="_blank" rel="noopener">Security, Privacy and Data Engineering (SPADE) Lab</a> and double-major student in AI &amp; Data Engineering and Computer Science at <a href="https://www.ozyegin.edu.tr/en" target="_blank" rel="noopener">Özyeğin University</a>.<span class="hero-lead-current">I currently conduct research on <a href="https://arxiv.org/pdf/1610.05820" target="_blank" rel="noopener">Membership Inference Attacks</a> in the domain of Large Language Models at SPADE Lab, a topic in AI Security that is becoming more important by the day.</span></p>
       </div>
       <aside class="hero-aside" aria-label="Current position">
-        <figure class="portrait-frame"><div class="portrait-stage" data-portrait-stage><img src="/images/batu-membership-inference-whiteboard.jpg" alt="Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve" width="2160" height="2160" data-portrait-image></div><figcaption data-portrait-caption></figcaption></figure>
+        <figure class="portrait-frame">
+          <div class="portrait-stage" data-portrait-stage>
+            <img class="portrait-slide is-active" src="/images/batu-membership-inference-whiteboard.jpg" alt="Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve" width="2160" height="2160" loading="eager" decoding="async" fetchpriority="high" data-portrait-alt-key="portrait.whiteboard.alt" aria-hidden="false" data-portrait-image>
+            <img class="portrait-slide" src="/images/batu-library-picture.jpg" alt="Batu Koray Masak in front of his library" width="2048" height="2048" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.library.alt" aria-hidden="true" data-portrait-image>
+            <img class="portrait-slide" src="/images/batu-teaching-eulers-identity.png" alt="Batu Koray Masak teaching Euler&#x27;s identity through Taylor series" width="1390" height="1392" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.teaching.alt" aria-hidden="true" data-portrait-image>
+            <img class="portrait-slide" src="/images/batu-with-cat.jpeg" alt="Batu Koray Masak with a cat at Özyeğin University" width="1127" height="1127" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.campusCat.alt" aria-hidden="true" data-portrait-image>
+            <img class="portrait-slide" src="/images/batu-with-cat-greece.jpg" alt="Batu Koray Masak with a cat by the sea in Greece" width="1782" height="1784" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.greeceCat.alt" aria-hidden="true" data-portrait-image>
+            <img class="portrait-slide" src="/images/batu-suited.png" alt="Batu Koray Masak in a suit, photographed in a mirror" width="878" height="880" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.suited.alt" aria-hidden="true" data-portrait-image>
+            <img class="portrait-slide" src="/images/batu-next-to-eiffel.png" alt="Batu Koray Masak beside the Eiffel Tower in Paris, France" width="1278" height="1280" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.eiffel.alt" aria-hidden="true" data-portrait-image>
+            <img class="portrait-slide" src="/images/batu-eray-paris.png" alt="Batu Koray Masak, on the left, with his friend Eray in Paris" width="1090" height="1092" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.paris.alt" aria-hidden="true" data-portrait-image>
+          </div>
+          <figcaption data-portrait-caption></figcaption>
+        </figure>
         <div class="position-note"><a class="university-link" href="https://www.ku.edu.tr/en/" target="_blank" rel="noopener" aria-label="Koç University logo"><span class="university-mark" aria-hidden="true"></span></a><strong><a href="https://mysite.ku.edu.tr/emregursoy/spade-lab/" target="_blank" rel="noopener">SPADE Lab</a></strong><p>Undergraduate Researcher · Methodologies of Membership Inference Attacks on Large Language Models</p></div>
       </aside>
     </section>
@@ -428,6 +512,167 @@
     const languageSwitcher = document.querySelector('[data-language-switcher]');
     const languageHome = document.querySelector('[data-language-home]');
     const languageSlot = document.querySelector('[data-language-slot]');
+    const languageMore = document.querySelector('[data-language-more]');
+    const moreLanguagesToggle = document.getElementById('more-languages-toggle');
+    const languageOptions = document.getElementById('more-language-options');
+    const noteViewport = document.querySelector('.language-note-viewport');
+    const noteTrack = document.querySelector('.language-note-track');
+    const noteReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let noteAnimationFrame;
+    let noteLastFrameTime = null;
+    let noteResumeTimer;
+    let noteHovered = false;
+    let notePointerDown = false;
+    let noteDrag;
+    const stopNoteScroll = () => {
+      window.cancelAnimationFrame(noteAnimationFrame);
+      noteAnimationFrame = undefined;
+      noteLastFrameTime = null;
+    };
+    const resumeNoteScroll = () => {
+      stopNoteScroll();
+      if (languageOptions.hidden || document.hidden || noteReducedMotion.matches || noteHovered || notePointerDown || noteViewport.contains(document.activeElement)) return;
+      const cycleWidth = noteTrack.firstElementChild.getBoundingClientRect().width;
+      if (cycleWidth <= noteViewport.clientWidth) return;
+      let position = noteViewport.scrollLeft % cycleWidth;
+      const advance = (time) => {
+        const elapsed = noteLastFrameTime === null ? 0 : Math.min(time - noteLastFrameTime, 100);
+        noteLastFrameTime = time;
+        position = (position + cycleWidth * elapsed / 11000) % cycleWidth;
+        noteViewport.scrollLeft = position;
+        noteAnimationFrame = window.requestAnimationFrame(advance);
+      };
+      noteAnimationFrame = window.requestAnimationFrame(advance);
+    };
+    const pauseNoteForInput = () => {
+      stopNoteScroll();
+      window.clearTimeout(noteResumeTimer);
+      noteResumeTimer = window.setTimeout(resumeNoteScroll, 1800);
+    };
+    noteViewport.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'touch') return;
+      noteHovered = true;
+      stopNoteScroll();
+    });
+    noteViewport.addEventListener('pointerleave', () => {
+      noteHovered = false;
+      pauseNoteForInput();
+    });
+    noteViewport.addEventListener('focusin', stopNoteScroll);
+    noteViewport.addEventListener('focusout', pauseNoteForInput);
+    noteViewport.addEventListener('wheel', (event) => {
+      if (event.ctrlKey) return;
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      if (!delta || noteViewport.scrollWidth <= noteViewport.clientWidth) return;
+      event.preventDefault();
+      pauseNoteForInput();
+      const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? noteViewport.clientWidth : 1;
+      noteViewport.scrollLeft += delta * unit;
+    }, { passive: false });
+    noteViewport.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'touch' && event.button !== 0) return;
+      notePointerDown = true;
+      pauseNoteForInput();
+      if (event.pointerType === 'touch') return;
+      noteDrag = { x: event.clientX, left: noteViewport.scrollLeft, pointerId: event.pointerId };
+      noteViewport.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+    noteViewport.addEventListener('pointermove', (event) => {
+      if (!noteDrag || event.pointerId !== noteDrag.pointerId) return;
+      noteViewport.scrollLeft = noteDrag.left + noteDrag.x - event.clientX;
+    });
+    const finishNoteDrag = () => {
+      if (!notePointerDown) return;
+      const pointerId = noteDrag?.pointerId;
+      notePointerDown = false;
+      noteDrag = undefined;
+      if (pointerId !== undefined && noteViewport.hasPointerCapture(pointerId)) noteViewport.releasePointerCapture(pointerId);
+      if (!languageOptions.hidden) pauseNoteForInput();
+    };
+    noteViewport.addEventListener('pointerup', finishNoteDrag);
+    noteViewport.addEventListener('pointercancel', finishNoteDrag);
+    noteViewport.addEventListener('lostpointercapture', finishNoteDrag);
+    noteViewport.addEventListener('scroll', () => {
+      if (noteAnimationFrame === undefined && !languageOptions.hidden) pauseNoteForInput();
+    }, { passive: true });
+    noteViewport.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      pauseNoteForInput();
+      if (event.key === 'Home') noteViewport.scrollLeft = 0;
+      else if (event.key === 'End') noteViewport.scrollLeft = noteViewport.scrollWidth - noteViewport.clientWidth;
+      else noteViewport.scrollLeft += event.key === 'ArrowRight' ? 40 : -40;
+    });
+    document.addEventListener('visibilitychange', resumeNoteScroll);
+    window.addEventListener('resize', resumeNoteScroll, { passive: true });
+    noteReducedMotion.addEventListener('change', resumeNoteScroll);
+    document.fonts?.ready.then(resumeNoteScroll);
+    const moreLanguagesCopy = {
+      en: { label: 'More languages', shortLabel: 'More', note: 'Of the languages listed above, I have basic proficiency in Spanish only.' },
+      tr: { label: 'Diğer diller', shortLabel: 'Diğer', note: 'Yukarıda listelenen diller arasında yalnızca temel düzeyde İspanyolca bilgisine sahibim.' },
+      zh: { label: '更多语言', shortLabel: '更多', note: '在上述语言中，我仅具备基础的西班牙语能力。' },
+      fr: { label: 'Autres langues', shortLabel: 'Plus', note: 'Parmi les langues ci-dessus, mes compétences se limitent à un niveau élémentaire en espagnol.' },
+      es: { label: 'Más idiomas', shortLabel: 'Más', note: 'De los idiomas indicados arriba, solo tengo conocimientos básicos de español.' },
+      de: { label: 'Weitere Sprachen', shortLabel: 'Mehr', note: 'Von den oben aufgeführten Sprachen habe ich nur im Spanischen Grundkenntnisse.' },
+      ja: { label: 'その他の言語', shortLabel: 'その他', note: '上記の言語のうち、スペイン語のみ基礎レベルの知識があります。' },
+      ko: { label: '다른 언어', shortLabel: '더 보기', note: '위에 나열된 언어 중 스페인어에 한해서만 기초 수준의 언어 능력을 갖추고 있습니다.' }
+    };
+    const updateMoreLanguages = () => {
+      const language = window.siteLanguage.get();
+      const copy = moreLanguagesCopy[language];
+      document.querySelector('[data-more-languages-label]').textContent = copy.shortLabel;
+      document.querySelectorAll('[data-language-options-note]').forEach((note) => { note.textContent = copy.note; });
+      noteViewport.scrollLeft = 0;
+      resumeNoteScroll();
+      moreLanguagesToggle.setAttribute('aria-label', copy.label);
+      moreLanguagesToggle.classList.toggle('is-active', language !== 'en' && language !== 'tr');
+    };
+    const setMoreLanguagesOpen = (open) => {
+      moreLanguagesToggle.setAttribute('aria-expanded', String(open));
+      languageOptions.hidden = !open;
+      window.clearTimeout(noteResumeTimer);
+      if (open) resumeNoteScroll();
+      else {
+        stopNoteScroll();
+        noteHovered = false;
+        finishNoteDrag();
+      }
+    };
+    languageMore.addEventListener('pointerenter', (event) => {
+      if (event.pointerType !== 'touch' && window.matchMedia('(hover: hover)').matches) setMoreLanguagesOpen(true);
+    });
+    languageMore.addEventListener('pointerleave', (event) => {
+      if (event.pointerType !== 'touch') setMoreLanguagesOpen(false);
+    });
+    moreLanguagesToggle.addEventListener('click', () => {
+      setMoreLanguagesOpen(languageOptions.hidden);
+    });
+    moreLanguagesToggle.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowDown') return;
+      event.preventDefault();
+      setMoreLanguagesOpen(true);
+      languageOptions.querySelector('button:not(:disabled)').focus();
+    });
+    languageMore.addEventListener('focusout', (event) => {
+      if (!languageMore.contains(event.relatedTarget)) setMoreLanguagesOpen(false);
+    });
+    languageSwitcher.addEventListener('click', (event) => {
+      const option = event.target.closest('[data-language]');
+      if (!option) return;
+      setMoreLanguagesOpen(false);
+      if (languageOptions.contains(option)) moreLanguagesToggle.focus();
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (!languageMore.contains(event.target)) setMoreLanguagesOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || languageOptions.hidden) return;
+      setMoreLanguagesOpen(false);
+      moreLanguagesToggle.focus();
+    });
+    new MutationObserver(updateMoreLanguages).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    updateMoreLanguages();
     let languageInHeader = false;
     let languageTransitionTimer;
     let languageTransitionId = 0;
@@ -435,6 +680,7 @@
       const isScrolled = window.scrollY > 45;
       header.classList.toggle('show', isScrolled);
       if (isScrolled === languageInHeader) return;
+      setMoreLanguagesOpen(false);
       languageInHeader = isScrolled;
       const transitionId = ++languageTransitionId;
       languageSwitcher?.classList.add('is-fading');
@@ -461,144 +707,129 @@
     window.addEventListener('resize', updatePageBackground, { passive: true });
     updatePageBackground();
 
-    const portraitImage = document.querySelector('[data-portrait-image]');
     const portraitStage = document.querySelector('[data-portrait-stage]');
-    const portraitCaption = document.querySelector('[data-portrait-caption]');
-    const portraitOptions = [
-      {
-        src: '/images/batu-membership-inference-whiteboard.jpg',
-        altKey: 'portrait.whiteboard.alt',
-        width: 2160,
-        height: 2160
-      },
-      {
-        src: '/images/batu-library-picture.jpg',
-        altKey: 'portrait.library.alt',
-        width: 2048,
-        height: 2048,
-        locationKey: 'portrait.library.location',
-        dateKey: 'portrait.library.date',
-        descriptionKey: 'portrait.library.description'
-      },
-      {
-        src: '/images/batu-teaching-eulers-identity.png',
-        altKey: 'portrait.teaching.alt',
-        width: 1390,
-        height: 1392,
-        locationKey: 'portrait.teaching.location',
-        dateKey: 'portrait.teaching.date',
-        descriptionKey: 'portrait.teaching.description'
-      },
-      {
-        src: '/images/batu-with-cat.jpeg',
-        altKey: 'portrait.campusCat.alt',
-        width: 1127,
-        height: 1127,
-        locationKey: 'portrait.campusCat.location',
-        dateKey: 'portrait.campusCat.date',
-        descriptionKey: 'portrait.campusCat.description'
-      },
-      {
-        src: '/images/batu-with-cat-greece.jpg',
-        altKey: 'portrait.greeceCat.alt',
-        width: 1782,
-        height: 1784,
-        locationKey: 'portrait.greeceCat.location',
-        dateKey: 'portrait.greeceCat.date',
-        descriptionKey: 'portrait.greeceCat.description'
-      },
-      {
-        src: '/images/batu-suited.png',
-        altKey: 'portrait.suited.alt',
-        width: 878,
-        height: 880,
-        locationKey: 'portrait.suited.location',
-        dateKey: 'portrait.suited.date',
-        descriptionKey: 'portrait.suited.description'
-      },
-      {
-        src: '/images/batu-next-to-eiffel.png',
-        altKey: 'portrait.eiffel.alt',
-        width: 1278,
-        height: 1280,
-        locationKey: 'portrait.eiffel.location',
-        dateKey: 'portrait.eiffel.date',
-        descriptionKey: 'portrait.eiffel.description'
-      },
-      {
-        src: '/images/batu-eray-paris.png',
-        altKey: 'portrait.paris.alt',
-        width: 1090,
-        height: 1092,
-        locationKey: 'portrait.paris.location',
-        dateKey: 'portrait.paris.date',
-        descriptionKey: 'portrait.paris.description'
-      }
-    ];
-    if (portraitImage) {
-      const fadeDuration = 500;
+    const portraitSlides = [...document.querySelectorAll('[data-portrait-image]')];
+    if (portraitStage && portraitSlides.length) {
+      const rotationDelay = 10000;
+      const fadeDuration = 1200;
+      const portraitMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const failedPortraits = new Set();
+      const portraitControlCopy = {
+        en: { next: 'Show next photograph' },
+        tr: { next: 'Sonraki fotoğrafı göster' },
+        zh: { next: '显示下一张照片' },
+        fr: { next: 'Afficher la photo suivante' },
+        es: { next: 'Mostrar la siguiente fotografía' },
+        de: { next: 'Nächstes Foto anzeigen' },
+        ja: { next: '次の写真を表示' },
+        ko: { next: '다음 사진 보기' }
+      };
       let portraitIndex = 0;
-      let recentPortraitIndices = [portraitIndex];
-      let nextPortraitIndex;
-      let nextPortraitPreload;
+      let portraitTimer;
       let portraitTransitioning = false;
+      let portraitInView = true;
 
-      const renderPortrait = (portrait) => {
-        portraitImage.src = portrait.src;
-        portraitImage.alt = window.siteLanguage.t(portrait.altKey);
-        portraitImage.width = portrait.width;
-        portraitImage.height = portrait.height;
+      const canRotatePortrait = () => !portraitMotion.matches && !document.hidden && portraitInView && document.activeElement !== portraitStage;
+      const stopPortraitRotation = () => {
+        window.clearInterval(portraitTimer);
+        portraitTimer = undefined;
       };
-
-      const chooseNextPortraitIndex = () => {
-        const candidates = portraitOptions.map((_, index) => index).filter((index) => !recentPortraitIndices.includes(index));
-        return candidates[Math.floor(Math.random() * candidates.length)];
+      const updatePortraitControls = () => {
+        const copy = portraitControlCopy[window.siteLanguage.get()];
+        portraitStage.setAttribute('aria-label', `${portraitSlides[portraitIndex].alt}. ${copy.next}`);
       };
-
       const preloadNextPortrait = () => {
-        nextPortraitIndex = chooseNextPortraitIndex();
-        nextPortraitPreload = new Image();
-        nextPortraitPreload.src = portraitOptions[nextPortraitIndex].src;
+        for (let offset = 1; offset < portraitSlides.length; offset += 1) {
+          const next = portraitSlides[(portraitIndex + offset) % portraitSlides.length];
+          if (failedPortraits.has(next)) continue;
+          next.loading = 'eager';
+          break;
+        }
       };
-
-      const advancePortrait = () => {
-        if (portraitTransitioning) return;
-        const nextIndex = nextPortraitIndex ?? chooseNextPortraitIndex();
-        const nextPortrait = portraitOptions[nextIndex];
-        const beginTransition = () => {
-          if (portraitTransitioning) return;
-          portraitTransitioning = true;
-          portraitStage.style.backgroundImage = `url("${nextPortrait.src}")`;
-          portraitImage.classList.add('is-fading-out');
-          portraitCaption.classList.add('is-fading-out');
-          window.setTimeout(() => {
-            portraitIndex = nextIndex;
-            recentPortraitIndices.push(portraitIndex);
-            if (recentPortraitIndices.length > 4) recentPortraitIndices.shift();
-            renderPortrait(nextPortrait);
-            portraitImage.classList.remove('is-fading-out');
-            portraitCaption.classList.remove('is-fading-out');
-            window.setTimeout(() => {
-              portraitStage.style.backgroundImage = '';
-              portraitTransitioning = false;
-              preloadNextPortrait();
-            }, fadeDuration);
-          }, fadeDuration);
-        };
-
-        if (nextPortraitPreload?.complete) {
-          beginTransition();
+      const advancePortrait = async (manual = false) => {
+        if (portraitTransitioning || document.hidden || !portraitInView) return;
+        portraitTransitioning = true;
+        let nextIndex;
+        for (let offset = 1; offset < portraitSlides.length; offset += 1) {
+          const candidateIndex = (portraitIndex + offset) % portraitSlides.length;
+          const candidate = portraitSlides[candidateIndex];
+          if (failedPortraits.has(candidate)) continue;
+          candidate.loading = 'eager';
+          try {
+            await candidate.decode();
+            if (!candidate.naturalWidth) throw new Error('Portrait could not be decoded');
+            nextIndex = candidateIndex;
+            break;
+          } catch {
+            failedPortraits.add(candidate);
+          }
+        }
+        if (nextIndex === undefined || document.hidden || !portraitInView || (!manual && !canRotatePortrait())) {
+          portraitTransitioning = false;
           return;
         }
-
-        nextPortraitPreload.addEventListener('load', beginTransition, { once: true });
-        nextPortraitPreload.addEventListener('error', beginTransition, { once: true });
+        const previous = portraitSlides[portraitIndex];
+        const next = portraitSlides[nextIndex];
+        previous.classList.add('is-previous');
+        previous.classList.remove('is-active');
+        previous.setAttribute('aria-hidden', 'true');
+        next.classList.add('is-active');
+        next.setAttribute('aria-hidden', 'false');
+        portraitIndex = nextIndex;
+        updatePortraitControls();
+        window.setTimeout(() => {
+          previous.classList.remove('is-previous');
+          portraitTransitioning = false;
+          preloadNextPortrait();
+        }, portraitMotion.matches ? 0 : fadeDuration);
       };
-
-      renderPortrait(portraitOptions[portraitIndex]);
-      window.refreshPortraitLanguage = () => renderPortrait(portraitOptions[portraitIndex]);
+      const updatePortraitRotation = () => {
+        stopPortraitRotation();
+        if (canRotatePortrait() && portraitSlides.length > 1) {
+          portraitTimer = window.setInterval(() => { void advancePortrait(); }, rotationDelay);
+        }
+      };
+      const manuallyAdvancePortrait = () => {
+        stopPortraitRotation();
+        void advancePortrait(true).then(updatePortraitRotation);
+      };
+      window.refreshPortraitLanguage = () => {
+        portraitSlides.forEach((image) => {
+          image.alt = window.siteLanguage.t(image.dataset.portraitAltKey);
+        });
+        updatePortraitControls();
+      };
+      portraitSlides.forEach((image) => {
+        image.addEventListener('error', () => {
+          failedPortraits.add(image);
+          if (image === portraitSlides[portraitIndex]) void advancePortrait(true);
+        });
+      });
+      portraitStage.setAttribute('role', 'button');
+      portraitStage.tabIndex = 0;
+      portraitStage.addEventListener('click', manuallyAdvancePortrait);
+      portraitStage.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        manuallyAdvancePortrait();
+      });
+      portraitStage.addEventListener('focusin', stopPortraitRotation);
+      portraitStage.addEventListener('focusout', () => { window.queueMicrotask(updatePortraitRotation); });
+      document.addEventListener('visibilitychange', updatePortraitRotation);
+      portraitMotion.addEventListener('change', () => {
+        updatePortraitControls();
+        updatePortraitRotation();
+      });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+          portraitInView = entry.isIntersecting;
+          updatePortraitRotation();
+        }, { threshold: 0.1 }).observe(portraitStage);
+      }
+      window.refreshPortraitLanguage();
       preloadNextPortrait();
-      portraitStage.addEventListener('click', advancePortrait);
+      updatePortraitRotation();
+      if (portraitSlides[portraitIndex].complete && !portraitSlides[portraitIndex].naturalWidth) void advancePortrait(true);
     }
 
     const lastUpdatedDate = document.getElementById('last-updated-date');
