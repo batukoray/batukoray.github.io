@@ -243,6 +243,7 @@
     .hero-aside { align-self: center; min-width: 0; max-width: 505px; width: 100%; justify-self: end; transform: translateY(clamp(-3.75rem, -3.5vw, -1.25rem)); }
     .portrait-frame { position: relative; max-width: 100%; padding: 0; background: #f5d66d; border: 1px solid var(--ink); box-shadow: 11px 11px 0 rgba(23,36,50,.18); }
     .portrait-stage { position: relative; isolation: isolate; width: 100%; max-width: 100%; aspect-ratio: .89; overflow: hidden; background: center / cover no-repeat; }
+    .portrait-stage picture { display: contents; }
     .portrait-frame img { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 1.2s ease; }
     .portrait-frame img.is-previous { z-index: 1; opacity: 1; transition: none; }
     .portrait-frame img.is-active { z-index: 2; opacity: 1; }
@@ -472,14 +473,38 @@
       <aside class="hero-aside" aria-label="Current position">
         <figure class="portrait-frame">
           <div class="portrait-stage" data-portrait-stage>
-            <img class="portrait-slide is-active" src="/images/batu-membership-inference-whiteboard.jpg" alt="Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve" width="2160" height="2160" loading="eager" decoding="async" fetchpriority="high" data-portrait-alt-key="portrait.whiteboard.alt" aria-hidden="false" data-portrait-image>
-            <img class="portrait-slide" src="/images/batu-library-picture.jpg" alt="Batu Koray Masak in front of his library" width="2048" height="2048" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.library.alt" aria-hidden="true" data-portrait-image>
-            <img class="portrait-slide" src="/images/batu-teaching-eulers-identity.png" alt="Batu Koray Masak teaching Euler&#x27;s identity through Taylor series" width="1390" height="1392" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.teaching.alt" aria-hidden="true" data-portrait-image>
-            <img class="portrait-slide" src="/images/batu-with-cat.jpeg" alt="Batu Koray Masak with a cat at Özyeğin University" width="1127" height="1127" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.campusCat.alt" aria-hidden="true" data-portrait-image>
-            <img class="portrait-slide" src="/images/batu-with-cat-greece.jpg" alt="Batu Koray Masak with a cat by the sea in Greece" width="1782" height="1784" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.greeceCat.alt" aria-hidden="true" data-portrait-image>
-            <img class="portrait-slide" src="/images/batu-suited.png" alt="Batu Koray Masak in a suit, photographed in a mirror" width="878" height="880" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.suited.alt" aria-hidden="true" data-portrait-image>
-            <img class="portrait-slide" src="/images/batu-next-to-eiffel.png" alt="Batu Koray Masak beside the Eiffel Tower in Paris, France" width="1278" height="1280" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.eiffel.alt" aria-hidden="true" data-portrait-image>
-            <img class="portrait-slide" src="/images/batu-eray-paris.png" alt="Batu Koray Masak, on the left, with his friend Eray in Paris" width="1090" height="1092" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.paris.alt" aria-hidden="true" data-portrait-image>
+            <picture>
+              <source type="image/webp" srcset="/images/optimized/batu-membership-inference-whiteboard.webp">
+              <img class="portrait-slide is-active" src="/images/batu-membership-inference-whiteboard.jpg" alt="Batu Koray Masak in front of a whiteboard with membership inference notes and an ROC curve" width="2160" height="2160" loading="eager" decoding="async" fetchpriority="high" data-portrait-alt-key="portrait.whiteboard.alt" aria-hidden="false" data-portrait-image>
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="/images/optimized/batu-library-picture.webp">
+              <img class="portrait-slide" src="/images/batu-library-picture.jpg" alt="Batu Koray Masak in front of his library" width="2048" height="2048" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.library.alt" aria-hidden="true" data-portrait-image>
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="/images/optimized/batu-teaching-eulers-identity.webp">
+              <img class="portrait-slide" src="/images/batu-teaching-eulers-identity.png" alt="Batu Koray Masak teaching Euler&#x27;s identity through Taylor series" width="1390" height="1392" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.teaching.alt" aria-hidden="true" data-portrait-image>
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="/images/optimized/batu-with-cat.webp">
+              <img class="portrait-slide" src="/images/batu-with-cat.jpeg" alt="Batu Koray Masak with a cat at Özyeğin University" width="1127" height="1127" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.campusCat.alt" aria-hidden="true" data-portrait-image>
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="/images/optimized/batu-with-cat-greece.webp">
+              <img class="portrait-slide" src="/images/batu-with-cat-greece.jpg" alt="Batu Koray Masak with a cat by the sea in Greece" width="1782" height="1784" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.greeceCat.alt" aria-hidden="true" data-portrait-image>
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="/images/optimized/batu-suited.webp">
+              <img class="portrait-slide" src="/images/batu-suited.png" alt="Batu Koray Masak in a suit, photographed in a mirror" width="878" height="880" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.suited.alt" aria-hidden="true" data-portrait-image>
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="/images/optimized/batu-next-to-eiffel.webp">
+              <img class="portrait-slide" src="/images/batu-next-to-eiffel.png" alt="Batu Koray Masak beside the Eiffel Tower in Paris, France" width="1278" height="1280" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.eiffel.alt" aria-hidden="true" data-portrait-image>
+            </picture>
+            <picture>
+              <source type="image/webp" srcset="/images/optimized/batu-eray-paris.webp">
+              <img class="portrait-slide" src="/images/batu-eray-paris.png" alt="Batu Koray Masak, on the left, with his friend Eray in Paris" width="1090" height="1092" loading="lazy" decoding="async" fetchpriority="low" data-portrait-alt-key="portrait.paris.alt" aria-hidden="true" data-portrait-image>
+            </picture>
           </div>
           <figcaption data-portrait-caption></figcaption>
         </figure>
@@ -714,6 +739,24 @@
       const fadeDuration = 1200;
       const portraitMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const failedPortraits = new Set();
+      const originalPortraitFallbacks = new WeakSet();
+      const useOriginalPortrait = (image) => {
+        const source = image.closest('picture')?.querySelector('source[type="image/webp"]');
+        if (!source) return false;
+        originalPortraitFallbacks.add(image);
+        source.remove();
+        image.loading = 'eager';
+        image.src = image.getAttribute('src');
+        return true;
+      };
+      const decodePortrait = async (image) => {
+        try {
+          await image.decode();
+        } catch (error) {
+          if (!useOriginalPortrait(image) && !originalPortraitFallbacks.has(image)) throw error;
+          await image.decode();
+        }
+      };
       const portraitControlCopy = {
         en: { next: 'Show next photograph' },
         tr: { next: 'Sonraki fotoğrafı göster' },
@@ -756,7 +799,7 @@
           if (failedPortraits.has(candidate)) continue;
           candidate.loading = 'eager';
           try {
-            await candidate.decode();
+            await decodePortrait(candidate);
             if (!candidate.naturalWidth) throw new Error('Portrait could not be decoded');
             nextIndex = candidateIndex;
             break;
@@ -800,7 +843,9 @@
         updatePortraitControls();
       };
       portraitSlides.forEach((image) => {
+        image.addEventListener('load', () => { failedPortraits.delete(image); });
         image.addEventListener('error', () => {
+          if (useOriginalPortrait(image)) return;
           failedPortraits.add(image);
           if (image === portraitSlides[portraitIndex]) void advancePortrait(true);
         });
