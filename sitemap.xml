@@ -7,16 +7,34 @@
       <image:loc>https://batukoray.github.io/images/batu-membership-inference-whiteboard.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://batukoray.github.io/images/optimized/batu-membership-inference-whiteboard.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://batukoray.github.io/images/batu-library-picture.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/optimized/batu-library-picture.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://batukoray.github.io/images/batu-with-cat-greece.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://batukoray.github.io/images/optimized/batu-with-cat-greece.webp</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://batukoray.github.io/images/batu-next-to-eiffel.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/optimized/batu-next-to-eiffel.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://batukoray.github.io/images/batu-teaching-eulers-identity.png</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://batukoray.github.io/images/optimized/batu-teaching-eulers-identity.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://batukoray.github.io/personal/</loc>
   </url>
 </urlset>
